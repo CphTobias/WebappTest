@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
 <!-- Billed og hovedmenu -->
 <div class="row" style="background-color: rgba(29,29,29,0.91);">
     <div class =col-md-1>
-        <p></p>
+        <p><c:out value="Kurt"></c:out></p>
     </div>
     <div class =col-md-7>
         <h1><a class="one" href="index.jsp">TobyCars</a></h1>
@@ -66,22 +67,19 @@
 <div class ="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">
         <h3 class="form-text">Contact</h3>
-        <form action="action.php" method="post">
+        <form action="ServletUser" method="post">
             <div class="form-group">
                 <label class="form-text" for="exampleInputPassword1">Name</label>
-                <input type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
+                <input type="name" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
             </div>
             <div class="form-group" style="top:10px">
                 <label class="form-text" for="exampleInputEmail2">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Email">
+                <input type="email" class="form-control" name="email" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Email">
                 <small id="emailHelp2" class="form-text">We'll never share your email with anyone else.</small>
             </div>
-
-            <input type="email" class="form-control" id="tobias.zimmer@hotmail.com" aria-describedby="emailHelp">
-
             <div class="form-group">
                 <label class="form-text" for="exampleTextarea">Enter message</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                <textarea class="form-control" name="message" id="exampleTextarea" rows="3"></textarea>
             </div>
             <div class="form-group">
                 <label class="form-text"for="exampleInputFile">File input</label>
