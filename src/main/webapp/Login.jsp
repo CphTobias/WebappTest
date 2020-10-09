@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Home</title>
+    <title>Login</title>
 </head>
 <body>
 
@@ -46,55 +46,53 @@
 
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
-        <h1 class="hovedtitle">Home</h1>
+        <h1 class="hovedtitle">Login</h1>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-3">
-        <h2>Hello, world!</h2>
+    <div class="col-md-4">
+        <p></p>
     </div>
-    <div class="col-md-3">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test</p>
+    <div class="col-md-4">
+    <form action="ServletLogin" method="post">
+        <div class="form-group">
+            <label for="exampleInputUsername">Username</label>
+            <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+        </div>
+        <a class="two" href="Signup.jsp">
+            <p>New user? Signup here!</p></a>
+        <button type="submit" class="btn btn-secondary">Login</button>
+        <br>
+        <br>
+        <br>
+    </form>
     </div>
-    <div class="col-md-6">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test igen igen igen igen igen igen igen</p>
-        <p class="title">Tester igen</p>
-    </div>
-</div>
-
-<div class ="row" style="background-color: rgba(29,29,29,0.91);">
-    <div class="col-md-6" style="left:15px">
-        <h3 class="form-text">Contact</h3>
-        <form action="ServletUser" method="post">
-            <div class="form-group">
-                <label class="form-text" for="exampleInputPassword1">Name</label>
-                <input type="name" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
-            </div>
-            <div class="form-group" style="top:10px">
-                <label class="form-text" for="exampleInputEmail2">Email address</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Email">
-                <small id="emailHelp2" class="form-text">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label class="form-text" for="exampleTextarea">Enter message</label>
-                <textarea class="form-control" name="message" id="exampleTextarea" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="form-text"for="exampleInputFile">File input</label>
-                <input type="file" class="form-text" id="exampleInputFile" aria-describedby="fileHelp">
-            </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
-        </form>
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
 
     </div>
 </div>
 
-<footer class="page-footer font-small blue" style="background-color: rgba(29,29,29,0.91);">
+<div class="row">
+    <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+
+<footer class="page-footer font-small blue" style="background-color: rgba(29,29,29,0.91)">
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3"><text style="color: #ececec">© 2020 Copyright:</text>

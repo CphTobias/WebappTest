@@ -10,19 +10,27 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Cars</title>
 </head>
 <body>
 
 <p>${requestScope.welcomemessage}</p>
 
+<p>Dit login er ${requestScope.}</p>
+
 <p>
-    <ul>
-    <c:out value="Kurt"></c:out>
-        <c:forEach var="car" items="{requestScope.billist}">
-    <li><c:out value="${car}"/></li>
-        </c:forEach>
-    </ul>
+<ul>
+
+    <c:forEach var="car" items="${requestScope.billist}">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+             </span>
+                <text><c:out value="${car}"/></text>
+        </div>
+        <br>
+    </c:forEach>
+</ul>
 </p>
 
 </body>

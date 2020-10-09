@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <title>Home</title>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
 <!-- Billed og hovedmenu -->
 <div class="row" style="background-color: rgba(29,29,29,0.91);">
     <div class =col-md-1>
-        <p><c:out value="Kurt"></c:out></p>
+        <p></p>
     </div>
     <div class =col-md-7>
         <h1><a class="one" href="index.jsp">TobyCars</a></h1>
@@ -29,15 +30,15 @@
                 <button type="button" class="btn btn-secondary">Home</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="Rent a car" style="top:6px;">
-            <a class="two" href="index.jsp">
+            <a class="two" href="RentACar.jsp">
                 <button type="button" class="btn btn-secondary">Rent a car</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <a class="two" href="index.jsp">
+            <a class="two" href="FAQ.jsp">
                 <button type="button" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
-            <a class="two" href="index.jsp">
+            <a class="two" href="Login.jsp">
                 <button type="button" class="btn btn-secondary">Login</button></a>
         </div>
     </div>

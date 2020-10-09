@@ -1,4 +1,4 @@
-package com.tobias.function;
+package com.tobias.function.Servlets;
 
 import javax.servlet.http.HttpServlet;
 
