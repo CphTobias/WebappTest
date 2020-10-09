@@ -1,0 +1,76 @@
+.hovedtitle {
+    text-align: center;
+    background-color: #999999;
+}
+
+.footer {
+    text-align: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.menu {
+    color: #999999;
+    font-weight: bold;
+}
+
+.form-text {
+    color: #ececec;
+    text-decoration: none;
+}
+
+a.one:link {
+    color: #ececec;
+    text-decoration: none;
+}
+
+a.one:visited {
+    color: #ececec;
+    text-decoration: none;
+}
+
+a.one:hover {
+    color: #ff4c4c;
+    text-decoration: underline;
+}
+
+a.two:link {
+    color: #1D1D1D;
+    text-decoration: none;
+}
+
+a.two:visited {
+    color: #1D1D1D;
+    text-decoration: none;
+}
+
+a.two:hover {
+    text-decoration: underline;
+}
+
+a.two:focus {
+    color: #ff4c4c;
+}
+
+a.two:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+button.btn-secondary:hover {
+    background-color: #ff4c4c;
+    border-color: #1D1D1D;
+}
+
+label.form-check-label:hover {
+    background-color: #ff4c4c;
+    border-color: #1D1D1D;
+}
+
+p {
+    color: #999999;
+}
