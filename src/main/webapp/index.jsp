@@ -30,7 +30,7 @@
                 <button type="button" class="btn btn-secondary">Home</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="Rent a car" style="top:6px;">
-            <a class="two" href="RentACar.jsp">
+            <a class="two" href="WEB-INF/RentACar.jsp">
                 <button type="button" class="btn btn-secondary">Rent a car</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">

@@ -30,7 +30,7 @@
                 <button type="button" class="btn btn-secondary">Home</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="Rent a car" style="top:6px;">
-            <a class="two" href="RentACar.jsp">
+            <a class="two" href="WEB-INF/RentACar.jsp">
                 <button type="button" class="btn btn-secondary">Rent a car</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
@@ -55,10 +55,10 @@
         <p></p>
     </div>
     <div class="col-md-4">
-    <form action="ServletLogin" method="post">
+    <form name="login" action="FrontController" method="POST">
         <div class="form-group">
             <label for="exampleInputUsername">Username</label>
-            <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Username">
+            <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Enter Username">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
