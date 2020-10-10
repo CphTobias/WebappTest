@@ -56,6 +56,7 @@
     </div>
     <div class="col-md-4">
     <form name="login" action="FrontController" method="POST">
+        <input type="hidden" name="target" value="login">
         <div class="form-group">
             <label for="exampleInputUsername">Username</label>
             <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Enter Username">
@@ -66,7 +67,7 @@
         </div>
         <a class="two" href="Signup.jsp">
             <p>New user? Signup here!</p></a>
-        <button type="submit" class="btn btn-secondary">Login</button>
+        <button type="submit" class="btn btn-secondary" value="Submit">Login</button>
         <br>
         <br>
         <br>

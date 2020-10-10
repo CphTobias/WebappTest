@@ -52,45 +52,4 @@ public class UserMapper {
             throw new RuntimeException(e);
         }
     }
-
-    /*public static void createUser(User user) throws LoginSampleException {
-        try {
-            Connection con = Connector.getConnection();
-            String SQL = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setString( 1, user.getUsername() );
-            ps.setString( 2, user.getPassword() );
-            ps.setString( 3, user.getRole() );
-            ps.executeUpdate();
-            ResultSet ids = ps.getGeneratedKeys();
-            ids.next();
-            int id = ids.getInt( 1 );
-            user.setId(id);
-        } catch ( SQLException | ClassNotFoundException ex ) {
-            throw new LoginSampleException( ex.getMessage() );
-        }
-    }*/
-
-    /*public static User login(String username, String password) throws LoginSampleException {
-        try {
-            Connection con = Connector.getConnection();
-            String SQL = "SELECT id, role FROM users "
-                    + "WHERE username=? AND password=?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString( 1, username );
-            ps.setString( 2, password );
-            ResultSet rs = ps.executeQuery();
-            if ( rs.next() ) {
-                String role = rs.getString( "role" );
-                int id = rs.getInt( "id" );
-                User user = new User(username, password, role);
-                user.setId(id);
-                return user;
-            } else {
-                throw new LoginSampleException( "Could not validate user" );
-            }
-        } catch ( ClassNotFoundException | SQLException ex ) {
-            throw new LoginSampleException(ex.getMessage());
-        }
-    }*/
 }

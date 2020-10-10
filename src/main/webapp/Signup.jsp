@@ -56,6 +56,7 @@
     </div>
     <div class="col-md-4">
         <form name="register" action="FrontController" method="POST">
+            <input type="hidden" name="target" value="register">
             <div class="form-group">
                 <label for="exampleInputUsername">Username</label>
                 <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Enter Username">
@@ -65,25 +66,10 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" name="password1" placeholder="Password">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword2">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Password">
+                <label for="exampleInputPassword2">Repeat Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Repeat Password">
             </div>
-            <button type="submit" class="btn btn-secondary">Signup</button>
-            <div class="form-group">
-                <form name="register" action="FrontController" method="POST">
-                    <input type="hidden" name="target" value="register">
-                    Email:<br>
-                    <input type="text" name="username" value="Username">
-                    <br>
-                    Password:<br>
-                    <input type="password" name="password1" value="sesam">
-                    <br>
-                    Retype Password:<br>
-                    <input type="password" name="password2" value="sesam">
-                    <br>
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
+            <button type="submit" class="btn btn-secondary" value="Submit">Signup</button>
             <br>
             <br>
             <br>
