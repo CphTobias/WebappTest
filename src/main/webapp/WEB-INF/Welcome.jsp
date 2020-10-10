@@ -19,6 +19,24 @@
 <p>Dit login er ${requestScope.}</p>
 
 <p>
+
+<div class ="row" style="background-color: rgba(29,29,29,0.91);">
+    <div class="col-md-6" style="left:15px">
+        <h3 class="form-text">Contact Support</h3>
+        <form action="ServletContactMessage" method="put">
+            <div class="form-group">
+                <select class="form-control" name="messages" id="myselect">
+                    <option>Active</option>
+                    <option>Closed</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+
 <ul>
 
     <c:forEach var="car" items="${requestScope.billist}">

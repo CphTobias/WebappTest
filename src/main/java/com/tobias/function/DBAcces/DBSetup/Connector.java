@@ -1,4 +1,4 @@
-package com.tobias.function.DBAcces;
+package com.tobias.function.DBAcces.DBSetup;
 
 import java.sql.*;
 

@@ -7,9 +7,14 @@
     text-align: center;
 }
 
+.faq {
+    color: #999999;
+    font-size: 25px;
+}
+
 .title {
     font-weight: bold;
-    font-size: 60px;
+    font-size: 30px;
 }
 
 .menu {
@@ -48,6 +53,7 @@ a.two:visited {
 }
 
 a.two:hover {
+    color: #ff4c4c;
     text-decoration: underline;
 }
 
@@ -69,8 +75,4 @@ button.btn-secondary:hover {
 label.form-check-label:hover {
     background-color: #ff4c4c;
     border-color: #1D1D1D;
-}
-
-p {
-    color: #999999;
 }

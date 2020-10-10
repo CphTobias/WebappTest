@@ -1,6 +1,5 @@
-package com.tobias.function.DBAcces;
+package com.tobias.function.DBAcces.DBSetup;
 
-import com.tobias.function.DBAcces.Connector;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;

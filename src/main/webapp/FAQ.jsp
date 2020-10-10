@@ -39,35 +39,67 @@
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <a class="two" href="index.jsp">
-                <button type="button" class="btn btn-secondary">Login</button></a>
+                <button type="button" class="btn btn-secondary">Login / Signup</button></a>
         </div>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
-        <h1 class="hovedtitle">Home</h1>
+        <h1 class="hovedtitle">Frequently Asked Questions</h1>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-3">
-        <h2>Hello, world!</h2>
+    <div class="col-md-1">
+
     </div>
     <div class="col-md-3">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test</p>
+        <br>
+        <p class="title" style="font-size: 30px">General</p>
+        <br>
+        <div>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+        </div>
     </div>
-    <div class="col-md-6">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test igen igen igen igen igen igen igen</p>
-        <p class="title">Tester igen</p>
+    <div class="col-md-3">
+        <br>
+        <p class="title" style="font-size: 30px">Car labels</p>
+        <br>
+        <div>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <br>
+        <p class="title" style="font-size: 30px">User information</p>
+        <br>
+        <div>
+            <a class="one" href="cars.html"><p>Will you share any information</p></a>
+            <a class="one" href="cars.html"><p>How do i make an account</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
+            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
+        </div>
+    </div>
+    <div class="col-md-2">
+
     </div>
 </div>
 
 <div class ="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">
-        <h3 class="form-text">Contact</h3>
+        <h3 class="form-text">Contact Support</h3>
         <form action="ServletUser" method="post">
             <div class="form-group">
                 <label class="form-text" for="exampleInputPassword1">Name</label>

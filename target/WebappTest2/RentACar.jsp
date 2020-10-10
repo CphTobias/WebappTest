@@ -39,7 +39,7 @@
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <a class="two" href="index.jsp">
-                <button type="button" class="btn btn-secondary">Login</button></a>
+                <button type="button" class="btn btn-secondary">Login / Signup</button></a>
         </div>
     </div>
 </div>
@@ -67,7 +67,7 @@
 
 <div class ="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">
-        <h3 class="form-text">Contact</h3>
+        <h3 class="form-text">Contact Support</h3>
         <form action="ServletUser" method="post">
             <div class="form-group">
                 <label class="form-text" for="exampleInputPassword1">Name</label>

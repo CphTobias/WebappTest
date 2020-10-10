@@ -39,7 +39,7 @@
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <a class="two" href="Login.jsp">
-                <button type="button" class="btn btn-secondary">Login</button></a>
+                <button type="button" class="btn btn-secondary">Login / Signup</button></a>
         </div>
     </div>
 </div>
@@ -79,7 +79,6 @@
 
 <div class="row">
     <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
-        <br>
         <br>
         <br>
         <br>

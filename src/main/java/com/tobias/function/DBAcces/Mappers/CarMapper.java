@@ -1,4 +1,4 @@
-package com.tobias.function.DBAcces;
+package com.tobias.function.DBAcces.Mappers;
 
 import com.tobias.function.function.entities.Car;
 
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.tobias.function.DBAcces.Connector.getConnection;
+import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class CarMapper {
 

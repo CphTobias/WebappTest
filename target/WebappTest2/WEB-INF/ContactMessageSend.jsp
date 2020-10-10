@@ -10,20 +10,27 @@
 
 <html>
 <head>
-    <title>Cars</title>
+    <title>Message send!</title>
 </head>
 <body>
 
-<p>${requestScope.welcomemessage}</p>
+    <p>Name</p>
+    <p>${requestScope.name}</p>
 
-<p>Dit login er ${requestScope.}</p>
+    <br>
 
-<p>
+    <p>Email</p>
+    <p>${requestScope.email}</p>
 
-<div class ="row" style="background-color: rgba(29,29,29,0.91);">
+    <br>
+
+    <p>Message</p>
+    <p>${requestScope.message}</p>
+
+<div class="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">
         <h3 class="form-text">Contact Support</h3>
-        <form action="ServletContactMessage" method="put">
+        <form action="ServletGetMessages" method="post">
             <div class="form-group">
                 <select class="form-control" name="messages" id="myselect">
                     <option>Active</option>
@@ -35,21 +42,15 @@
     </div>
 </div>
 
-
-
 <ul>
 
-    <c:forEach var="car" items="${requestScope.billist}">
+    <c:forEach var="message" items="${requestScope.activeCM}">
         <div class="input-group">
-            <span class="input-group-addon">
-                <input type="checkbox" aria-label="Checkbox for following text input">
-             </span>
-                <text><c:out value="${car}"/></text>
+            <text><c:out value="${message}"/></text>
         </div>
         <br>
     </c:forEach>
 </ul>
-</p>
 
 </body>
 </html>

@@ -1,10 +1,11 @@
-DROP TABLE IF EXISTS kontaktbeskeder;
-CREATE TABLE kontaktbeskeder (
+DROP TABLE IF EXISTS contactmessages;
+CREATE TABLE contactmessages (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    besvared BOOLEAN DEFAULT NULL,
-    Navn VARCHAR(255) DEFAULT NULL,
+    createdat TIMESTAMP NOT NULL,
+    name VARCHAR(255) DEFAULT NULL,
     email VARCHAR(255) DEFAULT NULL,
-    besked VARCHAR(255) DEFAULT NULL
+    message VARCHAR(255) DEFAULT NULL,
+    answered BOOLEAN DEFAULT FALSE
 );
 
 UPDATE properties

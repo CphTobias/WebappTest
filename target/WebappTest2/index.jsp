@@ -34,12 +34,12 @@
                 <button type="button" class="btn btn-secondary">Rent a car</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <a class="two" href="FAQ.jsp">
+            <a class="two" href="FAQ.jsp" target="_blank">
                 <button type="button" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <a class="two" href="Login.jsp">
-                <button type="button" class="btn btn-secondary">Login</button></a>
+                <button type="button" class="btn btn-secondary">Login / Signup</button></a>
         </div>
     </div>
 </div>
@@ -67,8 +67,8 @@
 
 <div class ="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">
-        <h3 class="form-text">Contact</h3>
-        <form action="ServletUser" method="post">
+        <h3 class="form-text">Contact Support</h3>
+        <form action="ServletContactMessage" method="post">
             <div class="form-group">
                 <label class="form-text" for="exampleInputPassword1">Name</label>
                 <input type="name" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
