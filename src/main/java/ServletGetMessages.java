@@ -1,5 +1,5 @@
-import com.tobias.function.DBAcces.Mappers.MessageMapper;
-import com.tobias.function.function.entities.ContactMessage;
+import com.tobias.DBAcces.Mappers.MessageMapper;
+import com.tobias.function.entities.ContactMessage;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

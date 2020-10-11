@@ -1,5 +1,5 @@
-import com.tobias.function.DBAcces.Mappers.CarMapper;
-import com.tobias.function.function.entities.Car;
+import com.tobias.DBAcces.Mappers.CarMapper;
+import com.tobias.function.entities.Car;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

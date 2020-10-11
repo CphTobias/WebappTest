@@ -1,6 +1,5 @@
-import com.tobias.function.DBAcces.Handlers.MessageHandler;
-import com.tobias.function.DBAcces.Mappers.MessageMapper;
-import com.tobias.function.function.entities.ContactMessage;
+import com.tobias.DBAcces.Handlers.MessageHandler;
+import com.tobias.function.entities.ContactMessage;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @WebServlet("/ServletContactMessage")
 public class ServletContactMessage extends HttpServlet {
