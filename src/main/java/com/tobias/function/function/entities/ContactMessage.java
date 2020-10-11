@@ -1,6 +1,9 @@
 package com.tobias.function.function.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class ContactMessage {
 
@@ -29,14 +32,11 @@ public class ContactMessage {
 
     @Override
     public String toString() {
-        return "ContactMessage{" +
-                "id=" + id +
-                ", createdAt=" + createdAt +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", message='" + message + '\'' +
-                ", answered=" + answered +
-                '}';
+        return  id +
+                ". - " + createdAt +
+                " - Name: " + name +
+                " - Email: " + email +
+                " - Message: " + message;
     }
 
     public LocalDateTime getCreatedAt() {

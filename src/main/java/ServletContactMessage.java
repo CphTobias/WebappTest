@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet("/ServletContactMessage")
@@ -21,11 +22,12 @@ public class ServletContactMessage extends HttpServlet {
 
         ContactMessage cMessage = messageHandler.createContactMessage(LocalDateTime.now(),username, email, message);
 
+        String formatedTime = " " + cMessage.getCreatedAt().format(DateTimeFormatter.ISO_DATE_TIME);
         String formatedName = " " + cMessage.getName();
         String formatedEmail = " " + cMessage.getEmail();
         String formatedCMessage = " " + cMessage.getMessage();
 
-
+        request.setAttribute("time", formatedTime);
         request.setAttribute("name", formatedName);
         request.setAttribute("email", formatedEmail);
         request.setAttribute("message", formatedCMessage);

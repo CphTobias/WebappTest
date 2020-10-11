@@ -24,7 +24,7 @@
     </div>
     <div class =col-md-4>
         <p></p>
-        <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
+        <div class="btn-group" role="group" aria-label="login" style="top:6px; left:38px">
             <a class="two" href="/index.jsp">
                 <button type="button" class="btn btn-secondary">Logout</button></a>
         </div>
@@ -38,14 +38,13 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12" style="text-align: center">
-        <p></p>
+    <div class="col-md-12" style="text-align: center;top:5px">
             <div class="btn-group" role="group" aria-label="Main menu">
                 <a class="two" href="adminManageCars.jsp" target="_blank">
                     <button type="button" class="btn btn-secondary">Manage Cars</button></a>
             </div>
             <div class="btn-group" role="group" aria-label="FAQ">
-                <button onclick="myFunction()" style="left:15px" class="btn btn-secondary">Manage Messages</button></a>
+                <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button></a>
             </div>
     </div>
 </div>
@@ -74,20 +73,32 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-5">
+        <br>
     <ul>
         <c:forEach var="message" items="${requestScope.activeCM}">
             <div class="input-group">
-                <text><c:out value="${message}"/></text>
+                <text><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
+                    <c:out value=" - Time: ${message.createdAt.toLocalTime()}"/>
+                    <br><c:out value="Name: ${message.name}"/>
+                    <br><c:out value="Email: ${message.email}"/>
+                    <br><c:out value="Message: ${message.message}"/>
+                </text>
             </div>
             <br>
         </c:forEach>
     </ul>
     </div>
+    <div class="col-md-3">
+
+    </div>
 </div>
 
 <script>
-    function myFunction() {
+    function getMessages() {
         var x = document.getElementById("myDIV");
         if (x.style.display === "none") {
             x.style.display = "block";
@@ -99,6 +110,34 @@
 
 <div class="row">
     <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
+        <div id="myFooter" style="display: block">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myFooter() {
+        var x = document.getElementById("myFooter");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
+        <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>

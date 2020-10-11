@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ListIterator;
 
 @WebServlet("/ServletGetMessages")
 public class ServletGetMessages extends HttpServlet {
@@ -15,9 +17,11 @@ public class ServletGetMessages extends HttpServlet {
         MessageMapper messageMapper = new MessageMapper();
         String username = request.getParameter("messages");
 
-        List<ContactMessage> cMessage = messageMapper.getContactMessages(username.equals("Closed"));
+        List<ContactMessage> cMessage = messageMapper.getContactMessages(username.equals("Closed Messages"));
 
-
+        for (int i = 0; i < cMessage.size(); i++) {
+            cMessage.get(i).getCreatedAt().format(DateTimeFormatter.ISO_TIME);
+        }
 
         request.setAttribute("activeCM", cMessage);
         request.getRequestDispatcher("/WEB-INF/adminpage.jsp").forward(request, response);
