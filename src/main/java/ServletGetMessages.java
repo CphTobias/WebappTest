@@ -20,7 +20,7 @@ public class ServletGetMessages extends HttpServlet {
 
 
         request.setAttribute("activeCM", cMessage);
-        request.getRequestDispatcher("/WEB-INF/ContactMessageSend.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/adminpage.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

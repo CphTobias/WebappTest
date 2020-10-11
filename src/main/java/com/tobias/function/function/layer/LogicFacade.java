@@ -8,7 +8,6 @@ import com.tobias.function.function.entities.UserExists;
 public class LogicFacade {
 
     public static User login(String name, String password) throws InvalidPassword {
-        UserMapper userMapper = new UserMapper();
         User user = UserMapper.findUser(name);
         if (user.isPasswordCorrect(password)) {
             return user;
@@ -16,13 +15,12 @@ public class LogicFacade {
             throw new InvalidPassword();
         }
     }
-    /*public static User login(String username, String password) throws LoginSampleException {
-        return UserMapper.login(username, password);
-    }*/
 
     public static User createUser(String name, String password) throws UserExists {
         byte[] salt = User.generateSalt();
         byte[] secret = User.calculateSecret(salt, password);
         return UserHandler.createUser(name, salt, secret);
     }
+
+
 }

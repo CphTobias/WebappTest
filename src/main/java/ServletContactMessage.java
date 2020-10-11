@@ -34,10 +34,6 @@ public class ServletContactMessage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //MessageMapper messageMapper = new MessageMapper();
-        //List<ContactMessage> cMessage = messageMapper.getContactMessages(true);
 
-        //request.setAttribute("activeCM", cMessage);
-        //request.getRequestDispatcher("/WEB-INF/ContactMessageSend.jsp").forward(request, response);
     }
 }
