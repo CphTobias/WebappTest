@@ -1,4 +1,4 @@
-package com.tobias.function.entities;
+package com.tobias.function.entities.User;
 
 public class UserExists extends Exception {
     public UserExists(String name) {

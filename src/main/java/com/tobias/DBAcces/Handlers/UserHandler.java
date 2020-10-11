@@ -2,8 +2,8 @@ package com.tobias.DBAcces.Handlers;
 
 import com.tobias.DBAcces.DBSetup.Connector;
 import com.tobias.DBAcces.Mappers.UserMapper;
-import com.tobias.function.entities.User;
-import com.tobias.function.entities.UserExists;
+import com.tobias.function.entities.User.User;
+import com.tobias.function.entities.User.UserExists;
 
 import java.sql.*;
 

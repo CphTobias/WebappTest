@@ -1,7 +1,7 @@
 package com.tobias.DBAcces.Mappers;
 
 import com.tobias.DBAcces.DBSetup.Connector;
-import com.tobias.function.entities.User;
+import com.tobias.function.entities.User.User;
 
 import java.sql.*;
 import java.util.NoSuchElementException;

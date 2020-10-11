@@ -1,6 +1,6 @@
 package com.tobias.presentation.layer;
 
-import com.tobias.function.entities.User;
+import com.tobias.function.entities.User.User;
 import com.tobias.function.layer.InvalidPassword;
 import com.tobias.function.layer.LogicFacade;
 import com.tobias.function.layer.LoginSampleException;

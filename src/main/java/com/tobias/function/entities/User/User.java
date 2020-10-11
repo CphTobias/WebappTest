@@ -1,4 +1,4 @@
-package com.tobias.function.entities;
+package com.tobias.function.entities.User;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

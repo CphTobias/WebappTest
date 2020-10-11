@@ -2,8 +2,8 @@ package com.tobias.function.layer;
 
 import com.tobias.DBAcces.Handlers.UserHandler;
 import com.tobias.DBAcces.Mappers.UserMapper;
-import com.tobias.function.entities.UserExists;
-import com.tobias.function.entities.User;
+import com.tobias.function.entities.User.UserExists;
+import com.tobias.function.entities.User.User;
 
 public class LogicFacade {
 
