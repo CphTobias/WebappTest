@@ -20,6 +20,7 @@ public class Login extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String password2 = "hej";
         User user = null;
         try {
             user = LogicFacade.login(username, password);
