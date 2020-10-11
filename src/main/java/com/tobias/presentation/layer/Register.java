@@ -13,13 +13,14 @@ public class Register extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+        LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
         if (password1.equals(password2)) {
             User user = null;
             try {
-                user = LogicFacade.createUser(username, password1);
+                user = logicFacade.createUser(username, password1);
             } catch (UserExists userExists) {
                 userExists.printStackTrace();
             }

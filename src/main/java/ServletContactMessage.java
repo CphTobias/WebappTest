@@ -1,4 +1,4 @@
-import com.tobias.DBAcces.Handlers.MessageHandler;
+import com.tobias.Database.Handlers.MessageHandler;
 import com.tobias.function.entities.ContactMessage;
 
 import javax.servlet.ServletException;

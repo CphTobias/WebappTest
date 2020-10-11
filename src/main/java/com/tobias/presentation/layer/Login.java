@@ -4,6 +4,7 @@ import com.tobias.function.entities.User.User;
 import com.tobias.function.layer.InvalidPassword;
 import com.tobias.function.layer.LogicFacade;
 import com.tobias.function.layer.LoginSampleException;
+import com.tobias.function.layer.WebAppRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +19,12 @@ public class Login extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+        LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String password2 = "hej";
         User user = null;
         try {
-            user = LogicFacade.login(username, password);
+            user = logicFacade.login(username, password);
         } catch (InvalidPassword invalidPassword) {
             invalidPassword.printStackTrace();
         }
