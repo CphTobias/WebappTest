@@ -21,20 +21,20 @@
         <p></p>
     </div>
     <div class =col-md-7>
-        <h1><a class="one" href="index.jsp">TobyCars</a></h1>
+        <h1><a class="one" href="FrontController?target=redirect&destination=customerpage">TobyCars</a></h1>
     </div>
     <div class =col-md-4>
         <p></p>
         <div class="btn-group" role="group" aria-label="Main menu" style="top:6px;">
-            <a class="two" href="customerpage.jsp">
-                <button type="button" class="btn btn-secondary">Home</button></a>
+            <a class="two" href="FrontController?target=redirect&destination=customerpage">
+                <button type="submit" class="btn btn-secondary">Home</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <a class="two" href="FAQ.jsp" target="_blank">
-                <button type="button" style="left:20px" class="btn btn-secondary">FAQ</button></a>
+            <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
+                <button type="submit" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
-            <a class="two" href="index.jsp">
+            <a class="two" href="FrontController?target=redirect&destination=index">
                 <button type="button" class="btn btn-secondary">Logout</button></a>
         </div>
     </div>

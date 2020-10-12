@@ -21,24 +21,20 @@
         <p></p>
     </div>
     <div class =col-md-7>
-        <h1><a class="one" href="index.jsp">TobyCars</a></h1>
+        <h1><a class="one" href="FrontController?target=redirect&destination=index">TobyCars</a></h1>
     </div>
     <div class =col-md-4>
         <p></p>
         <div class="btn-group" role="group" aria-label="Main menu" style="top:6px;">
-            <a class="two" href="index.jsp">
+            <a class="two" href="FrontController?target=redirect&destination=index">
                 <button type="button" class="btn btn-secondary">Home</button></a>
         </div>
-        <div class="btn-group" role="group" aria-label="Rent a car" style="top:6px;">
-            <a class="two" href="WEB-INF/RentACar.jsp">
-                <button type="button" class="btn btn-secondary">Rent a car</button></a>
-        </div>
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <a class="two" href="FAQ.jsp">
+            <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
                 <button type="button" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
-            <a class="two" href="Login.jsp">
+            <a class="two" target="_blank" href="FrontController?target=redirect&destination=Login">
                 <button type="button" class="btn btn-secondary">Login / Signup</button></a>
         </div>
     </div>
@@ -65,7 +61,7 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
         </div>
-        <a class="two" href="Signup.jsp">
+        <a class="two" target="_blank" href="FrontController?target=redirect&destination=Signup">
             <p>New user? Signup here!</p></a>
         <button type="submit" class="btn btn-secondary" value="Submit">Login</button>
         <br>

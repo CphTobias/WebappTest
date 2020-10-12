@@ -20,12 +20,12 @@
         <p></p>
     </div>
     <div class =col-md-6>
-        <h1><a class="one" href="#">TobyCars</a></h1>
+        <h1><a class="one" href="FrontController?target=redirect&destination=adminpage">TobyCars</a></h1>
     </div>
     <div class =col-md-4>
         <p></p>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:38px">
-            <a class="two" href="/index.jsp">
+            <a class="two" href="FrontController?target=redirect&destination=index">
                 <button type="button" class="btn btn-secondary">Logout</button></a>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     <button type="button" class="btn btn-secondary">Manage Cars</button></a>
             </div>
             <div class="btn-group" role="group" aria-label="FAQ">
-                <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button></a>
+                <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button>
             </div>
     </div>
 </div>
@@ -78,19 +78,25 @@
     </div>
     <div class="col-md-5">
         <br>
-    <ul>
+    <ol>
         <c:forEach var="message" items="${requestScope.activeCM}">
             <div class="input-group">
-                <text><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
+                <form action="ServletMessageAnswered" method="post">
+                <li><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
                     <c:out value=" - Time: ${message.createdAt.toLocalTime()}"/>
                     <br><c:out value="Name: ${message.name}"/>
                     <br><c:out value="Email: ${message.email}"/>
                     <br><c:out value="Message: ${message.message}"/>
-                </text>
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="${message.id}">
+                    <label type="hidden" for="vehicle1"> Close/Open</label>
+                    <br>
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                </li>
+                </form>
             </div>
             <br>
         </c:forEach>
-    </ul>
+    </ol>
     </div>
     <div class="col-md-3">
 

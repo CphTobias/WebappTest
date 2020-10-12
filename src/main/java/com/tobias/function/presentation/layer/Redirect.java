@@ -15,7 +15,11 @@ public class Redirect extends Command {
         switch (destination){
 
             case "index": request.setAttribute("message", "Alt er godt!!!"); break;
-            case "login": break;
+            case "Login": break;
+            case "customerpage": break;
+            case "FAQ": break;
+            case "adminpage": break;
+            case "Signup": break;
             
             default: request.setAttribute("message", "Denne side findes ikke");
 
