@@ -1,4 +1,4 @@
-package com.tobias.function.presentation.layer;
+package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.layer.LoginSampleException;
 
@@ -41,7 +41,7 @@ public class FrontController extends HttpServlet {
             Command action = Command.from( request );
             String view = action.execute( request, response );
             if (view.equals("index")){
-                request.getRequestDispatcher(view + ".jsp").forward(request, response);
+                request.getRequestDispatcher    (view + ".jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
             }

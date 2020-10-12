@@ -1,4 +1,4 @@
-package com.tobias.function.presentation.layer;
+package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.entities.User;
 import com.tobias.function.function.entities.UserExists;
