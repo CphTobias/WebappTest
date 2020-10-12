@@ -30,11 +30,11 @@
                 <button type="button" class="btn btn-secondary">Home</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
+            <a class="two" href="FrontController?target=redirect&destination=FAQ">
                 <button type="button" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
-            <a class="two" target="_blank" href="FrontController?target=redirect&destination=Login">
+            <a class="two" href="FrontController?target=redirect&destination=Login">
                 <button type="button" class="btn btn-secondary">Login / Signup</button></a>
         </div>
     </div>

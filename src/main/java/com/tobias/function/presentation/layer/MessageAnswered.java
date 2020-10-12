@@ -14,11 +14,12 @@ public class MessageAnswered extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
         MessageMapper messageMapper = new MessageMapper();
         String username = request.getParameter("messages");
-
-        int getmessage = Integer.parseInt(username);
+        String getMessages = request.getParameter("answered");
+        boolean getMessageBoolean = Boolean.parseBoolean(getMessages);
+        int getMessageID = Integer.parseInt(username);
 
         try {
-            messageMapper.setMessageToClosed(getmessage);
+            messageMapper.setMessageToClosed(getMessageID, getMessageBoolean);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {

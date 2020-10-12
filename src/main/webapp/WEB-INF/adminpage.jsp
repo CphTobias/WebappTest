@@ -90,10 +90,9 @@
                         <br><c:out value="Email: ${message.email}"/>
                         <br><c:out value="Message: ${message.message}"/>
 
-                        <br><input type="checkbox" id="messages" name="messages" value="${message.id}">
-                        <label type="hidden" for="messages"> Close/Open</label>
-
-                        <br><button type="submit" class="btn btn-secondary">Submit</button>
+                        <br><input type="hidden" id="messages" name="messages" value="${message.id}">
+                            <input type="hidden" id="answered" name="answered" value="${message.answered}">
+                        <br><button type="submit" class="btn btn-secondary">Close/Open</button>
                     </li>
                 </form>
             </div>
