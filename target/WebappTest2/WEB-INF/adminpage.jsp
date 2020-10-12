@@ -57,7 +57,8 @@
         <div id="myDIV" style="display:none">
             <br>
             <h3 class="title">Update Messages</h3>
-            <form action="ServletGetMessages" method="post">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getmessages">
                 <div class="form-group">
                     <select class="form-control" name="messages" id="myselect">
                         <option>Active Messages</option>
@@ -81,17 +82,19 @@
     <ol>
         <c:forEach var="message" items="${requestScope.activeCM}">
             <div class="input-group">
-                <form action="ServletMessageAnswered" method="post">
-                <li><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
-                    <c:out value=" - Time: ${message.createdAt.toLocalTime()}"/>
-                    <br><c:out value="Name: ${message.name}"/>
-                    <br><c:out value="Email: ${message.email}"/>
-                    <br><c:out value="Message: ${message.message}"/>
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="${message.id}">
-                    <label type="hidden" for="vehicle1"> Close/Open</label>
-                    <br>
-                    <button type="submit" class="btn btn-secondary">Submit</button>
-                </li>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="messageanswered">
+                    <li><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
+                        <c:out value=" - Time: ${message.createdAt.toLocalTime()}"/>
+                        <br><c:out value="Name: ${message.name}"/>
+                        <br><c:out value="Email: ${message.email}"/>
+                        <br><c:out value="Message: ${message.message}"/>
+
+                        <br><input type="checkbox" id="messages" name="messages" value="${message.id}">
+                        <label type="hidden" for="messages"> Close/Open</label>
+
+                        <br><button type="submit" class="btn btn-secondary">Submit</button>
+                    </li>
                 </form>
             </div>
             <br>

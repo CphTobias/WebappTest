@@ -1,5 +1,6 @@
 package com.tobias.function.DBAcces.Mappers;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import com.tobias.function.DBAcces.DBSetup.Connector;
 import com.tobias.function.function.entities.ContactMessage;
 
@@ -63,11 +64,23 @@ public class MessageMapper {
 
     public void setMessageToClosed(int messageID) throws SQLException, ClassNotFoundException {
         try(Connection conn = Connector.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(
-                    "UPDATE contactmessages SET answered = 1 WHERE id = ?;");
-            ps.setInt(1, messageID);
-            ps.executeUpdate();
-            ps.close();
+            PreparedStatement ps1 = conn.prepareStatement(
+                    "SELECT answered FROM contactmessages WHERE id=messageID"
+            );
+            ResultSet getMessage = ps1.executeQuery();
+            if(!getMessage.getBoolean(1)){
+                PreparedStatement ps = conn.prepareStatement(
+                        "UPDATE contactmessages SET answered = 1 WHERE id = ?;");
+                ps.setInt(1, messageID);
+                ps.executeUpdate();
+                ps.close();
+            } else {
+                PreparedStatement ps = conn.prepareStatement(
+                        "UPDATE contactmessages SET answered = 0 WHERE id = ?;");
+                ps.setInt(1, messageID);
+                ps.executeUpdate();
+                ps.close();
+            }
         } catch (SQLException | ClassNotFoundException se) {
             throw se;
         }
