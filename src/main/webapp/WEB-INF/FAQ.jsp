@@ -54,38 +54,38 @@
         <br>
         <p class="title" style="font-size: 30px">General</p>
         <br>
-        <div>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
+        <div class="faq">
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
         </div>
     </div>
     <div class="col-md-3">
         <br>
         <p class="title" style="font-size: 30px">Car labels</p>
         <br>
-        <div>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
+        <div class="faq">
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>I dont know what to do</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>I dont know what to do</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>I dont know what to do</p></a>
         </div>
     </div>
     <div class="col-md-3">
         <br>
         <p class="title" style="font-size: 30px">User information</p>
         <br>
-        <div>
-            <a class="one" href="cars.html"><p>Will you share any information</p></a>
-            <a class="one" href="cars.html"><p>How do i make an account</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
-            <a class="one" href="cars.html"><p>Tobias og Co</p></a>
-            <a class="one" href="cars.html"><p>I dont know what to do</p></a>
+        <div class="faq">
+            <a class="two" href="cars.html"><p>Will you share any information</p></a>
+            <a class="two" href="cars.html"><p>How do i make an account</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>I dont know what to do</p></a>
+            <a class="two" href="cars.html"><p>Tobias og Co</p></a>
+            <a class="two" href="cars.html"><p>I dont know what to do</p></a>
         </div>
     </div>
     <div class="col-md-2">

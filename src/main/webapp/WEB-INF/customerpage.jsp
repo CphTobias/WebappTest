@@ -64,7 +64,8 @@
 <div class ="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">
         <h3 class="form-text">Contact Support</h3>
-        <form action="ServletContactMessage" method="post">
+        <form action="FrontController" method="post">
+            <input type="hidden" name="target" value="contactmessage">
             <div class="form-group">
                 <label class="form-text" for="exampleInputPassword1">Name</label>
                 <input type="name" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name">

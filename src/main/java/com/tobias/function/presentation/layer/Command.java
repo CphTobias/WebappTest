@@ -19,6 +19,7 @@ abstract class Command {
         commands.put( "redirect", new Redirect() );
         commands.put("getmessages", new GetMessages());
         commands.put("messageanswered", new MessageAnswered());
+        commands.put("contactmessage", new ContactMessageMade());
     }
 
     static Command from( HttpServletRequest request ) {

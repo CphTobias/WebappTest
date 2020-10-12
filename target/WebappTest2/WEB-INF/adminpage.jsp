@@ -105,17 +105,6 @@
     </div>
 </div>
 
-<script>
-    function getMessages() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
-
 <div class="row">
     <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
         <div id="myFooter" style="display: block">
@@ -129,17 +118,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    function myFooter() {
-        var x = document.getElementById("myFooter");
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
-    }
-</script>
 
 <div class="row">
     <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
@@ -169,7 +147,7 @@
     <!-- Copyright -->
 
 </footer>
-<!-- <script src="../buttons.js"></script> -->
+<script src="js/buttons.js"></script>
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
