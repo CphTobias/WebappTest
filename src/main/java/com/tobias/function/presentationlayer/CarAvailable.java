@@ -16,15 +16,26 @@ public class CarAvailable extends Command {
         CarMapper carMapper = new CarMapper();
         String carid = request.getParameter("carid");
         String caravailable = request.getParameter("caravailable");
+        String newPrice = request.getParameter("changeprice");
+        String newerPrice = newPrice;
+
         boolean getCarBoolean = Boolean.parseBoolean(caravailable);
         int getCarID = Integer.parseInt(carid);
 
-        try {
-            carMapper.setCarToClosed(getCarID, getCarBoolean);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        if(newPrice.chars().findAny().isPresent()){
+            try {
+                double getNewPrice = Double.parseDouble(newerPrice);
+                carMapper.setCarToClosed(getCarID, getCarBoolean);
+                carMapper.updatePrice(getCarID, getNewPrice);
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+        } else {
+            try {
+                carMapper.setCarToClosed(getCarID, getCarBoolean);
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
         }
 
         return "admininterface";

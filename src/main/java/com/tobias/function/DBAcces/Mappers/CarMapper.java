@@ -83,4 +83,17 @@ public class CarMapper {
             throw se;
         }
     }
+
+    public void updatePrice(int carID, double getCarPrice) throws SQLException, ClassNotFoundException {
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "UPDATE cars SET Price = ? WHERE id = ?;");
+            ps2.setDouble(1, getCarPrice);
+            ps2.setInt(2, carID);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException se) {
+            throw se;
+        }
+    }
 }

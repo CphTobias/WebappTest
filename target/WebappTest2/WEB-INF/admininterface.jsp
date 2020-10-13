@@ -177,7 +177,6 @@
                             <br><c:out value="Name: ${message.name}"/>
                             <br><c:out value="Email: ${message.email}"/>
                             <br><c:out value="Message: ${message.message}"/>
-
                             <br><input type="hidden" id="messages" name="messages" value="${message.id}">
                             <input type="hidden" id="answered" name="answered" value="${message.answered}">
                             <br><button type="submit" class="btn btn-secondary">Close/Open</button>
@@ -198,7 +197,8 @@
                             <c:out value=" - Model: ${available.model}"/>
                             <br><c:out value="Price: ${available.price}"/>
                             <br><c:out value="Available: ${available.available}"/>
-
+                            <br><c:out value="New Price? (Leave Empty If No Change)"/>
+                            <br><input type="text" name="changeprice" id="ChangePrice" aria-describedby="ChangePrice" placeholder="Change Price?">
                             <br><input type="hidden" id="carid" name="carid" value="${available.id}">
                             <input type="hidden" id="caravailable" name="caravailable" value="${available.available}">
                             <br><button type="submit" class="btn btn-secondary">Close/Open</button>
