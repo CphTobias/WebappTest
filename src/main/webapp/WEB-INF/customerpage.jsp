@@ -48,7 +48,7 @@
 
 <div class="row">
     <div class="col-md-3">
-        <h2>Hello, world!</h2>
+        <h2>Hello, ${sessionScope.username}</h2>
     </div>
     <div class="col-md-3">
         <h2>Hello, world!</h2>

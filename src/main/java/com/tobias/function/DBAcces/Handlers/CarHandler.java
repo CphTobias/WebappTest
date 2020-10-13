@@ -20,7 +20,7 @@ public class CarHandler {
                 rs.getInt("cars.weight"),
                 rs.getInt("cars.buildyear"),
                 rs.getInt("cars.milage"),
-                rs.getString("cars.image"),
+                rs.getString("cars.imagename"),
                 rs.getBoolean("cars.available"));
     }
 

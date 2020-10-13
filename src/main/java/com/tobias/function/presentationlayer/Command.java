@@ -22,6 +22,7 @@ abstract class Command {
         commands.put("contactmessage", new ContactMessageMade());
         commands.put("getcaroptions", new GetCarOptions());
         commands.put("addnewcar", new AddNewCar());
+        commands.put("caravailable", new CarAvailable());
     }
 
     static Command from( HttpServletRequest request ) {

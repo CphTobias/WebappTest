@@ -1,5 +1,6 @@
 package com.tobias.function.DBAcces.Mappers;
 
+import com.tobias.function.DBAcces.DBSetup.Connector;
 import com.tobias.function.function.entities.Car;
 
 import java.sql.Connection;
@@ -25,7 +26,7 @@ public class CarMapper {
                 rs.getInt("cars.weight"),
                 rs.getInt("cars.buildyear"),
                 rs.getInt("cars.milage"),
-                rs.getString("cars.image"),
+                rs.getString("cars.imagename"),
                 rs.getBoolean("cars.available"));
     }
 
@@ -61,5 +62,25 @@ public class CarMapper {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void setCarToClosed(int carID, boolean getCarBoolean) throws SQLException, ClassNotFoundException {
+        try(Connection conn = Connector.getConnection()) {
+            if(getCarBoolean == false){
+                PreparedStatement ps2 = conn.prepareStatement(
+                        "UPDATE cars SET available = 1 WHERE id = ?;");
+                ps2.setInt(1, carID);
+                ps2.executeUpdate();
+                ps2.close();
+            } else {
+                PreparedStatement ps3 = conn.prepareStatement(
+                        "UPDATE cars SET available = 0 WHERE id = ?;");
+                ps3.setInt(1, carID);
+                ps3.executeUpdate();
+                ps3.close();
+            }
+        } catch (SQLException | ClassNotFoundException se) {
+            throw se;
+        }
     }
 }

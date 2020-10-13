@@ -84,7 +84,7 @@
                 <div class="form-group">
                     <select class="form-control" name="caroptions" id="caroptionsselect">
                         <option>Add Car</option>
-                        <option>Set Car Not in Store</option>
+                        <option>Manage Car Availability</option>
                         <option>Update Car Price</option>
                     </select>
                 </div>
@@ -180,6 +180,27 @@
 
                             <br><input type="hidden" id="messages" name="messages" value="${message.id}">
                             <input type="hidden" id="answered" name="answered" value="${message.answered}">
+                            <br><button type="submit" class="btn btn-secondary">Close/Open</button>
+                        </li>
+                    </form>
+                </div>
+                <br>
+            </c:forEach>
+        </ol>
+
+        <br>
+        <ol>
+            <c:forEach var="available" items="${requestScope.available}">
+                <div class="input-group">
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="target" value="caravailable">
+                        <li><c:out value="Brand: ${available.brand}"/>
+                            <c:out value=" - Model: ${available.model}"/>
+                            <br><c:out value="Price: ${available.price}"/>
+                            <br><c:out value="Available: ${available.available}"/>
+
+                            <br><input type="hidden" id="carid" name="carid" value="${available.id}">
+                            <input type="hidden" id="caravailable" name="caravailable" value="${available.available}">
                             <br><button type="submit" class="btn btn-secondary">Close/Open</button>
                         </li>
                     </form>

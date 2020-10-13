@@ -30,7 +30,7 @@ public class AddNewCar extends Command {
         int newbuildyear = Integer.parseInt(buildYear);
         int newmilage = Integer.parseInt(buildYear);
 
-        carHandler.createCar(newhorsepower,brand,newprice,model,category,newweight,newbuildyear,newmilage,image);
+        carHandler.createCar(newhorsepower,brand,newprice,category,model,newweight,newbuildyear,newmilage,image);
 
         return "admininterface";
     }
