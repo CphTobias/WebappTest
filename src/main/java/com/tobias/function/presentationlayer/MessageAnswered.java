@@ -26,6 +26,6 @@ public class MessageAnswered extends Command {
             e.printStackTrace();
         }
 
-        return "adminpage";
+        return "admininterface";
     }
 }

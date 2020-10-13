@@ -24,6 +24,6 @@ public class GetMessages extends Command {
 
         request.setAttribute("activeCM", cMessage);
 
-        return "adminpage";
+        return "admininterface";
     }
 }

@@ -1,6 +1,16 @@
-function getMessages() {
-    var x = document.getElementById("myDIV");
+/*function getCars() {
+    var x = document.getElementById("myCAR");
     if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}*/
+
+function getMessages() {
+    let stringElement = String["myDIV", "myCar"];
+    var x = document.getElementById(stringElement);
+    if (stringElement.style.display === "none") {
         x.style.display = "block";
     } else {
         x.style.display = "none";

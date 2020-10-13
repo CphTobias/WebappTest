@@ -33,94 +33,37 @@
 
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
-        <h1 class="hovedtitle">Admin Interface</h1>
+        <h1 class="hovedtitle">Admin Login</h1>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12" style="text-align: center;top:5px">
+            <div>
+                <p class="title">Welcome ${sessionScope.username}
+                <br>Please choose a logintype</p>
+            </div>
             <div class="btn-group" role="group" aria-label="Main menu">
-                <a class="two" href="adminManageCars.jsp" target="_blank">
-                    <button type="button" class="btn btn-secondary">Manage Cars</button></a>
+                <a class="two" href="FrontController?target=redirect&destination=admininterface">
+                    <button type="button" class="btn btn-secondary">Admin</button></a>
             </div>
-            <div class="btn-group" role="group" aria-label="FAQ">
-                <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button>
+            <div class="btn-group" role="group" aria-label="Main menu">
+                <a class="two" href="FrontController?target=redirect&destination=employeeinterface">
+                    <button type="button" class="btn btn-secondary">Employee</button></a>
             </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-        <div id="myDIV" style="display:none">
-            <br>
-            <h3 class="title">Update Messages</h3>
-            <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="getmessages">
-                <div class="form-group">
-                    <select class="form-control" name="messages" id="myselect">
-                        <option>Active Messages</option>
-                        <option>Closed Messages</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-secondary">Submit</button>
-            </form>
-        </div>
-    </div>
-    <div class="col-md-4">
-
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-5">
+            <div class="btn-group" role="group" aria-label="Main menu">
+                <a class="two" href="FrontController?target=redirect&destination=customerpage">
+                    <button type="button" class="btn btn-secondary">Customer</button></a>
+            </div>
         <br>
-    <ol>
-        <c:forEach var="message" items="${requestScope.activeCM}">
-            <div class="input-group">
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="target" value="messageanswered">
-                    <li><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
-                        <c:out value=" - Time: ${message.createdAt.toLocalTime()}"/>
-                        <br><c:out value="Name: ${message.name}"/>
-                        <br><c:out value="Email: ${message.email}"/>
-                        <br><c:out value="Message: ${message.message}"/>
-
-                        <br><input type="hidden" id="messages" name="messages" value="${message.id}">
-                            <input type="hidden" id="answered" name="answered" value="${message.answered}">
-                        <br><button type="submit" class="btn btn-secondary">Close/Open</button>
-                    </li>
-                </form>
-            </div>
-            <br>
-        </c:forEach>
-    </ol>
-    </div>
-    <div class="col-md-3">
-
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
-        <div id="myFooter" style="display: block">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
+        <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>

@@ -20,6 +20,8 @@ abstract class Command {
         commands.put("getmessages", new GetMessages());
         commands.put("messageanswered", new MessageAnswered());
         commands.put("contactmessage", new ContactMessageMade());
+        commands.put("getcaroptions", new GetCarOptions());
+        commands.put("addnewcar", new AddNewCar());
     }
 
     static Command from( HttpServletRequest request ) {
