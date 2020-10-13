@@ -2,43 +2,31 @@ package com.tobias.function.function.entities;
 
 public class Car {
 
-    /*`id` int(11) NOT NULL AUTO_INCREMENT,
-    `Horsepower` int(11) DEFAULT NULL,
-    `Make` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-    `Model` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-    `Weight` int(11) DEFAULT NULL,
-    `BuildYear` int(11) DEFAULT NULL,
-    `Milage` int(11) DEFAULT NULL,
-    `imagename` varchar(255) COLLATE utf8_bin DEFAULT NULL,*/
     private final int id;
     private final int horsepower;
-    private final String make;
+    private final String brand;
+    private double price;
+    private final String category;
     private final String model;
     private final int weight;
     private final int buildyear;
     private final int milage;
     private final String imagename;
+    private boolean available;
 
-    public Car(int id, int horsepower, String make, String model, int weight, int buildyear, int milage, String imagename) {
+
+    public Car(int id, int horsepower, String brand, double price, String category, String model, int weight, int buildyear, int milage, String imagename, boolean available) {
         this.id = id;
         this.horsepower = horsepower;
-        this.make = make;
+        this.brand = brand;
+        this.price = price;
+        this.category = category;
         this.model = model;
         this.weight = weight;
         this.buildyear = buildyear;
         this.milage = milage;
         this.imagename = imagename;
-    }
-
-
-    @Override
-    public String toString() {
-        return  "Brand: " + make +
-                ", Model: " + model  +
-                ", Horsepower: " + horsepower +
-                ", Weight: " + weight +
-                ", Year build: " + buildyear +
-                ", Milage: " + milage;
+        this.available = available;
     }
 
     public int getId() {
@@ -49,8 +37,20 @@ public class Car {
         return horsepower;
     }
 
-    public String getMake() {
-        return make;
+    public String getBrand() {
+        return brand;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public String getModel() {
@@ -71,5 +71,13 @@ public class Car {
 
     public String getImagename() {
         return imagename;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

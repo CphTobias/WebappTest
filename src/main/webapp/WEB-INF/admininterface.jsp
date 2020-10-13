@@ -112,17 +112,6 @@
     </div>
 </div>
 
-<script>
-    function getCars() {
-        var x = document.getElementById("myCAR");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
-
 <div class="row">
     <div class="col-md-4">
 
@@ -141,9 +130,21 @@
                     <label for="InputBrand">Brand eks. "Audi"</label>
                     <input type="brand" class="form-control" name="brand" id="InputBrand" aria-describedby="Brand" placeholder="Brand">
                 </div>
+                <div class="form-group" style="top:10px">
+                    <label for="InputPrice">Price eks. "100000"</label>
+                    <input type="price" class="form-control" name="price" id="InputPrice" aria-describedby="Price" placeholder="Price">
+                </div>
                 <div class="form-group">
                     <label for="InputModel">Model eks. "A6 3.0 4dr"</label>
                     <input type="model" class="form-control" name="model" id="InputModel" aria-describedby="Model" placeholder="Model">
+                </div>
+                <div class="form-group" style="top:10px">
+                    <label for="category">Category</label>
+                    <select class="form-control" name="category" id="category">
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="InputWeight">Weight eks. "3561"</label>
@@ -159,7 +160,7 @@
                 </div>
                 <div class="form-group">
                     <label for="InputImage">Image eks. "A6304dr.jpg"</label>
-                    <input type="image" class="form-control" name="image" id="InputImage" aria-describedby="Image" placeholder="Image">
+                    <input type="imagefilepath" class="form-control" name="image" id="InputImage" aria-describedby="Image" placeholder="Image Folder">
                 </div>
                 <button type="submit" class="btn btn-secondary">Add Car</button>
             </form>
@@ -234,7 +235,7 @@
     <!-- Copyright -->
 
 </footer>
-<script src="js/buttons.js"></script>
+<script type="text/javascript" src='<c:url value="/scripts/buttons.js"/>'></script>
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

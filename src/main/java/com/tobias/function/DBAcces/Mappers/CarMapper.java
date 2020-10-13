@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
@@ -15,15 +16,34 @@ public class CarMapper {
 
     private Car loadCar(ResultSet rs) throws SQLException {
         return new Car(
-                //int id, int horsepower, String make, String model, int weight, int buildyear, int milage, String imagename
                 rs.getInt("cars.id"),
                 rs.getInt("cars.horsepower"),
-                rs.getString("cars.make"),
+                rs.getString("cars.brand"),
+                rs.getDouble("cars.price"),
+                rs.getString("cars.category"),
                 rs.getString("cars.model"),
                 rs.getInt("cars.weight"),
                 rs.getInt("cars.buildyear"),
                 rs.getInt("cars.milage"),
-                rs.getString("cars.imagename"));
+                rs.getString("cars.image"),
+                rs.getBoolean("cars.available"));
+    }
+
+    public Car findCar(int id) throws NoSuchElementException {
+        try(Connection conn = getConnection()) {
+            PreparedStatement s = conn.prepareStatement(
+                    "SELECT * FROM cars WHERE id = ?;");
+            s.setInt(1, id);
+            ResultSet rs = s.executeQuery();
+            if(rs.next()) {
+                return loadCar(rs);
+            } else {
+                System.err.println("No version in properties.");
+                throw new NoSuchElementException("No msg with id: " + id);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<Car> getAllCars() {
