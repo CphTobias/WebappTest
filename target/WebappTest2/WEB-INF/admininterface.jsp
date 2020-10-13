@@ -129,20 +129,37 @@
     </div>
     <div class="col-md-5">
         <c:forEach var="addcars" items="${requestScope.addcar}">
+            <br>
             <h3 class="title">Add Car</h3>
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="addnewcar">
                 <div class="form-group">
-                    <label class="form-text" for="exampleInputPassword1">Name</label>
-                    <input type="name" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
+                    <label for="InputHorsePower">Horsepower eks. "15"</label>
+                    <input type="horsepower" name="horsepower" class="form-control" id="InputHorsePower" placeholder="Horsepower">
                 </div>
                 <div class="form-group" style="top:10px">
-                    <label class="form-text" for="exampleInputEmail2">Email address</label>
-                    <input type="email" class="form-control" name="email" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Email">
+                    <label for="InputBrand">Brand eks. "Audi"</label>
+                    <input type="brand" class="form-control" name="brand" id="InputBrand" aria-describedby="Brand" placeholder="Brand">
                 </div>
                 <div class="form-group">
-                    <label class="form-text" for="exampleTextarea">Enter message</label>
-                    <textarea class="form-control" name="message" id="exampleTextarea" rows="3"></textarea>
+                    <label for="InputModel">Model eks. "A6 3.0 4dr"</label>
+                    <input type="model" class="form-control" name="model" id="InputModel" aria-describedby="Model" placeholder="Model">
+                </div>
+                <div class="form-group">
+                    <label for="InputWeight">Weight eks. "3561"</label>
+                    <input type="weight" class="form-control" name="weight" id="InputWeight" aria-describedby="Weight" placeholder="Weight">
+                </div>
+                <div class="form-group">
+                    <label for="InputBuildYear">Build Year eks. "2009"</label>
+                    <input type="buildyear" class="form-control" name="buildyear" id="InputBuildYear" aria-describedby="BuildYear" placeholder="Build Year">
+                </div>
+                <div class="form-group">
+                    <label for="InputMilage">Milage eks. "35995"</label>
+                    <input type="milage" class="form-control" name="milage" id="InputMilage" aria-describedby="Milage" placeholder="Milage">
+                </div>
+                <div class="form-group">
+                    <label for="InputImage">Image eks. "A6304dr.jpg"</label>
+                    <input type="image" class="form-control" name="image" id="InputImage" aria-describedby="Image" placeholder="Image">
                 </div>
                 <button type="submit" class="btn btn-secondary">Add Car</button>
             </form>
