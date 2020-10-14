@@ -2,6 +2,7 @@ package com.tobias.function.presentationlayer;
 
 import com.tobias.function.DBAcces.Mappers.MessageMapper;
 import com.tobias.function.function.entities.ContactMessage;
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -14,13 +15,10 @@ public class GetMessages extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
         MessageMapper messageMapper = new MessageMapper();
+        LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("messages");
 
-        List<ContactMessage> cMessage = messageMapper.getContactMessages(username.equals("Closed Messages"));
-
-        for (ContactMessage c: cMessage) {
-            messageMapper.findContactMessage(c.getId());
-        }
+        List<ContactMessage> cMessage = logicFacade.getContactMessages(username);
 
         request.setAttribute("activeCM", cMessage);
 

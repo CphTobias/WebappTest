@@ -1,5 +1,6 @@
 package com.tobias.function.DBAcces.Handlers;
 
+import com.tobias.function.DBAcces.DBSetup.Connector;
 import com.tobias.function.DBAcces.Mappers.MessageMapper;
 import com.tobias.function.function.entities.ContactMessage;
 
@@ -46,5 +47,25 @@ public class MessageHandler {
             throw new RuntimeException(e);
         }
         return mMapper.findContactMessage(id);
+    }
+
+    public void setMessageToClosed(int messageID, boolean getMessageBoolean) throws SQLException, ClassNotFoundException {
+        try(Connection conn = Connector.getConnection()) {
+            if(getMessageBoolean == false){
+                PreparedStatement ps2 = conn.prepareStatement(
+                        "UPDATE contactmessages SET answered = 1 WHERE id = ?;");
+                ps2.setInt(1, messageID);
+                ps2.executeUpdate();
+                ps2.close();
+            } else {
+                PreparedStatement ps3 = conn.prepareStatement(
+                        "UPDATE contactmessages SET answered = 0 WHERE id = ?;");
+                ps3.setInt(1, messageID);
+                ps3.executeUpdate();
+                ps3.close();
+            }
+        } catch (SQLException | ClassNotFoundException se) {
+            throw se;
+        }
     }
 }

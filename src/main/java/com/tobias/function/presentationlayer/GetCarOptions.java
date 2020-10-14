@@ -5,6 +5,7 @@ import com.tobias.function.DBAcces.Mappers.CarMapper;
 import com.tobias.function.DBAcces.Mappers.MessageMapper;
 import com.tobias.function.function.entities.Car;
 import com.tobias.function.function.entities.ContactMessage;
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -16,8 +17,7 @@ import java.util.List;
 public class GetCarOptions extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
-        CarMapper carMapper = new CarMapper();
-        CarHandler carHandler = new CarHandler();
+        LogicFacade logicFacade = new LogicFacade();
         String carselect = request.getParameter("caroptions");
 
         switch (carselect) {
@@ -26,11 +26,8 @@ public class GetCarOptions extends Command {
                 request.setAttribute("addcar",carselect);
                 break;
             case "Manage Car Availability":
-                List<Car> cCars = carMapper.getAllCars();
-                request.setAttribute("available",cCars);
-                break;
-            case "Manage Unavailable Cars":
-                //
+                List<Car> cars = logicFacade.getAllCars();
+                request.setAttribute("available",cars);
                 break;
             case "Update Car Price":
                 //request.setAttribute();

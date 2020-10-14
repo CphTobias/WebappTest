@@ -2,6 +2,7 @@ package com.tobias.function.presentationlayer;
 
 import com.tobias.function.DBAcces.Handlers.CarHandler;
 import com.tobias.function.function.entities.Car;
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class AddNewCar extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
-        CarHandler carHandler = new CarHandler();
+        LogicFacade logicFacade = new LogicFacade();
 
         String horsepower = request.getParameter("horsepower");
         String brand = request.getParameter("brand");
@@ -24,13 +25,7 @@ public class AddNewCar extends Command {
         String milage = request.getParameter("milage");
         String image = request.getParameter("image");
 
-        int newhorsepower = Integer.parseInt(horsepower);
-        double newprice = Double.parseDouble(price);
-        int newweight = Integer.parseInt(weight);
-        int newbuildyear = Integer.parseInt(buildYear);
-        int newmilage = Integer.parseInt(buildYear);
-
-        carHandler.createCar(newhorsepower,brand,newprice,category,model,newweight,newbuildyear,newmilage,image);
+        logicFacade.createCar(horsepower,brand,price,category,model,weight,buildYear,milage,image);
 
         return "admininterface";
     }

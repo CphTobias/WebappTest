@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class UserHandler {
 
-    public static User createUser(String name, byte[] salt, byte[] secret) throws UserExists {
+    public User createUser(String name, byte[] salt, byte[] secret) throws UserExists {
         UserMapper userMapper = new UserMapper();
         int id;
         try (Connection conn = Connector.getConnection()) {

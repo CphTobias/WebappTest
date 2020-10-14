@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 
 public class UserMapper {
 
-    private static User loadUser(ResultSet rs) throws SQLException {
+    private User loadUser(ResultSet rs) throws SQLException {
         return new User(
                 rs.getInt("users.id"),
                 rs.getString("users.name"),
@@ -19,7 +19,7 @@ public class UserMapper {
                 rs.getString("users.role"));
     }
 
-    public static User findUser(String name) throws NoSuchElementException {
+    public User findUser(String name) throws NoSuchElementException {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
                     "SELECT * FROM users WHERE name = ?;");

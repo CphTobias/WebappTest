@@ -1,6 +1,7 @@
 package com.tobias.function.presentationlayer;
 
 import com.tobias.function.DBAcces.Mappers.MessageMapper;
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -12,19 +13,12 @@ import java.sql.SQLException;
 public class MessageAnswered extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
-        MessageMapper messageMapper = new MessageMapper();
-        String username = request.getParameter("messages");
-        String getMessages = request.getParameter("answered");
-        boolean getMessageBoolean = Boolean.parseBoolean(getMessages);
-        int getMessageID = Integer.parseInt(username);
+        LogicFacade logicFacade = new LogicFacade();
 
-        try {
-            messageMapper.setMessageToClosed(getMessageID, getMessageBoolean);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        String messageID = request.getParameter("messages");
+        String messageAnswered = request.getParameter("answered");
+
+        logicFacade.setMessageToClosed(messageID, messageAnswered);
 
         return "admininterface";
     }

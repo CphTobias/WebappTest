@@ -61,24 +61,4 @@ public class MessageMapper {
             throw new RuntimeException(e);
         }
     }
-
-    public void setMessageToClosed(int messageID, boolean getMessageBoolean) throws SQLException, ClassNotFoundException {
-        try(Connection conn = Connector.getConnection()) {
-            if(getMessageBoolean == false){
-                PreparedStatement ps2 = conn.prepareStatement(
-                        "UPDATE contactmessages SET answered = 1 WHERE id = ?;");
-                ps2.setInt(1, messageID);
-                ps2.executeUpdate();
-                ps2.close();
-            } else {
-                PreparedStatement ps3 = conn.prepareStatement(
-                        "UPDATE contactmessages SET answered = 0 WHERE id = ?;");
-                ps3.setInt(1, messageID);
-                ps3.executeUpdate();
-                ps3.close();
-            }
-        } catch (SQLException | ClassNotFoundException se) {
-            throw se;
-        }
-    }
 }

@@ -2,6 +2,7 @@ package com.tobias.function.presentationlayer;
 
 import com.tobias.function.DBAcces.Handlers.MessageHandler;
 import com.tobias.function.function.entities.ContactMessage;
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -14,13 +15,14 @@ import java.time.format.DateTimeFormatter;
 public class ContactMessageMade extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
-        MessageHandler messageHandler = new MessageHandler();
+        LogicFacade logicFacade = new LogicFacade();
+
         String username = request.getParameter("name");
         String email = request.getParameter("email");
         String message = request.getParameter("message");
-        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:MM"));
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
 
-        ContactMessage cMessage = messageHandler.createContactMessage(LocalDateTime.now(),username, email, message);
+        ContactMessage cMessage = logicFacade.createContactMessage(LocalDateTime.now(),username, email, message);
 
         String formatedTime = " " + cMessage.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_TIME);
         String formatedName = " " + cMessage.getName();

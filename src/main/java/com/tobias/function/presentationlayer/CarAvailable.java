@@ -2,6 +2,7 @@ package com.tobias.function.presentationlayer;
 
 import com.tobias.function.DBAcces.Mappers.CarMapper;
 import com.tobias.function.DBAcces.Mappers.MessageMapper;
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -13,29 +14,16 @@ import java.sql.SQLException;
 public class CarAvailable extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
-        CarMapper carMapper = new CarMapper();
+        LogicFacade logicFacade = new LogicFacade();
         String carid = request.getParameter("carid");
         String caravailable = request.getParameter("caravailable");
         String newPrice = request.getParameter("changeprice");
-        String newerPrice = newPrice;
-
-        boolean getCarBoolean = Boolean.parseBoolean(caravailable);
-        int getCarID = Integer.parseInt(carid);
 
         if(newPrice.chars().findAny().isPresent()){
-            try {
-                double getNewPrice = Double.parseDouble(newerPrice);
-                carMapper.setCarToClosed(getCarID, getCarBoolean);
-                carMapper.updatePrice(getCarID, getNewPrice);
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
+            logicFacade.setCarToClosed(carid, caravailable);
+            logicFacade.updatePrice(carid, newPrice);
         } else {
-            try {
-                carMapper.setCarToClosed(getCarID, getCarBoolean);
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
+            logicFacade.setCarToClosed(carid, caravailable);
         }
 
         return "admininterface";
