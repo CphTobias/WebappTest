@@ -63,37 +63,4 @@ public class CarMapper {
         }
         return null;
     }
-
-    public void setCarToClosed(int carID, boolean getCarBoolean) throws SQLException, ClassNotFoundException {
-        try(Connection conn = Connector.getConnection()) {
-            if(getCarBoolean == false){
-                PreparedStatement ps2 = conn.prepareStatement(
-                        "UPDATE cars SET available = 1 WHERE id = ?;");
-                ps2.setInt(1, carID);
-                ps2.executeUpdate();
-                ps2.close();
-            } else {
-                PreparedStatement ps3 = conn.prepareStatement(
-                        "UPDATE cars SET available = 0 WHERE id = ?;");
-                ps3.setInt(1, carID);
-                ps3.executeUpdate();
-                ps3.close();
-            }
-        } catch (SQLException | ClassNotFoundException se) {
-            throw se;
-        }
-    }
-
-    public void updatePrice(int carID, double getCarPrice) throws SQLException, ClassNotFoundException {
-        try(Connection conn = Connector.getConnection()) {
-            PreparedStatement ps2 = conn.prepareStatement(
-                    "UPDATE cars SET Price = ? WHERE id = ?;");
-            ps2.setDouble(1, getCarPrice);
-            ps2.setInt(2, carID);
-            ps2.executeUpdate();
-            ps2.close();
-        } catch (SQLException | ClassNotFoundException se) {
-            throw se;
-        }
-    }
 }

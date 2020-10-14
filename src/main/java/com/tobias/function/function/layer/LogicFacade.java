@@ -49,26 +49,26 @@ public class LogicFacade {
     }
 
     public void setCarToClosed(String carid, String caravailable) {
-        CarMapper carMapper = new CarMapper();
+        CarHandler carHandler = new CarHandler();
 
         boolean getCarBoolean = Boolean.parseBoolean(caravailable);
         int getCarID = Integer.parseInt(carid);
 
         try {
-            carMapper.setCarToClosed(getCarID, getCarBoolean);
+            carHandler.setCarToClosed(getCarID, getCarBoolean);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
     }
 
     public void updatePrice(String carid, String newPrice) {
-        CarMapper carMapper = new CarMapper();
+        CarHandler carHandler = new CarHandler();
 
         int getCarID = Integer.parseInt(carid);
         double getNewPrice = Double.parseDouble(newPrice);
 
         try {
-            carMapper.updatePrice(getCarID, getNewPrice);
+            carHandler.updatePrice(getCarID, getNewPrice);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

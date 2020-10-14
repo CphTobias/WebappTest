@@ -11,17 +11,6 @@ import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class MessageHandler {
 
-    private ContactMessage loadContactMessage(ResultSet rs) throws SQLException {
-        return new ContactMessage(
-                //int id, String name, String email, String message, boolean answered
-                rs.getInt("contactmessages.id"),
-                rs.getTimestamp("contactmessages.createdat").toLocalDateTime(),
-                rs.getString("contactmessages.name"),
-                rs.getString("contactmessages.email"),
-                rs.getString("contactmessages.message"),
-                rs.getBoolean("contactmessages.answered"));
-    }
-
     public ContactMessage createContactMessage(LocalDateTime time ,String name, String email, String message){
         MessageMapper mMapper = new MessageMapper();
         int id = 0;

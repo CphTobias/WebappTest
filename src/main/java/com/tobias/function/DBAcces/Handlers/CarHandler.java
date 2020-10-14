@@ -1,5 +1,6 @@
 package com.tobias.function.DBAcces.Handlers;
 
+import com.tobias.function.DBAcces.DBSetup.Connector;
 import com.tobias.function.DBAcces.Mappers.CarMapper;
 import com.tobias.function.function.entities.Car;
 
@@ -8,21 +9,6 @@ import java.sql.*;
 import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class CarHandler {
-
-    private Car loadCar(ResultSet rs) throws SQLException {
-        return new Car(
-                rs.getInt("cars.id"),
-                rs.getInt("cars.horsepower"),
-                rs.getString("cars.brand"),
-                rs.getDouble("cars.price"),
-                rs.getString("cars.category"),
-                rs.getString("cars.model"),
-                rs.getInt("cars.weight"),
-                rs.getInt("cars.buildyear"),
-                rs.getInt("cars.milage"),
-                rs.getString("cars.imagename"),
-                rs.getBoolean("cars.available"));
-    }
 
     public Car createCar(int horsepower, String brand, double price, String category, String model, int weight, int buildyear,
                                                int milage, String image){
@@ -55,5 +41,38 @@ public class CarHandler {
             throw new RuntimeException(e);
         }
         return cMapper.findCar(id);
+    }
+
+    public void setCarToClosed(int carID, boolean getCarBoolean) throws SQLException, ClassNotFoundException {
+        try(Connection conn = Connector.getConnection()) {
+            if(getCarBoolean == false){
+                PreparedStatement ps2 = conn.prepareStatement(
+                        "UPDATE cars SET available = 1 WHERE id = ?;");
+                ps2.setInt(1, carID);
+                ps2.executeUpdate();
+                ps2.close();
+            } else {
+                PreparedStatement ps3 = conn.prepareStatement(
+                        "UPDATE cars SET available = 0 WHERE id = ?;");
+                ps3.setInt(1, carID);
+                ps3.executeUpdate();
+                ps3.close();
+            }
+        } catch (SQLException | ClassNotFoundException se) {
+            throw se;
+        }
+    }
+
+    public void updatePrice(int carID, double getCarPrice) throws SQLException, ClassNotFoundException {
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "UPDATE cars SET Price = ? WHERE id = ?;");
+            ps2.setDouble(1, getCarPrice);
+            ps2.setInt(2, carID);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException se) {
+            throw se;
+        }
     }
 }
