@@ -17,12 +17,14 @@ abstract class Command {
         commands.put( "login", new Login() );
         commands.put( "register", new Register() );
         commands.put( "redirect", new Redirect() );
-        commands.put("getmessages", new GetMessages());
         commands.put("messageanswered", new MessageAnswered());
         commands.put("contactmessage", new ContactMessageMade());
-        commands.put("getcaroptions", new GetCarOptions());
         commands.put("addnewcar", new AddNewCar());
         commands.put("caravailable", new CarAvailable());
+        commands.put("adminoptions", new AdminOptions());
+        commands.put("updateuser", new UpdateUserRole());
+        commands.put("showusers", new GetUser());
+        commands.put("userbanned", new UpdateUserBan());
     }
 
     static Command from( HttpServletRequest request ) {

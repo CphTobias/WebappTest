@@ -86,6 +86,12 @@ public class LogicFacade {
         return cars;
     }
 
+    public List<User> getAllUsers() {
+        UserMapper userMapper = new UserMapper();
+        List<User> users = userMapper.getAllUsers();
+        return users;
+    }
+
     public List<ContactMessage> getContactMessages(String username) {
         MessageMapper messageMapper = new MessageMapper();
         List<ContactMessage> cMessage = messageMapper.getContactMessages(username.equals("Closed Messages"));
@@ -98,6 +104,34 @@ public class LogicFacade {
         int getMessageID = Integer.parseInt(messageID);
         try {
             messageHandler.setMessageToClosed(getMessageID, getMessageBoolean);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void updateUser(String userName, String userRole) {
+        UserHandler userHandler = new UserHandler();
+
+        try {
+            userHandler.updatePrice(userName, userRole);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public List<User> findChosenUsers(String userRole) {
+        UserMapper userMapper = new UserMapper();
+        List<User> userList = userMapper.findChosenUsers(userRole);
+        return userList;
+    }
+
+    public void updateUserBan(String userID, String userBan) {
+        UserHandler userHandler = new UserHandler();
+        int getUserID = Integer.parseInt(userID);
+        boolean getUserBanBoolean = Boolean.parseBoolean(userBan);
+
+        try {
+            userHandler.updateUserBan(getUserID, getUserBanBoolean);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

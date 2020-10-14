@@ -30,14 +30,16 @@ public class User {
     private final byte[] salt;
     private final byte[] secret;
     private String role;
+    private boolean banned;
 
-    public User(int id, String name, LocalDateTime createdAt, byte[] salt, byte[] secret, String role) {
+    public User(int id, String name, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, boolean banned) {
         this.id = id;
         this.name = name;
         this.createdAt = createdAt;
         this.salt = salt;
         this.secret = secret;
         this.role = role;
+        this.banned = banned;
     }
 
     public static byte[] generateSalt() {
@@ -95,5 +97,9 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isBanned() {
+        return banned;
     }
 }

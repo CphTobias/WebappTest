@@ -1,13 +1,52 @@
 package com.tobias.function.DBAcces.Mappers;
 
 import com.tobias.function.DBAcces.DBSetup.Connector;
-import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.function.entities.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
+import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
+
 public class UserMapper {
+
+    public List<User> getAllUsers() {
+        try (Connection conn = getConnection()) {
+            PreparedStatement s = conn.prepareStatement("SELECT * FROM users;");
+            ResultSet rs = s.executeQuery();
+            ArrayList<User> users = new ArrayList<>();
+            while(rs.next()) {
+                users.add(loadUser(rs));
+            }
+            return users;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<User> findChosenUsers(String users) throws NoSuchElementException {
+        try(Connection conn = getConnection()) {
+            PreparedStatement s = conn.prepareStatement(
+                    "SELECT * FROM users WHERE role = ?;");
+            s.setString(1, users);
+            ResultSet rs = s.executeQuery();
+            ArrayList<User> userArray = new ArrayList<>();
+            while (rs.next()) {
+                userArray.add(loadUser(rs));
+            }
+            return userArray;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     private User loadUser(ResultSet rs) throws SQLException {
         return new User(
@@ -16,7 +55,8 @@ public class UserMapper {
                 rs.getTimestamp("users.createdAt").toLocalDateTime(),
                 rs.getBytes("users.salt"),
                 rs.getBytes("users.secret"),
-                rs.getString("users.role"));
+                rs.getString("users.role"),
+                rs.getBoolean("users.banned"));
     }
 
     public User findUser(String name) throws NoSuchElementException {

@@ -1,10 +1,8 @@
 package com.tobias.function.presentationlayer;
 
-import com.tobias.function.DBAcces.Handlers.CarHandler;
-import com.tobias.function.DBAcces.Mappers.CarMapper;
-import com.tobias.function.DBAcces.Mappers.MessageMapper;
 import com.tobias.function.function.entities.Car;
 import com.tobias.function.function.entities.ContactMessage;
+import com.tobias.function.function.entities.User;
 import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
@@ -14,23 +12,34 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class GetCarOptions extends Command {
+public class AdminOptions extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
         LogicFacade logicFacade = new LogicFacade();
-        String carselect = request.getParameter("caroptions");
+        String select = request.getParameter("adminselect");
 
-        switch (carselect) {
+        switch (select) {
 
             case "Add Car":
-                request.setAttribute("addcar",carselect);
+                request.setAttribute("addcar",select);
                 break;
             case "Manage Car Availability":
                 List<Car> cars = logicFacade.getAllCars();
                 request.setAttribute("available",cars);
                 break;
-            case "Update Car Price":
-                //request.setAttribute();
+            case "Active Messages":
+                List<ContactMessage> cMessageActive = logicFacade.getContactMessages(select);
+                request.setAttribute("activeCM", cMessageActive);
+                break;
+            case "Closed Messages":
+                List<ContactMessage> cMessageClosed = logicFacade.getContactMessages(select);
+                request.setAttribute("activeCM", cMessageClosed);
+                break;
+            case "Show Users":
+                request.setAttribute("showusers",select);
+                break;
+            case "Change Moderator Access":
+                request.setAttribute("allusers",select);
                 break;
             default: break;
         }

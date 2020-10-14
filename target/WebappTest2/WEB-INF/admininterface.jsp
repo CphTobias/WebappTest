@@ -40,6 +40,9 @@
 <div class="row">
     <div class="col-md-12" style="text-align: center;top:5px">
         <div class="btn-group" role="group" aria-label="FAQ">
+            <button onclick="getUsers(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Users</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="FAQ">
             <button onclick="getCars(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Cars</button>
         </div>
         <div class="btn-group" role="group" aria-label="FAQ">
@@ -60,32 +63,37 @@
     </div>
 </div>
 
-<script>
-    function getCars() {
-        var x = document.getElementById("myCAR");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
-
 <div class="row">
     <div class="col-md-4">
 
     </div>
     <div class="col-md-4">
+        <div id="myUSER" style="display:none">
+            <br>
+            <h3 class="title">User Options</h3>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="adminoptions">
+                <div class="form-group">
+                    <select class="form-control" name="adminselect" id="useroptionselect">
+                        <option>Show Users</option>
+                        <option>Change Moderator Access</option>
+                        <option>Temporarily Close User</option>
+                        <option>Reopen User</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+        </div>
+
         <div id="myCAR" style="display:none">
             <br>
             <h3 class="title">Car Options</h3>
             <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="getcaroptions">
+                <input type="hidden" name="target" value="adminoptions">
                 <div class="form-group">
-                    <select class="form-control" name="caroptions" id="caroptionsselect">
+                    <select class="form-control" name="adminselect" id="caroptionsselect">
                         <option>Add Car</option>
                         <option>Manage Car Availability</option>
-                        <option>Update Car Price</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-secondary">Submit</button>
@@ -96,9 +104,9 @@
             <br>
             <h3 class="title">Update Messages</h3>
             <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="getmessages">
+                <input type="hidden" name="target" value="adminoptions">
                 <div class="form-group">
-                    <select class="form-control" name="messages" id="myselect">
+                    <select class="form-control" name="adminselect" id="myselect">
                         <option>Active Messages</option>
                         <option>Closed Messages</option>
                     </select>
@@ -107,6 +115,7 @@
             </form>
         </div>
     </div>
+
     <div class="col-md-4">
 
     </div>
@@ -117,6 +126,64 @@
 
     </div>
     <div class="col-md-5">
+        <c:forEach var="showusers" items="${requestScope.showusers}">
+            <br>
+            <h3 class="title">Show Users</h3>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="showusers">
+                <div class="form-group" style="top:10px">
+                    <label for="userrole">Role</label>
+                    <select class="form-control" name="usersrole" id="usersrole">
+                        <option>customer</option>
+                        <option>employee</option>
+                        <option>admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary">Update User</button>
+            </form>
+        </c:forEach>
+
+        <ol>
+            <c:forEach var="showchosenrole" items="${requestScope.showchosenrole}">
+                <div class="input-group">
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="target" value="userbanned">
+                        <br>
+                        <li><c:out value="Name: ${showchosenrole.name}"/>
+                            <c:out value="Created at: ${showchosenrole.createdAt.toLocalDate()} ${showchosenrole.createdAt.toLocalTime()}"/>
+                            <br><c:out value="Role: ${showchosenrole.role}"/>
+                            <br><c:out value="Banned: ${showchosenrole.role}"/>
+                            <br><input type="hidden" id="userid" name="userid" value="${showchosenrole.id}">
+                            <input type="hidden" id="userban" name="userban" value="${showchosenrole.banned}">
+                            <button type="submit" class="btn btn-secondary">Ban/Unban</button>
+                        </li>
+                    </form>
+                </div>
+                <br>
+            </c:forEach>
+        </ol>
+
+        <c:forEach var="allusers" items="${requestScope.allusers}">
+            <br>
+            <h3 class="title">Update User Role</h3>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="updateuser">
+                <div class="form-group">
+                    <label for="InputUserName">Username"</label>
+                    <input type="text" name="username" class="form-control" id="InputUserName" placeholder="Username">
+                </div>
+                <div class="form-group" style="top:10px">
+                    <label for="userrole">Role</label>
+                    <select class="form-control" name="userrole" id="userrole">
+                        <option>customer</option>
+                        <option>employee</option>
+                        <option>admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary">Update User</button>
+            </form>
+        </c:forEach>
+
         <c:forEach var="addcars" items="${requestScope.addcar}">
             <br>
             <h3 class="title">Add Car</h3>
