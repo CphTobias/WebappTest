@@ -39,16 +39,33 @@
 
 <div class="row">
     <div class="col-md-12" style="text-align: center;top:5px">
-        <div class="btn-group" role="group" aria-label="FAQ">
-            <button onclick="getUsers(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Users</button>
-        </div>
-        <div class="btn-group" role="group" aria-label="FAQ">
-            <button onclick="getCars(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Cars</button>
-        </div>
+
+        <c:forEach var="rank10" items="${requestScope.rank10}">
             <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
                 <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button>
             </div>
-        </div>
+        </c:forEach>
+
+        <c:forEach var="rank50" items="${requestScope.rank50}">
+            <div class="btn-group" role="group" aria-label="FAQ">
+                <button onclick="getCars(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Cars</button>
+            </div>
+            <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
+                <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button>
+            </div>
+        </c:forEach>
+
+        <c:forEach var="rank10" items="${requestScope.rank99}">
+            <div class="btn-group" role="group" aria-label="FAQ">
+                <button onclick="getUsers(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Users</button>
+            </div>
+            <div class="btn-group" role="group" aria-label="FAQ">
+                <button onclick="getCars(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Cars</button>
+            </div>
+            <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
+                <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button>
+            </div>
+        </c:forEach>
     </div>
 </div>
 

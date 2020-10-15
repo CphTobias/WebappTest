@@ -46,7 +46,7 @@
             <div class="btn-group" role="group" aria-label="Main menu">
                 <form action="FrontController" method="post">
                     <input type="hidden" name="target" value="getadminrank">
-                    <input type="hidden" name="target" value="${sessionScope.rank}">
+                    <input type="hidden" name="ranked" value="${sessionScope.user.isRanked()}">
                     <button type="submit" class="btn btn-secondary">Admin</button>
                 </form>
             </div>
