@@ -12,12 +12,15 @@ public class GetAdminRank extends com.tobias.function.presentationlayer.Command 
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, ServletException, IOException {
         String ranked = request.getParameter("ranked");
         int newRanked = Integer.parseInt(ranked);
-        if (newRanked <= 10){
+
+        if (newRanked == 10){
             request.setAttribute("rank10", ranked);
-        } else if (newRanked <= 50){
+        } else if (newRanked == 50){
             request.setAttribute("rank50", ranked);
-        } else {
+        } else if (newRanked == 99){
             request.setAttribute("rank99", ranked);
+        } else {
+            request.setAttribute("norank", ranked);
         }
 
         return "admin/admininterface";
