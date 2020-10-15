@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class Login extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+    protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -33,10 +33,10 @@ public class Login extends Command {
         session.setAttribute("user", user);
         session.setAttribute("role", user.getRole());
         session.setAttribute("username", username);// ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
-
+        // ;
         //request.setAttribute("user", user);
 
-        return user.getRole() + "page";
+        return user.getRole() + "/" + user.getRole() + "page";
     }
 
 }

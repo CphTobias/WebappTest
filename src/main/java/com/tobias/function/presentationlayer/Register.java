@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 public class Register extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+    protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String password1 = request.getParameter("password1");

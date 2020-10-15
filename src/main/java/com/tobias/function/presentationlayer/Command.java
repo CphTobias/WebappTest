@@ -1,6 +1,8 @@
 package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.layer.LoginSampleException;
+import com.tobias.function.presentationlayer.Admin.*;
+import com.tobias.function.presentationlayer.Customer.ContactMessageMade;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 
-abstract class Command {
+public abstract class Command {
 
     private static HashMap<String, Command> commands;
 
@@ -25,7 +27,9 @@ abstract class Command {
         commands.put("updateuser", new UpdateUserRole());
         commands.put("showusers", new GetUser());
         commands.put("userbanned", new UpdateUserBan());
+        commands.put("getadminrank", new GetAdminRank());
     }
+
 
     static Command from( HttpServletRequest request ) {
         String targetName = request.getParameter( "target" );
@@ -35,7 +39,7 @@ abstract class Command {
         return commands.getOrDefault(targetName, new UnknownCommand() );   // unknowncommand er default.
     }
 
-    abstract String execute( HttpServletRequest request, HttpServletResponse response )
-            throws LoginSampleException, LoginSampleException, ServletException, IOException;
+    protected abstract String execute(HttpServletRequest request, HttpServletResponse response)
+            throws LoginSampleException, ServletException, IOException;
 
 }

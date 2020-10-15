@@ -56,7 +56,8 @@ public class UserMapper {
                 rs.getBytes("users.salt"),
                 rs.getBytes("users.secret"),
                 rs.getString("users.role"),
-                rs.getBoolean("users.banned"));
+                rs.getBoolean("users.banned"),
+                rs.getInt("users.ranked"));
     }
 
     public User findUser(String name) throws NoSuchElementException {

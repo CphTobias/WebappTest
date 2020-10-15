@@ -31,8 +31,9 @@ public class User {
     private final byte[] secret;
     private String role;
     private boolean banned;
+    private int ranked;
 
-    public User(int id, String name, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, boolean banned) {
+    public User(int id, String name, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, boolean banned, int ranked) {
         this.id = id;
         this.name = name;
         this.createdAt = createdAt;
@@ -40,6 +41,7 @@ public class User {
         this.secret = secret;
         this.role = role;
         this.banned = banned;
+        this.ranked = ranked;
     }
 
     public static byte[] generateSalt() {
@@ -101,5 +103,9 @@ public class User {
 
     public boolean isBanned() {
         return banned;
+    }
+
+    public int isRanked() {
+        return ranked;
     }
 }
