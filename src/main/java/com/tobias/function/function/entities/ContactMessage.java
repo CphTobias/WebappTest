@@ -8,11 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class ContactMessage {
 
     /*
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    besvared BOOLEAN DEFAULT NULL,
-    Navn VARCHAR(255) DEFAULT NULL,
-    email VARCHAR(255) DEFAULT NULL,
-    besked VARCHAR(255) DEFAULT NULL
+    id, createdAt and answered are automaticly set in the database.
      */
     private final int id;
     private final LocalDateTime createdAt;

@@ -24,6 +24,9 @@ public class User {
         PASSWORD_FACTORY = factory;
     }
 
+    /*
+    id, role, banned and ranked are automaticly set in the database.
+     */
     private final int id;
     private final String name;
     private final LocalDateTime createdAt;

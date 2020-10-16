@@ -12,6 +12,24 @@ import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class UserMapper {
 
+    /*
+    Is used to call from methods, where you want to get a user object.
+    */
+    private User loadUser(ResultSet rs) throws SQLException {
+        return new User(
+                rs.getInt("users.id"),
+                rs.getString("users.name"),
+                rs.getTimestamp("users.createdAt").toLocalDateTime(),
+                rs.getBytes("users.salt"),
+                rs.getBytes("users.secret"),
+                rs.getString("users.role"),
+                rs.getBoolean("users.banned"),
+                rs.getInt("users.ranked"));
+    }
+
+    /*
+    Finds all the current users in the database, is called from LogicFacade getAllUsers.
+     */
     public List<User> getAllUsers() {
         try (Connection conn = getConnection()) {
             PreparedStatement s = conn.prepareStatement("SELECT * FROM users;");
@@ -29,6 +47,10 @@ public class UserMapper {
         return null;
     }
 
+    /*
+    String users is given from LogicFacade findChosenUsers.
+    It finds the users from a specific role, specified by the string.
+     */
     public List<User> findChosenUsers(String users) throws NoSuchElementException {
         try(Connection conn = getConnection()) {
             PreparedStatement s = conn.prepareStatement(
@@ -48,18 +70,10 @@ public class UserMapper {
         return null;
     }
 
-    private User loadUser(ResultSet rs) throws SQLException {
-        return new User(
-                rs.getInt("users.id"),
-                rs.getString("users.name"),
-                rs.getTimestamp("users.createdAt").toLocalDateTime(),
-                rs.getBytes("users.salt"),
-                rs.getBytes("users.secret"),
-                rs.getString("users.role"),
-                rs.getBoolean("users.banned"),
-                rs.getInt("users.ranked"));
-    }
-
+    /*
+    String name is given from LogicFacade findUser(String name).
+    It finds a specific user, by the users name.
+     */
     public User findUser(String name) throws NoSuchElementException {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(
@@ -77,6 +91,10 @@ public class UserMapper {
         }
     }
 
+    /*
+    int id is given from LogicFacade findUser(int id)
+    It finds a specific user, by the users id.
+     */
     public User findUser(int id) throws NoSuchElementException {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement s = conn.prepareStatement(

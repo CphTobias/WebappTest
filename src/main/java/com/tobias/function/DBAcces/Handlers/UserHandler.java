@@ -10,6 +10,9 @@ import java.sql.*;
 
 public class UserHandler {
 
+    /*
+        Creates a user in the database with the objects given from LogicFacade createUser.
+    */
     public User createUser(String name, byte[] salt, byte[] secret) throws UserExists {
         UserMapper userMapper = new UserMapper();
         int id;
@@ -41,7 +44,11 @@ public class UserHandler {
         return userMapper.findUser(id);
     }
 
-    public void updatePrice(String userName, String userRole) throws SQLException, ClassNotFoundException {
+    /*
+    Get the role and id from LogicFacade updateRole
+    It updates the role of a user
+     */
+    public void updateRole(String userName, String userRole) throws SQLException, ClassNotFoundException {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(
                     "UPDATE users SET role = ? WHERE name = ?;");
@@ -54,6 +61,10 @@ public class UserHandler {
         }
     }
 
+    /*
+    Gets the id and whether the user is currently banned or not from LogicFacade updateUserBan.
+    It sets the user to either banned or not banned.
+     */
     public void updateUserBan(int getUserID, boolean getUserBanBoolean) throws SQLException, ClassNotFoundException {
         try(Connection conn = Connector.getConnection()) {
             if(getUserBanBoolean == false){

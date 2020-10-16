@@ -15,6 +15,9 @@ import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class CarMapper {
 
+    /*
+    Is used to call from methods, where you want to get a car object.
+     */
     private Car loadCar(ResultSet rs) throws SQLException {
         return new Car(
                 rs.getInt("cars.id"),
@@ -30,6 +33,10 @@ public class CarMapper {
                 rs.getBoolean("cars.available"));
     }
 
+    /*
+    Gets the id from LogicFacade findCar.
+    It finds a specific car from the database with the given id.
+     */
     public Car findCar(int id) throws NoSuchElementException {
         try(Connection conn = getConnection()) {
             PreparedStatement s = conn.prepareStatement(
@@ -40,13 +47,16 @@ public class CarMapper {
                 return loadCar(rs);
             } else {
                 System.err.println("No version in properties.");
-                throw new NoSuchElementException("No msg with id: " + id);
+                throw new NoSuchElementException("No user with id: " + id);
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
+    /*
+    Finds all the current cars in the database, is called from LogicFacade.
+     */
     public List<Car> getAllCars() {
         try (Connection conn = getConnection()) {
             PreparedStatement s = conn.prepareStatement("SELECT * FROM cars;");

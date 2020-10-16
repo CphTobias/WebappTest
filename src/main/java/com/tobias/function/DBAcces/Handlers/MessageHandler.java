@@ -11,6 +11,9 @@ import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class MessageHandler {
 
+    /*
+    Creates a contact message in the database with the objects given from LogicFacade createContactMessage.
+     */
     public ContactMessage createContactMessage(LocalDateTime time ,String name, String email, String message){
         MessageMapper mMapper = new MessageMapper();
         int id = 0;
@@ -38,6 +41,10 @@ public class MessageHandler {
         return mMapper.findContactMessage(id);
     }
 
+    /*
+    Gets the id of a contact message and the current state of whether the message is answered or not, from LogicFacade setMessageToClosed.
+    It then either opens or closes the contact message.
+     */
     public void setMessageToClosed(int messageID, boolean getMessageBoolean) throws SQLException, ClassNotFoundException {
         try(Connection conn = Connector.getConnection()) {
             if(getMessageBoolean == false){

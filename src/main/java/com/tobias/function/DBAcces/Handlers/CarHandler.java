@@ -10,6 +10,9 @@ import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class CarHandler {
 
+    /*
+    Creates a car in the database with the objects given from LogicFacade createCar.
+     */
     public Car createCar(int horsepower, String brand, double price, String category, String model, int weight, int buildyear,
                                                int milage, String image){
         CarMapper cMapper = new CarMapper();
@@ -43,6 +46,10 @@ public class CarHandler {
         return cMapper.findCar(id);
     }
 
+    /*
+    Gets the id of a car and the current state of whether the car is closed or not, from LogicFacade setCarToClosed.
+    It then either opens or closes the car.
+     */
     public void setCarToClosed(int carID, boolean getCarBoolean) throws SQLException, ClassNotFoundException {
         try(Connection conn = Connector.getConnection()) {
             if(getCarBoolean == false){
@@ -63,6 +70,10 @@ public class CarHandler {
         }
     }
 
+    /*
+    Get the price and id from LogicFacade updatePrice
+    It updates the price of a Car
+     */
     public void updatePrice(int carID, double getCarPrice) throws SQLException, ClassNotFoundException {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(

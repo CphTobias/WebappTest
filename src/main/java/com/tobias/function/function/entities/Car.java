@@ -2,6 +2,9 @@ package com.tobias.function.function.entities;
 
 public class Car {
 
+    /*
+    id and available are automaticly set in the database.
+     */
     private final int id;
     private final int horsepower;
     private final String brand;

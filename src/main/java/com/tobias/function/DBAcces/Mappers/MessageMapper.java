@@ -16,6 +16,9 @@ import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
 public class MessageMapper {
 
+    /*
+    Is used to call from methods, where you want to get a contact message object.
+     */
     private ContactMessage loadContactMessage(ResultSet rs) throws SQLException {
         return new ContactMessage(
                 //int id, String name, String email, String message, boolean answered
@@ -27,6 +30,10 @@ public class MessageMapper {
                 rs.getBoolean("contactmessages.answered"));
     }
 
+    /*
+    Gets the boolean from LogicFacade getContactMessages.
+    It finds all the current messages that are either false or true, depending on the given boolean.
+     */
     public List<ContactMessage> getContactMessages(Boolean answered) {
         try (Connection conn = getConnection()) {
             PreparedStatement s = conn.prepareStatement("SELECT * FROM contactmessages WHERE answered = ?;");
@@ -45,6 +52,10 @@ public class MessageMapper {
         return null;
     }
 
+    /*
+    Gets the id from LogicFacade findContactMessage.
+    It finds a specific contact message, specified by the given id.
+     */
     public ContactMessage findContactMessage(int id) throws NoSuchElementException {
         try(Connection conn = getConnection()) {
             PreparedStatement s = conn.prepareStatement(

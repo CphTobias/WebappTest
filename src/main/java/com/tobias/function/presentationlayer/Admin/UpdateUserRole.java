@@ -16,7 +16,7 @@ public class UpdateUserRole extends Command {
         String userName = request.getParameter("username");
         String userRole = request.getParameter("userrole");
 
-        logicFacade.updateUser(userName,userRole);
+        logicFacade.updateRole(userName,userRole);
 
         return "admin/admininterface";
     }
