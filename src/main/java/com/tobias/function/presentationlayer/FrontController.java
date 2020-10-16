@@ -1,5 +1,6 @@
 package com.tobias.function.presentationlayer;
 
+import com.tobias.function.function.entities.UserExists;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;

@@ -23,7 +23,7 @@ public class Register extends Command {
             try {
                 user = logicFacade.createUser(username, password1);
             } catch (UserExists userExists) {
-                userExists.printStackTrace();
+                throw new LoginSampleException("User already exists");
             }
             HttpSession session = request.getSession();
 

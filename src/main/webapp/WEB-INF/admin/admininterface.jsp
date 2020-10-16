@@ -6,11 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS START -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Admin</title>
+    <!-- Bootstrap CSS END -->
+
+    <title>Admin ${sessionScope.user.isRanked()}</title>
+
 </head>
 <body>
 
@@ -214,15 +217,27 @@
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="updateuser">
                 <div class="form-group">
-                    <label for="InputUserName">Username"</label>
+                    <label for="InputUserName">Username</label>
                     <input type="text" name="username" class="form-control" id="InputUserName" placeholder="Username">
                 </div>
                 <div class="form-group" style="top:10px">
                     <label for="userrole">Role</label>
                     <select class="form-control" name="userrole" id="userrole">
                         <option>customer</option>
-                        <option>employee</option>
                         <option>admin</option>
+                    </select>
+                </div>
+                <div class="form-group" style="top:10px">
+                    <label for="userrank">Rank Levels:
+                            <br>1: Normal Customer
+                            <br>10: Lowest Level Admin
+                            <br>50: Medium Level Admin
+                            <br>99: Max Level Admin</label>
+                    <select class="form-control" name="userrank" id="userrank">
+                        <option>1</option>
+                        <option>10</option>
+                        <option>50</option>
+                        <option>99</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-secondary">Update User</button>

@@ -6,15 +6,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS START -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Admin</title>
+    <!-- Bootstrap CSS END -->
+
+    <title>Admin ${sessionScope.user.isRanked()}</title>
+
 </head>
 <body>
 
-<!-- Billed og hovedmenu -->
+<!-- Picture and Main Menu START -->
 <div class="row" style="background-color: rgba(29,29,29,0.91);">
     <div class =col-md-2>
         <p></p>
@@ -30,28 +33,35 @@
         </div>
     </div>
 </div>
+<!-- Picture and Main Menu END -->
 
+<!-- Title START -->
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
         <h1 class="hovedtitle">Admin Interface</h1>
     </div>
 </div>
+<!-- Title END -->
 
+<!-- Get Admin Rank START -->
 <div class="row">
     <div class="col-md-12" style="text-align: center;top:5px">
 
+        <!-- No Rank Assigned -->
         <c:forEach var="norank" items="${sessionScope.norank}">
             <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
                 <h3>You have no admin rank. Contact a high ranked admin for help</h3>
             </div>
         </c:forEach>
 
+        <!-- Rank 10 -->
         <c:forEach var="rank10" items="${sessionScope.rank10}">
             <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
                 <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button>
             </div>
         </c:forEach>
 
+        <!-- Rank 50 -->
         <c:forEach var="rank50" items="${sessionScope.rank50}">
             <div class="btn-group" role="group" aria-label="FAQ">
                 <button onclick="getCars(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Cars</button>
@@ -61,6 +71,7 @@
             </div>
         </c:forEach>
 
+        <!-- Rank 99 -->
         <c:forEach var="rank99" items="${sessionScope.rank99}">
             <div class="btn-group" role="group" aria-label="FAQ">
                 <button onclick="getUsers(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Users</button>
@@ -74,8 +85,9 @@
         </c:forEach>
     </div>
 </div>
+<!-- Get Admin Rank END -->
 
-
+<!-- Admin Choice -->
 <div class="row">
     <div class="col-md-4">
 
@@ -88,10 +100,13 @@
     </div>
 </div>
 
+<!-- Admin Dropdown Menu START -->
 <div class="row">
     <div class="col-md-4">
 
     </div>
+
+    <!-- Shown By Buttons.js -->
     <div class="col-md-4">
         <div id="myUSER" style="display:none">
             <br>
@@ -138,17 +153,23 @@
             </form>
         </div>
     </div>
+    <!-- Shown By Buttons.js -->
 
     <div class="col-md-4">
 
     </div>
 </div>
+<!-- Admin Dropdown Menu END-->
 
+<!-- Choice From Chosen Dropdown START-->
 <div class="row">
     <div class="col-md-4">
 
     </div>
     <div class="col-md-5">
+
+        <!-- USERS START -->
+        <!-- Show Users From START -->
         <c:forEach var="showusers" items="${requestScope.showusers}">
             <br>
             <h3 class="title">Show Users</h3>
@@ -165,7 +186,9 @@
                 <button type="submit" class="btn btn-secondary">Update User</button>
             </form>
         </c:forEach>
+        <!-- Show Users From END -->
 
+        <!-- Show Users Chosen START -->
         <ol>
             <c:forEach var="showchosenrole" items="${requestScope.showchosenrole}">
                 <div class="input-group">
@@ -185,7 +208,9 @@
                 <br>
             </c:forEach>
         </ol>
+        <!-- Show Users Chosen END -->
 
+        <!-- Update User Role START -->
         <c:forEach var="allusers" items="${requestScope.allusers}">
             <br>
             <h3 class="title">Update User Role</h3>
@@ -203,10 +228,27 @@
                         <option>admin</option>
                     </select>
                 </div>
+                <div class="form-group" style="top:10px">
+                    <label for="userrank">Rank Levels:
+                            <br>1: Normal Customer
+                            <br>10: Lowest Level Admin
+                            <br>50: Medium Level Admin
+                            <br>99: Max Level Admin</label>
+                    <select class="form-control" name="userrank" id="userrank">
+                        <option>1</option>
+                        <option>10</option>
+                        <option>50</option>
+                        <option>99</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-secondary">Update User</button>
             </form>
         </c:forEach>
+        <!-- Update User ROle END -->
+        <!-- USERS END -->
 
+        <!-- CARS START -->
+        <!-- Add Car START -->
         <c:forEach var="addcars" items="${requestScope.addcar}">
             <br>
             <h3 class="title">Add Car</h3>
@@ -255,7 +297,35 @@
                 <button type="submit" class="btn btn-secondary">Add Car</button>
             </form>
         </c:forEach>
+        <!-- Add Car END -->
 
+        <!-- Car Available START -->
+        <ol>
+            <c:forEach var="available" items="${requestScope.available}">
+                <div class="input-group">
+
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="target" value="caravailable">
+                        <li><c:out value="Brand: ${available.brand}"/>
+                            <c:out value=" - Model: ${available.model}"/>
+                            <br><c:out value="Price: ${available.price}"/>
+                            <br><c:out value="Available: ${available.available}"/>
+                            <br><c:out value="New Price? (Leave Empty If No Change)"/>
+                            <br><input type="text" name="changeprice" id="ChangePrice" aria-describedby="ChangePrice" placeholder="Change Price?">
+                            <br><input type="hidden" id="carid" name="carid" value="${available.id}">
+                            <input type="hidden" id="caravailable" name="caravailable" value="${available.available}">
+                            <br><button type="submit" class="btn btn-secondary">Close/Open</button>
+                        </li>
+                    </form>
+                </div>
+                <br>
+            </c:forEach>
+        </ol>
+        <!-- Car Available END -->
+        <!-- CARS END -->
+
+        <!-- CONTACT MESSAGES START -->
+        <!-- Show Messages START -->
         <br>
         <ol>
             <c:forEach var="message" items="${requestScope.activeCM}">
@@ -276,36 +346,19 @@
                 <br>
             </c:forEach>
         </ol>
-
-        <br>
-        <ol>
-            <c:forEach var="available" items="${requestScope.available}">
-                <div class="input-group">
-                    <form action="FrontController" method="post">
-                        <input type="hidden" name="target" value="caravailable">
-                        <li><c:out value="Brand: ${available.brand}"/>
-                            <c:out value=" - Model: ${available.model}"/>
-                            <br><c:out value="Price: ${available.price}"/>
-                            <br><c:out value="Available: ${available.available}"/>
-                            <br><c:out value="New Price? (Leave Empty If No Change)"/>
-                            <br><input type="text" name="changeprice" id="ChangePrice" aria-describedby="ChangePrice" placeholder="Change Price?">
-                            <br><input type="hidden" id="carid" name="carid" value="${available.id}">
-                            <input type="hidden" id="caravailable" name="caravailable" value="${available.available}">
-                            <br><button type="submit" class="btn btn-secondary">Close/Open</button>
-                        </li>
-                    </form>
-                </div>
-                <br>
-            </c:forEach>
-        </ol>
+        <!-- Show Messages END -->
+        <!-- CONTACT MESSAGES END -->
     </div>
     <div class="col-md-3">
 
     </div>
 </div>
+<!-- Choice From Chosen Dropdown END-->
 
+<!-- myFooter START -->
 <div class="row">
     <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
+        <!-- Gets Called on Button Click In Admin Menu START -->
         <div id="myFooter" style="display: block">
             <br>
             <br>
@@ -315,8 +368,10 @@
             <br>
             <br>
         </div>
+        <!-- Gets Called on Button Click In Admin Menu END -->
     </div>
 </div>
+<!-- myFooter END -->
 
 <div class="row">
     <div class="col-md-12" style="background-color: rgba(29,29,29,0.91)">
@@ -337,13 +392,13 @@
 
 <footer class="page-footer font-small blue" style="background-color: rgba(29,29,29,0.91)">
 
-    <!-- Copyright -->
+    <!-- Copyright START -->
     <div class="footer-copyright text-center py-3"><text style="color: #ececec">© 2020 Copyright:</text>
         <a class="one" href="cars.html">Tobias og Co |</a>
         <a class="one" href="locations.html"> EliteinsaneCars |</a>
         <a class="one" href="offers.html"> Even more elite cars </a>
     </div>
-    <!-- Copyright -->
+    <!-- Copyright END -->
 
 </footer>
 <script type="text/javascript" src='<c:url value="/scripts/buttons.js"/>'></script>

@@ -57,11 +57,11 @@ public class LogicFacade {
     Gets objects from UpdateUserRole.
     It calls the UserHandler which then updates the users role to given role
      */
-    public void updateRole(String userName, String userRole) {
+    public void updateRole(String userName, String userRole, String userRank) {
         UserHandler userHandler = new UserHandler();
-
+        int newRank = Integer.parseInt(userRank);
         try {
-            userHandler.updateRole(userName, userRole);
+            userHandler.updateRole(userName, userRole, newRank);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
