@@ -14,6 +14,12 @@ import java.sql.SQLException;
 public class MessageAnswered extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Bliver kaldt af FrontControlleren, som kom fra admininterface.
+        Bliver kaldt af Show Messages
+         */
+
         LogicFacade logicFacade = new LogicFacade();
 
         String messageID = request.getParameter("messages");

@@ -40,19 +40,19 @@
 <div class="row">
     <div class="col-md-12" style="text-align: center;top:5px">
 
-        <c:forEach var="norank" items="${requestScope.norank}">
+        <c:forEach var="norank" items="${sessionScope.norank}">
             <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
                 <h3>You have no admin rank. Contact a high ranked admin for help</h3>
             </div>
         </c:forEach>
 
-        <c:forEach var="rank10" items="${requestScope.rank10}">
+        <c:forEach var="rank10" items="${sessionScope.rank10}">
             <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
                 <button onclick="getMessages(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Messages</button>
             </div>
         </c:forEach>
 
-        <c:forEach var="rank50" items="${requestScope.rank50}">
+        <c:forEach var="rank50" items="${sessionScope.rank50}">
             <div class="btn-group" role="group" aria-label="FAQ">
                 <button onclick="getCars(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Cars</button>
             </div>
@@ -61,7 +61,7 @@
             </div>
         </c:forEach>
 
-        <c:forEach var="rank99" items="${requestScope.rank99}">
+        <c:forEach var="rank99" items="${sessionScope.rank99}">
             <div class="btn-group" role="group" aria-label="FAQ">
                 <button onclick="getUsers(), myFooter()" style="left:15px" class="btn btn-secondary">Manage Users</button>
             </div>

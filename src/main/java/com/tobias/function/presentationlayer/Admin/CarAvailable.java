@@ -15,6 +15,12 @@ import java.sql.SQLException;
 public class CarAvailable extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Bliver kaldt af FrontControlleren, som kom fra admininterface.
+        Bliver kaldt fra Manage Car Availability
+         */
+
         LogicFacade logicFacade = new LogicFacade();
         String carid = request.getParameter("carid");
         String caravailable = request.getParameter("caravailable");

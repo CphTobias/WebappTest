@@ -48,8 +48,9 @@
 
 <c:forEach var="userbanned" items="${requestScope.userbanned}">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align: center">
             <h4>${requestScope.userbanned}</h4>
+            <br>
         </div>
     </div>
 </c:forEach>

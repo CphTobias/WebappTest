@@ -34,6 +34,24 @@ public class Login extends Command {
         }
 
         HttpSession session = request.getSession();
+        int getrank = 1;
+        String ranked = "1";
+
+        if (user != null){
+            getrank = user.isRanked();
+            ranked = Integer.toString(user.isRanked());
+        }
+
+        if (getrank == 10){
+            session.setAttribute("rank10", ranked);
+        } else if (getrank == 50){
+            session.setAttribute("rank50", ranked);
+        } else if (getrank == 99){
+            session.setAttribute("rank99", ranked);
+        } else {
+            session.setAttribute("norank", ranked);
+        }
+
 
         session.setAttribute("user", user);
         session.setAttribute("role", user.getRole());

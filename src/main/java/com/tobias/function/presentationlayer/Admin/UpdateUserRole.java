@@ -12,6 +12,12 @@ import java.io.IOException;
 public class UpdateUserRole extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Bliver kaldt af FrontControlleren, som kom fra admininterface.
+        Bliver kaldt fra Update User Role
+         */
+
         LogicFacade logicFacade = new LogicFacade();
         String userName = request.getParameter("username");
         String userRole = request.getParameter("userrole");

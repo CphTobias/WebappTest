@@ -12,6 +12,12 @@ import java.io.IOException;
 public class UpdateUserBan extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Bliver kaldt af FrontControlleren, som kom fra admininterface.
+        Bliver kaldt af Show Users Chosen
+         */
+
         LogicFacade logicFacade = new LogicFacade();
         String userID = request.getParameter("userid");
         String userBan = request.getParameter("userban");

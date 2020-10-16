@@ -14,6 +14,13 @@ import java.io.IOException;
 public class AddNewCar extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Bliver kaldt af FrontControlleren, som kom fra admininterface.
+        Kalder logicfacade createCar for at tilføje en ny bil til databasen
+        Bliver kaldt fra Add Car
+         */
+
         LogicFacade logicFacade = new LogicFacade();
 
         String horsepower = request.getParameter("horsepower");

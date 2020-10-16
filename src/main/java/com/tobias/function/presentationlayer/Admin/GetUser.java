@@ -14,6 +14,13 @@ import java.util.List;
 public class GetUser extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Bliver kaldt af FrontControlleren, som kom fra admininterface.
+        Bliver kaldt fra Show Users From
+        Retunere til Show Users Chosen
+         */
+
         LogicFacade logicFacade = new LogicFacade();
         String userRole = request.getParameter("usersrole");
         List<User> userList = logicFacade.findChosenUsers(userRole);

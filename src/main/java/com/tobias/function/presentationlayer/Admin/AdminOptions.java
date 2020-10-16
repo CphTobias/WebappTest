@@ -16,6 +16,12 @@ import java.util.List;
 public class AdminOptions extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Bliver kaldt af FrontControlleren, som kom fra admininterface.
+        Tager imod strings fra de første dropdowns fra alle admin selectsne
+         */
+
         LogicFacade logicFacade = new LogicFacade();
         String select = request.getParameter("adminselect");
 

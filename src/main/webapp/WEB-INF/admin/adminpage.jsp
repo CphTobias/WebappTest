@@ -43,13 +43,10 @@
                 <p class="title">Welcome ${sessionScope.username}
                 <br>Please choose a logintype</p>
             </div>
-            <div class="btn-group" role="group" aria-label="Main menu">
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="target" value="getadminrank">
-                    <input type="hidden" name="ranked" value="${sessionScope.user.isRanked()}">
-                    <button type="submit" class="btn btn-secondary">Admin</button>
-                </form>
-            </div>
+        <div class="btn-group" role="group" aria-label="Admin">
+            <a class="two" href="FrontController?target=redirect&destination=admininterface">
+                <button type="button" class="btn btn-secondary">Admin</button></a>
+        </div>
             <div class="btn-group" role="group" aria-label="Main menu">
                 <a class="two" href="FrontController?target=redirect&destination=customerpage">
                     <button type="button" class="btn btn-secondary">Customer</button></a>
