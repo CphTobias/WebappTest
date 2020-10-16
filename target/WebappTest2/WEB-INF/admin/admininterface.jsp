@@ -42,7 +42,7 @@
 
         <c:forEach var="norank" items="${requestScope.norank}">
             <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
-                <h3>You have no admin rank. Contact a 99 admin for help</h3>
+                <h3>You have no admin rank. Contact a high ranked admin for help</h3>
             </div>
         </c:forEach>
 

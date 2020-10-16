@@ -20,10 +20,15 @@ public class LogicFacade {
     public User login(String name, String password) throws InvalidPassword {
         UserMapper userMapper = new UserMapper();
         User user = userMapper.findUser(name);
-        if (user.isPasswordCorrect(password)) {
+        if(user.isBanned()){
+            user = null;
             return user;
-        } else  {
-            throw new InvalidPassword();
+        } else {
+            if (user.isPasswordCorrect(password)) {
+                return user;
+            } else {
+                throw new InvalidPassword();
+            }
         }
     }
 

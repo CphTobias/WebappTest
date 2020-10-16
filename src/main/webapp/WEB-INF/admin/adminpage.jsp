@@ -51,10 +51,6 @@
                 </form>
             </div>
             <div class="btn-group" role="group" aria-label="Main menu">
-                <a class="two" href="FrontController?target=redirect&destination=employeeinterface">
-                    <button type="button" class="btn btn-secondary">Employee</button></a>
-            </div>
-            <div class="btn-group" role="group" aria-label="Main menu">
                 <a class="two" href="FrontController?target=redirect&destination=customerpage">
                     <button type="button" class="btn btn-secondary">Customer</button></a>
             </div>

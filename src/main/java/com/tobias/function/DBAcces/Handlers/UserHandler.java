@@ -4,6 +4,7 @@ import com.tobias.function.DBAcces.DBSetup.Connector;
 import com.tobias.function.DBAcces.Mappers.UserMapper;
 import com.tobias.function.function.entities.User;
 import com.tobias.function.function.entities.UserExists;
+import com.tobias.function.function.layer.LoginSampleException;
 
 import java.sql.*;
 
@@ -34,7 +35,7 @@ public class UserHandler {
             } else {
                 throw new UserExists(name);
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | LoginSampleException e) {
             throw new RuntimeException(e);
         }
         return userMapper.findUser(id);

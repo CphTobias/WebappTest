@@ -24,6 +24,11 @@ public class Login extends Command {
         User user = null;
         try {
             user = logicFacade.login(username, password);
+            if (user == null){
+                String userbanned = "Your account has been banned";
+                request.setAttribute("userbanned", userbanned);
+                return "Login";
+            }
         } catch (InvalidPassword invalidPassword) {
             invalidPassword.printStackTrace();
         }

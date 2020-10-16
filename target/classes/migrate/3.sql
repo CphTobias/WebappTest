@@ -6,7 +6,8 @@ CREATE TABLE users (
     salt BINARY(16) NOT NULL,
     secret BINARY(32) NOT NULL,
     role VARCHAR(25) NOT NULL,
-    banned BOOLEAN DEFAULT FALSE
+    banned BOOLEAN DEFAULT FALSE,
+    ranked INT DEFAULT 1
 );
 
 UPDATE properties
