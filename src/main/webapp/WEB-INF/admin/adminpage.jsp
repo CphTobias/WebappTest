@@ -24,9 +24,11 @@
     </div>
     <div class =col-md-4>
         <p></p>
-        <div class="btn-group" role="group" aria-label="login" style="top:6px; left:38px">
-            <a class="two" href="FrontController?target=redirect&destination=index">
-                <button type="button" class="btn btn-secondary">Logout</button></a>
+        <div class="btn-group" role="group" aria-label="logout" style="top:6px; left:38px">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="logoutuser">
+                <button type="submit" class="btn btn-secondary">Logout</button></a>
+            </form>
         </div>
     </div>
 </div>

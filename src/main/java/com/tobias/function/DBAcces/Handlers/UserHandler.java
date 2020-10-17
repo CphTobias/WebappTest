@@ -13,19 +13,20 @@ public class UserHandler {
     /*
         Creates a user in the database with the objects given from LogicFacade createUser.
     */
-    public User createUser(String name, byte[] salt, byte[] secret) throws UserExists {
+    public User createUser(String name, String email, byte[] salt, byte[] secret) throws UserExists {
         UserMapper userMapper = new UserMapper();
         int id;
         try (Connection conn = Connector.getConnection()) {
             var ps =
                     conn.prepareStatement(
-                            "INSERT INTO users (name, salt, secret, role) " +
-                                    "VALUE (?,?,?,?);",
+                            "INSERT INTO users (name, email, salt, secret, role) " +
+                                    "VALUE (?,?,?,?,?);",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, name);
-            ps.setBytes(2, salt);
-            ps.setBytes(3, secret);
-            ps.setString( 4, "customer");
+            ps.setString(2, email);
+            ps.setBytes(3, salt);
+            ps.setBytes(4, secret);
+            ps.setString( 5, "customer");
             try {
                 ps.executeUpdate();
             } catch (SQLIntegrityConstraintViolationException e) {

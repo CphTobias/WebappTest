@@ -56,6 +56,7 @@
         </div>
         <div class="form-group">
             <p style="color: #999999;">Time Sent: ${requestScope.time}
+                <br>Topic: ${requestScope.topic}
                 <br>Name: ${requestScope.name}
                 <br>Email: ${requestScope.email}
                 <br>Message:

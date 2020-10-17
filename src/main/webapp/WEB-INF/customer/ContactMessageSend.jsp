@@ -34,8 +34,10 @@
                 <button type="button" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
-            <a class="two" href="FrontController?target=redirect&destination=index">
-                <button type="button" class="btn btn-secondary">Logout</button></a>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="logoutuser">
+                <button type="submit" class="btn btn-secondary">Logout</button></a>
+            </form>
         </div>
     </div>
 </div>
@@ -56,6 +58,7 @@
         </div>
         <div class="form-group">
             <p style="color: #999999;">Time Sent: ${requestScope.time}
+                <br>Topic: ${requestScope.topic}
                 <br>Name: ${requestScope.name}
                 <br>Email: ${requestScope.email}
                 <br>Message:

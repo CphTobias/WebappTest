@@ -29,13 +29,24 @@
             <a class="two" href="FrontController?target=redirect&destination=customerpage">
                 <button type="submit" class="btn btn-secondary">Home</button></a>
         </div>
+
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
             <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
                 <button type="submit" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
+
+        <c:forEach var="adminrole" items="${sessionScope.adminrole}">
+            <div class="btn-group" role="group" aria-label="adminpage" style="top:6px; left:20px">
+                <a class="two" href="FrontController?target=redirect&destination=adminpage">
+                    <button type="submit" class="btn btn-secondary">Admin Page</button></a>
+            </div>
+        </c:forEach>
+
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
-            <a class="two" href="FrontController?target=redirect&destination=index">
-                <button type="button" class="btn btn-secondary">Logout</button></a>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="logoutuser">
+                <button type="submit" class="btn btn-secondary">Logout</button></a>
+            </form>
         </div>
     </div>
 </div>
@@ -66,14 +77,11 @@
         <h3 class="form-text">Contact Support</h3>
         <form action="FrontController" method="post">
             <input type="hidden" name="target" value="contactmessage">
+            <input type="hidden" name="name" id="name" value="${sessionScope.username}">
+            <input type="hidden" name="email" id="email" value="${sessionScope.email}">
             <div class="form-group">
-                <label class="form-text" for="exampleInputPassword1">Name</label>
-                <input type="name" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
-            </div>
-            <div class="form-group" style="top:10px">
-                <label class="form-text" for="exampleInputEmail2">Email address</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Email">
-                <small id="emailHelp2" class="form-text">We'll never share your email with anyone else.</small>
+                <label class="form-text" for="InputTopic">Topic</label>
+                <input type="text" name="topic" class="form-control" id="InputTopic" placeholder="Topic">
             </div>
             <div class="form-group">
                 <label class="form-text" for="exampleTextarea">Enter message</label>

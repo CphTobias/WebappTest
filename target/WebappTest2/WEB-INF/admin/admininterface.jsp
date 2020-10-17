@@ -217,14 +217,13 @@
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="updateuser">
                 <div class="form-group">
-                    <label for="InputUserName">Username"</label>
+                    <label for="InputUserName">Username</label>
                     <input type="text" name="username" class="form-control" id="InputUserName" placeholder="Username">
                 </div>
                 <div class="form-group" style="top:10px">
                     <label for="userrole">Role</label>
                     <select class="form-control" name="userrole" id="userrole">
                         <option>customer</option>
-                        <option>employee</option>
                         <option>admin</option>
                     </select>
                 </div>
@@ -334,6 +333,7 @@
                         <input type="hidden" name="target" value="messageanswered">
                         <li><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
                             <c:out value=" - Time: ${message.createdAt.toLocalTime()}"/>
+                            <br><c:out value="Topic: ${message.topic}"/>
                             <br><c:out value="Name: ${message.name}"/>
                             <br><c:out value="Email: ${message.email}"/>
                             <br><c:out value="Message: ${message.message}"/>

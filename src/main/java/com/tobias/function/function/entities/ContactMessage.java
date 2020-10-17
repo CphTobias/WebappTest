@@ -1,9 +1,6 @@
 package com.tobias.function.function.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class ContactMessage {
 
@@ -14,14 +11,16 @@ public class ContactMessage {
     private final LocalDateTime createdAt;
     private final String name;
     private final String email;
+    private final String topic;
     private final String message;
     private final boolean answered;
 
-    public ContactMessage(int id, LocalDateTime createdAt, String name, String email, String message, boolean answered) {
+    public ContactMessage(int id, LocalDateTime createdAt, String name, String email, String topic, String message, boolean answered) {
         this.id = id;
         this.createdAt = createdAt;
         this.name = name;
         this.email = email;
+        this.topic = topic;
         this.message = message;
         this.answered = answered;
     }
@@ -49,6 +48,10 @@ public class ContactMessage {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getTopic() {
+        return topic;
     }
 
     public String getMessage() {

@@ -1,3 +1,4 @@
+SET GLOBAL time_zone = '+1:00';
 
 DROP TABLE IF EXISTS properties;
 CREATE TABLE properties (

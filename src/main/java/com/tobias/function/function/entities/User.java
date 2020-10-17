@@ -29,6 +29,7 @@ public class User {
      */
     private final int id;
     private final String name;
+    private final String email;
     private final LocalDateTime createdAt;
     private final byte[] salt;
     private final byte[] secret;
@@ -36,9 +37,10 @@ public class User {
     private boolean banned;
     private int ranked;
 
-    public User(int id, String name, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, boolean banned, int ranked) {
+    public User(int id, String name, String email, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, boolean banned, int ranked) {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.createdAt = createdAt;
         this.salt = salt;
         this.secret = secret;
@@ -82,6 +84,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public LocalDateTime getCreatedAt() {

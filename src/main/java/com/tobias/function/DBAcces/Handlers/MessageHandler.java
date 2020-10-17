@@ -14,19 +14,20 @@ public class MessageHandler {
     /*
     Creates a contact message in the database with the objects given from LogicFacade createContactMessage.
      */
-    public ContactMessage createContactMessage(LocalDateTime time ,String name, String email, String message){
+    public ContactMessage createContactMessage(LocalDateTime time ,String name, String email, String topic, String message){
         MessageMapper mMapper = new MessageMapper();
         int id = 0;
         try (Connection conn = getConnection()) {
             var ps =
                     conn.prepareStatement(
-                            "INSERT INTO contactmessages (createdat, name, email, message) " +
-                                    "VALUE (?,?,?,?);",
+                            "INSERT INTO contactmessages (createdat, name, email, topic, message) " +
+                                    "VALUE (?,?,?,?,?);",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setTimestamp(1, Timestamp.valueOf(time));
             ps.setString(2, name);
             ps.setString(3, email);
-            ps.setString(4, message);
+            ps.setString(4, topic);
+            ps.setString(5, message);
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();

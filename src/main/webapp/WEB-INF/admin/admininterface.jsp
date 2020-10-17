@@ -28,8 +28,10 @@
     <div class =col-md-4>
         <p></p>
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:38px">
-            <a class="two" href="FrontController?target=redirect&destination=index">
-                <button type="button" class="btn btn-secondary">Logout</button></a>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="logoutuser">
+                <button type="submit" class="btn btn-secondary">Logout</button></a>
+            </form>
         </div>
     </div>
 </div>
@@ -333,6 +335,7 @@
                         <input type="hidden" name="target" value="messageanswered">
                         <li><c:out value="Date: ${message.createdAt.toLocalDate()}"/>
                             <c:out value=" - Time: ${message.createdAt.toLocalTime()}"/>
+                            <br><c:out value="Topic: ${message.topic}"/>
                             <br><c:out value="Name: ${message.name}"/>
                             <br><c:out value="Email: ${message.email}"/>
                             <br><c:out value="Message: ${message.message}"/>

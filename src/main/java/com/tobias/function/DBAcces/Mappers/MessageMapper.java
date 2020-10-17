@@ -1,7 +1,5 @@
 package com.tobias.function.DBAcces.Mappers;
 
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
-import com.tobias.function.DBAcces.DBSetup.Connector;
 import com.tobias.function.function.entities.ContactMessage;
 
 import java.sql.Connection;
@@ -26,6 +24,7 @@ public class MessageMapper {
                 rs.getTimestamp("contactmessages.createdat").toLocalDateTime(),
                 rs.getString("contactmessages.name"),
                 rs.getString("contactmessages.email"),
+                rs.getString("contactmessages.topic"),
                 rs.getString("contactmessages.message"),
                 rs.getBoolean("contactmessages.answered"));
     }

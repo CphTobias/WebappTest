@@ -52,9 +52,15 @@ public class Login extends Command {
             session.setAttribute("norank", ranked);
         }
 
+        if(user.getRole().equals("admin")){
+            session.setAttribute("adminrole", user.getRole());
+        } else {
+            session.setAttribute("customerrole", user.getRole());
+        }
 
+
+        session.setAttribute("email",user.getEmail());
         session.setAttribute("user", user);
-        session.setAttribute("role", user.getRole());
         session.setAttribute("username", username);// ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
         // ;
         //request.setAttribute("user", user);

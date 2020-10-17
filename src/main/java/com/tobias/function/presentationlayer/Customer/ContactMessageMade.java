@@ -19,17 +19,19 @@ public class ContactMessageMade extends Command {
         LogicFacade logicFacade = new LogicFacade();
 
         String username = request.getParameter("name");
+        String topic = request.getParameter("topic");
         String email = request.getParameter("email");
         String message = request.getParameter("message");
-        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
 
-        ContactMessage cMessage = logicFacade.createContactMessage(LocalDateTime.now(),username, email, message);
+        ContactMessage cMessage = logicFacade.createContactMessage(LocalDateTime.now(),username, email,topic, message);
 
         String formatedTime = " " + cMessage.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_TIME);
         String formatedName = " " + cMessage.getName();
         String formatedEmail = " " + cMessage.getEmail();
         String formatedCMessage = " " + cMessage.getMessage();
+        String formatedTopic = " " + cMessage.getTopic();
 
+        request.setAttribute("topic", formatedTopic);
         request.setAttribute("time", formatedTime);
         request.setAttribute("name", formatedName);
         request.setAttribute("email", formatedEmail);

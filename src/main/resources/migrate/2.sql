@@ -4,6 +4,7 @@ CREATE TABLE contactmessages (
     createdat TIMESTAMP NOT NULL,
     name VARCHAR(255) DEFAULT NULL,
     email VARCHAR(255) DEFAULT NULL,
+    topic VARCHAR(55) DEFAULT NULL,
     message VARCHAR(255) DEFAULT NULL,
     answered BOOLEAN DEFAULT FALSE
 );

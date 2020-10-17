@@ -46,11 +46,11 @@ public class LogicFacade {
     It is returned due to the user getting logged in after it is created.
     if the user did not get made, it will throw a UserExists exception.
      */
-    public User createUser(String name, String password) throws UserExists {
+    public User createUser(String name, String email, String password) throws UserExists {
         UserHandler userHandler = new UserHandler();
         byte[] salt = User.generateSalt();
         byte[] secret = User.calculateSecret(salt, password);
-        return userHandler.createUser(name, salt, secret);
+        return userHandler.createUser(name, email, salt, secret);
     }
 
     /*
@@ -177,9 +177,9 @@ public class LogicFacade {
     Called by ContactMessageMade with the given objects.
     It calls the MessageHandler to create a message and returns that contact message.
      */
-    public ContactMessage createContactMessage(LocalDateTime now, String username, String email, String message) {
+    public ContactMessage createContactMessage(LocalDateTime now, String username, String email, String topic, String message) {
         MessageHandler messageHandler = new MessageHandler();
-        ContactMessage cMessage = messageHandler.createContactMessage(LocalDateTime.now(),username, email, message);
+        ContactMessage cMessage = messageHandler.createContactMessage(LocalDateTime.now(),username, email, topic, message);
         return cMessage;
     }
 

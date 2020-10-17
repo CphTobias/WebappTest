@@ -19,6 +19,7 @@ public class UserMapper {
         return new User(
                 rs.getInt("users.id"),
                 rs.getString("users.name"),
+                rs.getString("users.email"),
                 rs.getTimestamp("users.createdAt").toLocalDateTime(),
                 rs.getBytes("users.salt"),
                 rs.getBytes("users.secret"),
