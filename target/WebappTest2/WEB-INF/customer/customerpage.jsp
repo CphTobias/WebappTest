@@ -2,20 +2,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags START -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags END -->
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS START -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Required meta tags END -->
+
     <title>Home</title>
 </head>
 <body>
 
 
-<!-- Billed og hovedmenu -->
+<!-- Billed og hovedmenu START -->
 <div class="row" style="background-color: rgba(29,29,29,0.91);">
     <div class =col-md-1>
         <p></p>
@@ -42,21 +45,72 @@
             </div>
         </c:forEach>
 
+        <div class="btn-group" role="group" aria-label="First group" style="top:6px; left:20px">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getbasket">
+                <button type="submit" class="btn btn-secondary">Basket - 5</button>
+            </form>
+        </div>
+
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="logoutuser">
-                <button type="submit" class="btn btn-secondary">Logout</button></a>
+                <button type="submit" class="btn btn-secondary">Logout</button>
             </form>
         </div>
     </div>
 </div>
+<!-- Billed og hovedmenu END -->
 
+<!-- Title START -->
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
         <h1 class="hovedtitle">Home</h1>
     </div>
 </div>
+<!-- Title END -->
 
+<!-- Special offers START -->
+<div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <br>
+        </div>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+<!-- Special offers END -->
+
+<!-- Information START -->
 <div class="row">
     <div class="col-md-3">
         <h2>Hello, ${sessionScope.username}</h2>
@@ -71,6 +125,7 @@
         <p class="title">Tester igen</p>
     </div>
 </div>
+<!-- Information END -->
 
 <div class ="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">

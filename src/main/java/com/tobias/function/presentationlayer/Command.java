@@ -14,6 +14,9 @@ public abstract class Command {
 
     private static HashMap<String, Command> commands;
 
+    /*
+    Sets the commads that are called in the jsp files.
+     */
     private static void initCommands() {
         commands = new HashMap<>();
         commands.put( "login", new Login() );
@@ -30,7 +33,10 @@ public abstract class Command {
         commands.put("logoutuser", new Logout());
     }
 
-
+    /*
+    if the value target is called in the jsp files this is called.
+    If a command doesnt exist it calls UnknownCommand
+     */
     static Command from( HttpServletRequest request ) {
         String targetName = request.getParameter( "target" );
         if ( commands == null ) {
@@ -39,6 +45,10 @@ public abstract class Command {
         return commands.getOrDefault(targetName, new UnknownCommand() );   // unknowncommand er default.
     }
 
+
+    /*
+    This is the abstract method that is needed in all of our classes created by initCommands();
+     */
     protected abstract String execute(HttpServletRequest request, HttpServletResponse response)
             throws LoginSampleException, ServletException, IOException;
 

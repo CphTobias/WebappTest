@@ -25,7 +25,7 @@ public class LogicFacade {
     Checks if the user is banned, if yes then it returns a string. If the user is not banned then it checks if the password was correct.
     If the password was correct it returns the user, if not correct it throws an InvalidPassword exception.
      */
-    public User login(String name, String password) throws InvalidPassword {
+    public User login(String name, String password) {
         UserMapper userMapper = new UserMapper();
         User user = userMapper.findUser(name);
         if(user.isBanned()){
@@ -35,7 +35,8 @@ public class LogicFacade {
             if (user.isPasswordCorrect(password)) {
                 return user;
             } else {
-                throw new InvalidPassword();
+                user = null;
+                return user;
             }
         }
     }

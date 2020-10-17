@@ -16,6 +16,11 @@ import java.time.format.DateTimeFormatter;
 public class ContactMessageMade extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, LoginSampleException, ServletException, IOException {
+
+        /*
+        Called when creating a contact message. It calls the logicfacade to create a contact message.
+         */
+
         LogicFacade logicFacade = new LogicFacade();
 
         String username = request.getParameter("name");

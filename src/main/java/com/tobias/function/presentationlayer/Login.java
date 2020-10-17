@@ -18,19 +18,25 @@ public class Login extends Command {
 
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+
+        /*
+        Called from Login.jsp
+        The logicfacade checks if the user is banned, if that is true, it will return null.
+        If the user is null it will return to the login page and tell the user that their account was banned.
+
+        If the log
+         */
+
         LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = null;
-        try {
-            user = logicFacade.login(username, password);
-            if (user == null){
-                String userbanned = "Your account has been banned";
-                request.setAttribute("userbanned", userbanned);
-                return "Login";
-            }
-        } catch (InvalidPassword invalidPassword) {
-            invalidPassword.printStackTrace();
+        user = logicFacade.login(username, password);
+
+        if (user == null){
+            String userbanned = "Username or password was incorrect, or your user has been banned";
+            request.setAttribute("userbanned", userbanned);
+            return "Login";
         }
 
         HttpSession session = request.getSession();

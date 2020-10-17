@@ -11,6 +11,12 @@ import java.io.IOException;
 public class Logout extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, ServletException, IOException {
+
+        /*
+        Called when user clicks the Logout button
+        It is done so that the session instances that might have been set during a login are not there anymore.
+         */
+
         HttpSession session = request.getSession();
 
         session.invalidate();

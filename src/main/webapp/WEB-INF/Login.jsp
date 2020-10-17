@@ -46,10 +46,10 @@
     </div>
 </div>
 
-<c:forEach var="userbanned" items="${requestScope.userbanned}">
+<c:forEach var="userbanned" items="${requestScope.userbanned}" end="0">
     <div class="row">
         <div class="col-md-12" style="text-align: center">
-            <h4>${requestScope.userbanned}</h4>
+            <h4>${userbanned}</h4>
             <br>
         </div>
     </div>

@@ -77,3 +77,8 @@ label.form-check-label:hover {
     background-color: #ff4c4c;
     border-color: #1D1D1D;
 }
+
+.badge {
+    color: #1D1D1D;
+    background-color: #ff4c4c;
+}
