@@ -2,6 +2,7 @@ package com.tobias.function.function.layer;
 
 import com.tobias.function.DBAcces.Handlers.CarHandler;
 import com.tobias.function.DBAcces.Handlers.MessageHandler;
+import com.tobias.function.DBAcces.Handlers.SpecialOffersHandler;
 import com.tobias.function.DBAcces.Handlers.UserHandler;
 import com.tobias.function.DBAcces.Mappers.CarMapper;
 import com.tobias.function.DBAcces.Mappers.MessageMapper;
@@ -191,6 +192,16 @@ public class LogicFacade {
         SpecialOffersMapper SOMapper = new SpecialOffersMapper();
         List<SpecialOffers> specialOffers = SOMapper.findSpecialOffers();
         return specialOffers;
+    }
+
+    /*
+    Called from CloseOffer, it takes a string of offerID and parses it to an Integer.
+    Then calls the SpecialOfferHandler to delete that offer.
+     */
+    public void deleteSpecialOffer(String offerID) {
+        SpecialOffersHandler specialOffersHandler = new SpecialOffersHandler();
+        int newOfferID = Integer.parseInt(offerID);
+        specialOffersHandler.deleteSpecialOffer(newOfferID);
     }
 
 //---- SPECIALOFFFERS END ----
