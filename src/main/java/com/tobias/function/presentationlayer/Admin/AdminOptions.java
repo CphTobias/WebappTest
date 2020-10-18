@@ -2,6 +2,7 @@ package com.tobias.function.presentationlayer.Admin;
 
 import com.tobias.function.function.entities.Car;
 import com.tobias.function.function.entities.ContactMessage;
+import com.tobias.function.function.entities.SpecialOffers;
 import com.tobias.function.function.entities.User;
 import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
@@ -33,6 +34,13 @@ public class AdminOptions extends Command {
             case "Manage Car Availability":
                 List<Car> cars = logicFacade.getAllCars();
                 request.setAttribute("available",cars);
+                break;
+            case "Manage Special Offers":
+                List<SpecialOffers> specialOffers = logicFacade.findSpecialOffers();
+                List<Car> allCars = logicFacade.getAllCars();
+                request.setAttribute("allcars",allCars);
+                request.setAttribute("showactiveoffers", specialOffers);
+                request.setAttribute("addspecialoffer", select);
                 break;
             case "Active Messages":
                 List<ContactMessage> cMessageActive = logicFacade.getContactMessages(select);

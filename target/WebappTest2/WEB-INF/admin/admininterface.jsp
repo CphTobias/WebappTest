@@ -134,6 +134,7 @@
                     <select class="form-control" name="adminselect" id="caroptionsselect">
                         <option>Add Car</option>
                         <option>Manage Car Availability</option>
+                        <option>Manage Special Offers</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-secondary">Submit</button>
@@ -323,6 +324,46 @@
             </c:forEach>
         </ol>
         <!-- Car Available END -->
+
+        <!-- Manage Special Offers START -->
+        <c:forEach var="showoffer" items="${requestScope.showactiveoffers}">
+            <div class="input-group">
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="closeoffer">
+                    <li><c:out value="CarID: ${showoffer.carID}"/>
+                        <c:out value=" - Offer: ${showoffer.offer}"/>
+                        <c:out value=" - Side Message: ${showoffer.sideMessage}"/>
+                        <br><button type="submit" class="btn btn-secondary btn-sm">Delete Offer</button>
+                    </li>
+                </form>
+            </div>
+            <br>
+        </c:forEach>
+
+        <c:forEach var="addoffer" items="${requestScope.addspecialoffer}">
+        <h3 class="title">Add Offer</h3>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="target" value="addspecialoffer">
+            <div class="form-group" style="top:10px">
+                <label for="offercar">Car</label>
+                <select class="form-control" name="offercar" id="offercar">
+                    <c:forEach var="allcars" items="${requestScope.allcars}">
+                    <option>${allcars.brand} ${allcars.model}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="InputOffer">Offer eks. "20"</label>
+                <input type="text" name="offer" class="form-control" id="InputOffer" placeholder="Offer">
+            </div>
+            <div class="form-group">
+                <label for="InputSideMessage">Side Message eks. "This is an insane offer"</label>
+                <input type="text" name="sideMessage" class="form-control" id="InputSideMessage" placeholder="Side Message">
+            </div>
+            <button type="submit" class="btn btn-secondary">Add Special Offer</button>
+        </form>
+        </c:forEach>
+        <!-- Manage Special Offers START -->
         <!-- CARS END -->
 
         <!-- CONTACT MESSAGES START -->

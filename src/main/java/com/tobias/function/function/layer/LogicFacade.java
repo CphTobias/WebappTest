@@ -5,14 +5,13 @@ import com.tobias.function.DBAcces.Handlers.MessageHandler;
 import com.tobias.function.DBAcces.Handlers.UserHandler;
 import com.tobias.function.DBAcces.Mappers.CarMapper;
 import com.tobias.function.DBAcces.Mappers.MessageMapper;
+import com.tobias.function.DBAcces.Mappers.SpecialOffersMapper;
 import com.tobias.function.DBAcces.Mappers.UserMapper;
-import com.tobias.function.function.entities.Car;
-import com.tobias.function.function.entities.ContactMessage;
-import com.tobias.function.function.entities.User;
-import com.tobias.function.function.entities.UserExists;
+import com.tobias.function.function.entities.*;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LogicFacade {
@@ -170,7 +169,31 @@ public class LogicFacade {
         return cars;
     }
 
+    /*
+    Called when logging in to find the pictures for the customer page
+    It calls the CapMapper and returns a Car
+     */
+    public Car findCar(int carID) {
+        CarMapper carMapper = new CarMapper();
+        Car findcar = carMapper.findCar(carID);
+        return findcar;
+    }
+
 //---- CARS END ----
+
+//---- SPECIALOFFERS START ----
+
+    /*
+    Called when logging in to find the SpecialOffers for the customer page
+    It calls the SpecialOffersMapper and returns a list of specialoffers
+     */
+    public List<SpecialOffers> findSpecialOffers() {
+        SpecialOffersMapper SOMapper = new SpecialOffersMapper();
+        List<SpecialOffers> specialOffers = SOMapper.findSpecialOffers();
+        return specialOffers;
+    }
+
+//---- SPECIALOFFFERS END ----
 
 //---- CONTACT MESSAGES START ----
 
@@ -208,6 +231,7 @@ public class LogicFacade {
             throwables.printStackTrace();
         }
     }
+
 
 //---- CONTACT MESSAGES END ----
 }

@@ -79,19 +79,30 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <c:forEach var="specialOffer" items="${sessionScope.specialoffer}">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="${specialOffer.id}"></li>
+                </c:forEach>
             </ol>
             <div class="carousel-inner">
+                <!-- Insert First picture here -->
                 <div class="carousel-item active">
-                    <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="First slide">
+                    <div class="container" style="position: relative;">
+                        <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="First slide">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="Third slide">
-                </div>
+                <c:forEach var="specialImage" items="${sessionScope.specialcar}">
+                    <div class="carousel-item">
+                        <div class="container" style="position: relative;">
+                            <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}${specialImage.imagename}" alt="${specialImage.id}">
+                            <div class="text-block"
+                                 style="position: absolute;bottom: 20px;right: 20px;background-color: black;
+                                 color: white;padding-left: 20px;padding-right: 20px;">
+                                <h4>Offer waiting</h4>
+                                <p>This is the offer</p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

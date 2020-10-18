@@ -1,5 +1,7 @@
 package com.tobias.function.presentationlayer;
 
+import com.tobias.function.function.entities.Car;
+import com.tobias.function.function.entities.SpecialOffers;
 import com.tobias.function.function.entities.User;
 import com.tobias.function.function.layer.InvalidPassword;
 import com.tobias.function.function.layer.LogicFacade;
@@ -8,6 +10,8 @@ import com.tobias.function.function.layer.LoginSampleException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  The purpose of Login is to...
@@ -64,6 +68,20 @@ public class Login extends Command {
             session.setAttribute("customerrole", user.getRole());
         }
 
+        /*
+        First we find out specialoffers.
+        Create a List of Cars and find every car that has been set to a special offer.
+         */
+        List<SpecialOffers> specialOffers = logicFacade.findSpecialOffers();
+        if(specialOffers != null) {
+            ArrayList<Car> soImages = new ArrayList<>();
+            for (SpecialOffers s : specialOffers) {
+                Car car = logicFacade.findCar(s.getCarID());
+                soImages.add(car);
+            }
+            session.setAttribute("specialoffer", specialOffers);
+            session.setAttribute("specialcar", soImages);
+        }
 
         session.setAttribute("email",user.getEmail());
         session.setAttribute("user", user);

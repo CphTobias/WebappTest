@@ -31,6 +31,7 @@ public abstract class Command {
         commands.put("showusers", new GetUser());
         commands.put("userbanned", new UpdateUserBan());
         commands.put("logoutuser", new Logout());
+        commands.put("closeoffer", new CloseOffer());
     }
 
     /*
