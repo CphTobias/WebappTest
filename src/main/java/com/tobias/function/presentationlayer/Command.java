@@ -32,6 +32,7 @@ public abstract class Command {
         commands.put("userbanned", new UpdateUserBan());
         commands.put("logoutuser", new Logout());
         commands.put("closeoffer", new CloseOffer());
+        commands.put("addspecialoffer", new CreateSpecialOffer());
     }
 
     /*

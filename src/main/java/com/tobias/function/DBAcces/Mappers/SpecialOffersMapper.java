@@ -1,6 +1,7 @@
 package com.tobias.function.DBAcces.Mappers;
 
 import com.tobias.function.function.entities.Car;
+import com.tobias.function.function.entities.ContactMessage;
 import com.tobias.function.function.entities.SpecialOffers;
 
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static com.tobias.function.DBAcces.DBSetup.Connector.getConnection;
 
@@ -44,5 +46,22 @@ public class SpecialOffersMapper {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public SpecialOffers findSpecialOffers(int id) throws NoSuchElementException {
+        try(Connection conn = getConnection()) {
+            PreparedStatement s = conn.prepareStatement(
+                    "SELECT * FROM specialoffers WHERE id = ?;");
+            s.setInt(1, id);
+            ResultSet rs = s.executeQuery();
+            if(rs.next()) {
+                return loadSpecialOffers(rs);
+            } else {
+                System.err.println("No version in properties.");
+                throw new NoSuchElementException("No specialoffer with id: " + id);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

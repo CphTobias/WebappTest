@@ -333,6 +333,7 @@
                     <li><c:out value="CarID: ${showoffer.carID}"/>
                         <c:out value=" - Offer: ${showoffer.offer}"/>
                         <c:out value=" - Side Message: ${showoffer.sideMessage}"/>
+                        <input type="hidden" name="carid" value="${showoffer.carID}">
                         <br><button type="submit" class="btn btn-secondary btn-sm">Delete Offer</button>
                     </li>
                 </form>
@@ -348,7 +349,7 @@
                 <label for="offercar">Car</label>
                 <select class="form-control" name="offercar" id="offercar">
                     <c:forEach var="allcars" items="${requestScope.allcars}">
-                    <option>${allcars.brand} ${allcars.model}</option>
+                    <option>${allcars.id}, ${allcars.brand}, ${allcars.category}</option>
                     </c:forEach>
                 </select>
             </div>

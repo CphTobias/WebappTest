@@ -13,6 +13,7 @@ import com.tobias.function.function.entities.*;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LogicFacade {
@@ -204,6 +205,24 @@ public class LogicFacade {
         specialOffersHandler.deleteSpecialOffer(newOfferID);
     }
 
+    /*
+    Called from CreateSpecialOffer, it takes 3 strings and converts the first string into a string[], then finds the first value and
+    converts it to an Integer.
+    Calls the SpecialOffersHandler to create a special offer
+     */
+    public void createSpecialOffer(String chosenCar, String offer, String sideMessage) {
+        SpecialOffersHandler specialOffersHandler = new SpecialOffersHandler();
+        String[] arrOfStr = chosenCar.split(",", 0);
+        ArrayList<String> cardetails = new ArrayList<>();
+        for(String a:arrOfStr){
+            cardetails.add(a);
+        }
+        String carID = cardetails.get(0);
+        int newCarID = Integer.parseInt(carID);
+        specialOffersHandler.createSpecialOffer(newCarID,offer,sideMessage);
+    }
+
+
 //---- SPECIALOFFFERS END ----
 
 //---- CONTACT MESSAGES START ----
@@ -242,7 +261,6 @@ public class LogicFacade {
             throwables.printStackTrace();
         }
     }
-
 
 //---- CONTACT MESSAGES END ----
 }
