@@ -14,7 +14,7 @@ public class Connector {
     private static final String USER = "webapp";
 
     // Database version
-    private static final int version = 2;
+    private static final int version = 4;
 
     public Connector() throws ClassNotFoundException {
         Class.forName(JDBC_DRIVER);
