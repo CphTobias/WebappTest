@@ -1,13 +1,7 @@
 package com.tobias.function.function.layer;
 
-import com.tobias.function.DBAcces.Handlers.CarHandler;
-import com.tobias.function.DBAcces.Handlers.MessageHandler;
-import com.tobias.function.DBAcces.Handlers.SpecialOffersHandler;
-import com.tobias.function.DBAcces.Handlers.UserHandler;
-import com.tobias.function.DBAcces.Mappers.CarMapper;
-import com.tobias.function.DBAcces.Mappers.MessageMapper;
-import com.tobias.function.DBAcces.Mappers.SpecialOffersMapper;
-import com.tobias.function.DBAcces.Mappers.UserMapper;
+import com.tobias.function.DBAcces.Handlers.*;
+import com.tobias.function.DBAcces.Mappers.*;
 import com.tobias.function.function.entities.*;
 
 import java.sql.SQLException;
@@ -181,6 +175,12 @@ public class LogicFacade {
         return findcar;
     }
 
+    public List<Car> findAvailableCars() {
+        CarMapper carMapper = new CarMapper();
+        List<Car> availableCars = carMapper.findAvailableCars();
+        return availableCars;
+    }
+
 //---- CARS END ----
 
 //---- SPECIALOFFERS START ----
@@ -263,4 +263,50 @@ public class LogicFacade {
     }
 
 //---- CONTACT MESSAGES END ----
+
+//---- ORDERS START ----
+    public void createOrder(String userID) {
+        OrderHandler orderHandler = new OrderHandler();
+        int newUserID = Integer.parseInt(userID);
+        orderHandler.createOrder(newUserID);
+    }
+
+    /*
+    Called by AddToOrder. It parses the string to an integer and then calls the ordermapper to find a preorder
+    returns either null or an order.
+     */
+    public Order findPreOrder(String userID) {
+        OrderMapper orderMapper = new OrderMapper();
+        int newUserID = Integer.parseInt(userID);
+        Order tempOrder = orderMapper.findPreOrder(newUserID);
+        return tempOrder;
+    }
+
+    /*
+    Called by AddToOrder. It parses the string userID to and integer then calls the orderhandler to update the carid.
+     */
+    public void updatePreOrder(String carID, String userID) {
+        OrderHandler orderHandler = new OrderHandler();
+        int newUserID = Integer.parseInt(userID);
+        try {
+            orderHandler.updatePreOrder(carID, newUserID);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    /*
+    Called by AddToOrder. It parses the string userID to and integer then calls the orderhandler to update the carid.
+     */
+    public void updatePreOrder(String carIDs, String carID, String userID) {
+        OrderHandler orderHandler = new OrderHandler();
+        int newUserID = Integer.parseInt(userID);
+        String newCarID = carIDs + carID;
+        try {
+            orderHandler.updatePreOrder(newCarID, newUserID);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+//---- ORDERS END ----
 }

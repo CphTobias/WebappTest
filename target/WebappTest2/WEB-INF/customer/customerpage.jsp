@@ -23,10 +23,10 @@
     <div class =col-md-1>
         <p></p>
     </div>
-    <div class =col-md-7>
+    <div class =col-md-6>
         <h1><a class="one" href="FrontController?target=redirect&destination=customerpage">TobyCars</a></h1>
     </div>
-    <div class =col-md-4>
+    <div class =col-md-5>
         <p></p>
         <div class="btn-group" role="group" aria-label="Main menu" style="top:6px;">
             <a class="two" href="FrontController?target=redirect&destination=customerpage">
@@ -36,6 +36,13 @@
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
             <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
                 <button type="submit" style="left:20px" class="btn btn-secondary">FAQ</button></a>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getallcars">
+                <button type="submit" class="btn btn-secondary">Cars</button>
+            </form>
         </div>
 
         <c:forEach var="adminrole" items="${sessionScope.adminrole}">

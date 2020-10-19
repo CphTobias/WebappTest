@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AddNewCar extends Command {
     @Override
@@ -20,7 +21,6 @@ public class AddNewCar extends Command {
         Kalder logicfacade createCar for at tilføje en ny bil til databasen
         Bliver kaldt fra Add Car
          */
-
         LogicFacade logicFacade = new LogicFacade();
 
         String horsepower = request.getParameter("horsepower");
@@ -32,6 +32,7 @@ public class AddNewCar extends Command {
         String buildYear = request.getParameter("buildyear");
         String milage = request.getParameter("milage");
         String image = request.getParameter("image");
+
 
         logicFacade.createCar(horsepower,brand,price,category,model,weight,buildYear,milage,image);
 

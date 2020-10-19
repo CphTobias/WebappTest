@@ -2,79 +2,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags START -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags END -->
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS START -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <title>Car overview</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Required meta tags END -->
+
+    <title>Home</title>
 </head>
 <body>
 
 
-<!-- Billed og hovedmenu -->
+<!-- Billed og hovedmenu START -->
 <div class="row" style="background-color: rgba(29,29,29,0.91);">
     <div class =col-md-1>
         <p></p>
     </div>
-    <div class =col-md-7>
+    <div class =col-md-6>
         <h1><a class="one" href="FrontController?target=redirect&destination=customerpage">TobyCars</a></h1>
     </div>
-    <div class =col-md-4>
+    <div class =col-md-5>
         <p></p>
         <div class="btn-group" role="group" aria-label="Main menu" style="top:6px;">
             <a class="two" href="FrontController?target=redirect&destination=customerpage">
                 <button type="submit" class="btn btn-secondary">Home</button></a>
         </div>
+
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
             <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
                 <button type="submit" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
+
+        <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
+            <a class="two" href="FrontController?target=redirect&destination=RentACar">
+                <button type="submit" style="left:20px" class="btn btn-secondary">Cars</button></a>
+        </div>
+
+        <c:forEach var="adminrole" items="${sessionScope.adminrole}">
+            <div class="btn-group" role="group" aria-label="adminpage" style="top:6px; left:20px">
+                <a class="two" href="FrontController?target=redirect&destination=adminpage">
+                    <button type="submit" class="btn btn-secondary">Admin Page</button></a>
+            </div>
+        </c:forEach>
+
+        <div class="btn-group" role="group" aria-label="First group" style="top:6px; left:20px">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getbasket">
+                <button type="submit" class="btn btn-secondary">Basket - 5</button>
+            </form>
+        </div>
+
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="logoutuser">
-                <button type="submit" class="btn btn-secondary">Logout</button></a>
+                <button type="submit" class="btn btn-secondary">Logout</button>
             </form>
         </div>
     </div>
 </div>
+<!-- Billed og hovedmenu END -->
 
+<!-- Title START -->
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
-        <h1 class="hovedtitle">Home</h1>
+        <h1 class="hovedtitle">Car Overview</h1>
     </div>
 </div>
+<!-- Title END -->
 
+<!-- Information START -->
 <div class="row">
-    <div class="col-md-3">
-        <h2>Hello, world!</h2>
+    <div class="col-md-2">
+
     </div>
-    <div class="col-md-3">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test</p>
+    <div class="col-md-4">
+        <c:forEach var="availablecars" items="${sessionScope.allavailablecars}">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="addtoorder">
+                <c:out value="CarID: ${availablecars.id}"/>
+                    <br><c:out value="Brand: ${availablecars.brand}"/>
+                    <c:out value=" - Model: ${availablecars.model}"/>
+                    <br><c:out value="Category: ${availablecars.category}"/>
+                    <br><c:out value="Information:"/>
+                    <br><c:out value="Build Year:  ${availablecars.buildyear}, Horsepower: ${availablecars.horsepower}, Milage ${availablecars.milage}, Weight: ${availablecars.weight}"/>
+                    <br><c:out value="Price: ${availablecars.price}"/>
+                <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                <input type="hidden" name="carid" value="${availablecars.id}">
+                    <br><button type="submit" class="btn btn-secondary">Add To Bucket</button>
+            </form>
+            <br>
+        </c:forEach>
     </div>
-    <div class="col-md-6">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test igen igen igen igen igen igen igen</p>
-        <p class="title">Tester igen</p>
+    <div class="col-md-4">
+        <c:forEach var="availablecarpictures" items="${sessionScope.allavailablecars}">
+            <div class="container" style="position: relative;">
+                <img class="d-block w-100" style="height: 50%; border:2px solid black;" src="${pageContext.request.contextPath}${availablecarpictures.imagename}" alt="${availablecarpictures.id}">
+            </div>
+            <br>
+        </c:forEach>
+    </div>
+    <div class="col-md-2">
+
     </div>
 </div>
+<!-- Information END -->
 
 <div class ="row" style="background-color: rgba(29,29,29,0.91);">
     <div class="col-md-6" style="left:15px">
         <h3 class="form-text">Contact Support</h3>
-        <form action="ServletUser" method="post">
+        <form action="FrontController" method="post">
+            <input type="hidden" name="target" value="contactmessage">
+            <input type="hidden" name="name" id="name" value="${sessionScope.username}">
+            <input type="hidden" name="email" id="email" value="${sessionScope.email}">
             <div class="form-group">
-                <label class="form-text" for="exampleInputPassword1">Name</label>
-                <input type="name" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
-            </div>
-            <div class="form-group" style="top:10px">
-                <label class="form-text" for="exampleInputEmail2">Email address</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Email">
-                <small id="emailHelp2" class="form-text">We'll never share your email with anyone else.</small>
+                <label class="form-text" for="InputTopic">Topic</label>
+                <input type="text" name="topic" class="form-control" id="InputTopic" placeholder="Topic">
             </div>
             <div class="form-group">
                 <label class="form-text" for="exampleTextarea">Enter message</label>

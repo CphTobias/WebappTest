@@ -73,4 +73,19 @@ public class CarMapper {
         }
         return null;
     }
+
+    public List<Car> findAvailableCars() {
+        try(Connection conn = getConnection()) {
+            PreparedStatement s = conn.prepareStatement(
+                    "SELECT * FROM cars WHERE available = 1;");
+            ResultSet rs = s.executeQuery();
+            ArrayList<Car> cars = new ArrayList<>();
+            while(rs.next()) {
+                cars.add(loadCar(rs));
+            }
+            return cars;
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

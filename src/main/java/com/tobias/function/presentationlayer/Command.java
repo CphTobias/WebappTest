@@ -2,7 +2,9 @@ package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Admin.*;
+import com.tobias.function.presentationlayer.Customer.AddToOrder;
 import com.tobias.function.presentationlayer.Customer.ContactMessageMade;
+import com.tobias.function.presentationlayer.Customer.GetAllCars;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +35,8 @@ public abstract class Command {
         commands.put("logoutuser", new Logout());
         commands.put("closeoffer", new CloseOffer());
         commands.put("addspecialoffer", new CreateSpecialOffer());
+        commands.put("getallcars", new GetAllCars());
+        commands.put("addtoorder", new AddToOrder());
     }
 
     /*
