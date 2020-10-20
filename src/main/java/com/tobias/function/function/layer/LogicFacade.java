@@ -99,6 +99,13 @@ public class LogicFacade {
         }
     }
 
+    public User findUser(String userID){
+        UserMapper userMapper = new UserMapper();
+        int newUserID = Integer.parseInt(userID);
+        User tempUser = userMapper.findUser(newUserID);
+        return tempUser;
+    }
+
 //---- USERS END ----
 
 //---- CARS START ----

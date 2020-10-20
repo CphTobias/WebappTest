@@ -1,6 +1,7 @@
 package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.entities.Car;
+import com.tobias.function.function.entities.Order;
 import com.tobias.function.function.entities.SpecialOffers;
 import com.tobias.function.function.entities.User;
 import com.tobias.function.function.layer.InvalidPassword;
@@ -44,13 +45,11 @@ public class Login extends Command {
         }
 
         HttpSession session = request.getSession();
-        int getrank = 1;
-        String ranked = "1";
+        int getrank;
+        String ranked;
 
-        if (user != null){
-            getrank = user.isRanked();
-            ranked = Integer.toString(user.isRanked());
-        }
+        getrank = user.isRanked();
+        ranked = Integer.toString(user.isRanked());
 
         if (getrank == 10){
             session.setAttribute("rank10", ranked);
@@ -83,6 +82,15 @@ public class Login extends Command {
             session.setAttribute("specialcar", soImages);
         }
 
+        /*
+        Finds the users current preorder and the amount of cars in the order
+         */
+        Order preorder = logicFacade.findPreOrder(String.valueOf(user.getId()));
+        String[] newCarID = preorder.getCarID().split(",");
+        int carAmount = newCarID.length;
+
+
+        session.setAttribute("preorderamount", carAmount);
         session.setAttribute("email",user.getEmail());
         session.setAttribute("user", user);
         session.setAttribute("username", username);// ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke

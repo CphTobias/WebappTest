@@ -5,6 +5,7 @@ import com.tobias.function.presentationlayer.Admin.*;
 import com.tobias.function.presentationlayer.Customer.AddToOrder;
 import com.tobias.function.presentationlayer.Customer.ContactMessageMade;
 import com.tobias.function.presentationlayer.Customer.GetAllCars;
+import com.tobias.function.presentationlayer.Customer.GetBasket;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,7 @@ public abstract class Command {
         commands.put("addspecialoffer", new CreateSpecialOffer());
         commands.put("getallcars", new GetAllCars());
         commands.put("addtoorder", new AddToOrder());
+        commands.put("getbasket", new GetBasket());
     }
 
     /*

@@ -39,10 +39,8 @@
         </div>
 
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="getallcars">
-                <button type="submit" class="btn btn-secondary">Cars</button>
-            </form>
+            <a class="two" href="FrontController?target=redirect&destination=RentACar">
+                <button type="submit" style="left:20px" class="btn btn-secondary">Cars</button></a>
         </div>
 
         <c:forEach var="adminrole" items="${sessionScope.adminrole}">
@@ -55,8 +53,7 @@
         <div class="btn-group" role="group" aria-label="First group" style="top:6px; left:20px">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="getbasket">
-                <input type="hidden" name="userid" value="${sessionScope.user.id}">
-                <button type="submit" class="btn btn-secondary">Basket: ${sessionScope.preorderamount}</button>
+                <button type="submit" class="btn btn-secondary">Basket - 5</button>
             </form>
         </div>
 
@@ -73,75 +70,55 @@
 <!-- Title START -->
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
-        <h1 class="hovedtitle">Home</h1>
+        <h1 class="hovedtitle">Bucket</h1>
     </div>
 </div>
 <!-- Title END -->
 
-<!-- Special offers START -->
-<div class="row">
-    <div class="col-md-1">
-
-    </div>
-    <div class="col-md-10">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <c:forEach var="specialOffer" items="${sessionScope.specialoffer}">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="${specialOffer.id}"></li>
-                </c:forEach>
-            </ol>
-            <div class="carousel-inner">
-                <!-- Insert First picture here -->
-                <div class="carousel-item active">
-                    <div class="container" style="position: relative;">
-                        <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}/images/Banner.jpg" alt="First slide">
-                    </div>
-                </div>
-                <c:forEach var="specialImage" items="${sessionScope.specialcar}">
-                    <div class="carousel-item">
-                        <div class="container" style="position: relative;">
-                            <img class="d-block w-100" style="height:400px; border:2px solid black;" src="${pageContext.request.contextPath}${specialImage.imagename}" alt="${specialImage.id}">
-                            <div class="text-block"
-                                 style="position: absolute;bottom: 20px;right: 20px;background-color: black;
-                                 color: white;padding-left: 20px;padding-right: 20px;">
-                                <h4>Offer waiting</h4>
-                                <p>This is the offer</p>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <br>
-        </div>
-    </div>
-    <div class="col-md-1">
-
-    </div>
-</div>
-<!-- Special offers END -->
-
 <!-- Information START -->
-<div class="row">
-    <div class="col-md-3">
-        <h2>Hello, ${sessionScope.username}</h2>
+<div class="row" style="top:-25px">
+    <div class="col-md-2">
+
     </div>
-    <div class="col-md-3">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test</p>
+    <div class="col-md-8">
+        <table class="comonfield1" colspan="3%" align="center" width="1000">
+            <tr style="font-weight:bold">
+                <td><c:out value="Brand"/></td>
+                <td><c:out value="Model"/></td>
+                <td><c:out value="Category"/></td>
+                <td><c:out value="Build Year"/></td>
+                <td><c:out value="Price"/></td>
+                <td><c:out value="Remove Item"/></td>
+            </tr>
+        <c:forEach var="bucket" items="${sessionScope.allpreorders}">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="removecarid">
+                <input type="hidden" name="carid" value="${bucket.id}">
+                <div style="text-align: justify">
+                    <tr style="background-color: #999999; border:1px solid black">
+                        <td><c:out value="${bucket.brand}"/></td>
+                        <td><c:out value="${bucket.model}"/></td>
+                        <td><c:out value="${bucket.category}"/></td>
+                        <td><c:out value="${bucket.buildyear}"/></td>
+                        <td><c:out value="${bucket.price}"/></td>
+                        <td><button type="submit" class="btn btn-secondary btn-sm">Select Item</button></td>
+                    </tr>
+                </div>
+            </form>
+            <br>
+        </c:forEach>
+        </table>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="target" value="payorder">
+            <input type="hidden" name="orderprice" value="${sessionScope.orderprice}">
+            <input type="hidden" name="order" value="${sessionScope.preorder}">
+            <br>
+            <h4 style="text-align: right">Price: ${sessionScope.orderprice} - <button type="submit" class="btn btn-secondary">Buy Order</button></h4>
+            <br>
+        </form>
     </div>
-    <div class="col-md-6">
-        <h2>Hello, world!</h2>
-        <p>Hej med dig dette er en test igen igen igen igen igen igen igen</p>
-        <p class="title">Tester igen</p>
+    <div class="col-md-2">
+
     </div>
 </div>
 <!-- Information END -->

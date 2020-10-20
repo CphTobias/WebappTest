@@ -55,7 +55,8 @@
         <div class="btn-group" role="group" aria-label="First group" style="top:6px; left:20px">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="getbasket">
-                <button type="submit" class="btn btn-secondary">Basket - 5</button>
+                <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                <button type="submit" class="btn btn-secondary">Basket: ${sessionScope.preorderamount}</button>
             </form>
         </div>
 

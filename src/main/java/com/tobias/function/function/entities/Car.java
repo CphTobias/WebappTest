@@ -32,6 +32,23 @@ public class Car {
         this.available = available;
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", horsepower=" + horsepower +
+                ", brand='" + brand + '\'' +
+                ", price=" + price +
+                ", category='" + category + '\'' +
+                ", model='" + model + '\'' +
+                ", weight=" + weight +
+                ", buildyear=" + buildyear +
+                ", milage=" + milage +
+                ", imagename='" + imagename + '\'' +
+                ", available=" + available +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
