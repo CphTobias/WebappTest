@@ -7,6 +7,7 @@ import com.tobias.function.function.layer.LoginSampleException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class AddToOrder extends com.tobias.function.presentationlayer.Command {
@@ -17,19 +18,18 @@ public class AddToOrder extends com.tobias.function.presentationlayer.Command {
         Takes a carID and the current sessions userid
         Creates an order, and then places the car into the order
          */
-
         LogicFacade logicFacade = new LogicFacade();
         String userID = request.getParameter("userid");
         String carID = request.getParameter("carid");
         String newCarID = carID + ",";
         Order order = logicFacade.findPreOrder(userID);
         String carIDs;
+
         if(order == null){
             logicFacade.createOrder(userID);
             logicFacade.updatePreOrder(newCarID, userID);
         } else {
             carIDs = order.getCarID();
-            carIDs.replace("null","");
             logicFacade.updatePreOrder(carIDs, newCarID, userID);
         }
 

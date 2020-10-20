@@ -272,10 +272,11 @@ public class LogicFacade {
 //---- CONTACT MESSAGES END ----
 
 //---- ORDERS START ----
-    public void createOrder(String userID) {
+    public Order createOrder(String userID) {
         OrderHandler orderHandler = new OrderHandler();
         int newUserID = Integer.parseInt(userID);
-        orderHandler.createOrder(newUserID);
+        Order order = orderHandler.createOrder(newUserID);
+        return order;
     }
 
     /*
@@ -314,6 +315,46 @@ public class LogicFacade {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public Order getPreOrder(String preOrderUserID) {
+        Order preorder = findPreOrder(preOrderUserID);
+
+        if(preorder == null || preorder.getCarID().equals("")){
+            return null;
+        } else {
+            return preorder;
+        }
+    }
+
+    public ArrayList<Car> getPreOrderCars(Order getPreOrder) {
+        ArrayList<Car> carsInPreorder = new ArrayList<>();
+        if(getPreOrder == null){
+            return null;
+        } else {
+            String[] splitCars = getPreOrder.getCarID().split(",");
+            int newS;
+
+            for (String s : splitCars) {
+                newS = Integer.parseInt(s);
+                Car car = findCar(newS);
+                carsInPreorder.add(car);
+            }
+        }
+        return carsInPreorder;
+    }
+
+    public double getPreOrderPrice(ArrayList<Car> preOrderCars) {
+        double price = 0;
+        if(preOrderCars == null){
+            return 0;
+        } else {
+            for (Car c : preOrderCars) {
+                double oldprice = price;
+                price = oldprice + c.getPrice();
+            }
+        }
+        return price;
     }
 //---- ORDERS END ----
 }

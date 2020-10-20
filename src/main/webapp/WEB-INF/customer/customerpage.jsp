@@ -56,7 +56,7 @@
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="getbasket">
                 <input type="hidden" name="userid" value="${sessionScope.user.id}">
-                <button type="submit" class="btn btn-secondary">Basket: ${sessionScope.preorderamount}</button>
+                <button type="submit" class="btn btn-secondary">Basket</button>
             </form>
         </div>
 

@@ -2,10 +2,7 @@ package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Admin.*;
-import com.tobias.function.presentationlayer.Customer.AddToOrder;
-import com.tobias.function.presentationlayer.Customer.ContactMessageMade;
-import com.tobias.function.presentationlayer.Customer.GetAllCars;
-import com.tobias.function.presentationlayer.Customer.GetBasket;
+import com.tobias.function.presentationlayer.Customer.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +36,7 @@ public abstract class Command {
         commands.put("getallcars", new GetAllCars());
         commands.put("addtoorder", new AddToOrder());
         commands.put("getbasket", new GetBasket());
+        commands.put("removecarid", new RemoveFromOrder());
     }
 
     /*

@@ -39,8 +39,10 @@
         </div>
 
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <a class="two" href="FrontController?target=redirect&destination=RentACar">
-                <button type="submit" style="left:20px" class="btn btn-secondary">Cars</button></a>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getallcars">
+                <button type="submit" class="btn btn-secondary">Cars</button>
+            </form>
         </div>
 
         <c:forEach var="adminrole" items="${sessionScope.adminrole}">
@@ -53,7 +55,8 @@
         <div class="btn-group" role="group" aria-label="First group" style="top:6px; left:20px">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="getbasket">
-                <button type="submit" class="btn btn-secondary">Basket - 5</button>
+                <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                <button type="submit" class="btn btn-secondary">Basket</button>
             </form>
         </div>
 
@@ -90,9 +93,11 @@
                 <td><c:out value="Price"/></td>
                 <td><c:out value="Remove Item"/></td>
             </tr>
-        <c:forEach var="bucket" items="${sessionScope.allpreorders}">
+        <c:forEach var="bucket" items="${requestScope.allpreorders}">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="removecarid">
+                <input type="hidden" name="preordercarid" value="${requestScope.preorder.carID}">
+                <input type="hidden" name="preorderuserid" value="${requestScope.preorder.userID}">
                 <input type="hidden" name="carid" value="${bucket.id}">
                 <div style="text-align: justify">
                     <tr style="background-color: #999999; border:1px solid black">
@@ -100,8 +105,8 @@
                         <td><c:out value="${bucket.model}"/></td>
                         <td><c:out value="${bucket.category}"/></td>
                         <td><c:out value="${bucket.buildyear}"/></td>
-                        <td><c:out value="${bucket.price}"/></td>
-                        <td><button type="submit" class="btn btn-secondary btn-sm">Select Item</button></td>
+                        <td><c:out value="${bucket.price}$"/></td>
+                        <td><button type="submit" class="btn btn-secondary btn-sm">Remove Item</button></td>
                     </tr>
                 </div>
             </form>
@@ -111,10 +116,10 @@
 
         <form action="FrontController" method="post">
             <input type="hidden" name="target" value="payorder">
-            <input type="hidden" name="orderprice" value="${sessionScope.orderprice}">
-            <input type="hidden" name="order" value="${sessionScope.preorder}">
+            <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
+            <input type="hidden" name="order" value="${requestScope.preorder}">
             <br>
-            <h4 style="text-align: right">Price: ${sessionScope.orderprice} - <button type="submit" class="btn btn-secondary">Purchase Order</button></h4>
+            <h4 style="text-align: right">Price: ${requestScope.orderprice}$ - <button type="submit" class="btn btn-secondary">Purchase Order</button></h4>
             <br>
         </form>
     </div>

@@ -43,8 +43,6 @@ public class OrderHandler {
             ps2.setInt(2, userID);
             ps2.executeUpdate();
             ps2.close();
-        } catch (SQLException | ClassNotFoundException se) {
-            throw se;
         }
     }
 }

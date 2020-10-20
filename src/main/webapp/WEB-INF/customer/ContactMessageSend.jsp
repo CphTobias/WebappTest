@@ -15,32 +15,57 @@
 <body>
 
 
-<!-- Billed og hovedmenu -->
+<!-- Billed og hovedmenu START -->
 <div class="row" style="background-color: rgba(29,29,29,0.91);">
     <div class =col-md-1>
         <p></p>
     </div>
-    <div class =col-md-7>
-        <h1><a class="one" href="FrontController?target=redirect&destination=index">TobyCars</a></h1>
+    <div class =col-md-6>
+        <h1><a class="one" href="FrontController?target=redirect&destination=customerpage">TobyCars</a></h1>
     </div>
-    <div class =col-md-4>
+    <div class =col-md-5>
         <p></p>
         <div class="btn-group" role="group" aria-label="Main menu" style="top:6px;">
-            <a class="two" href="FrontController?target=redirect&destination=index">
-                <button type="button" class="btn btn-secondary">Home</button></a>
+            <a class="two" href="FrontController?target=redirect&destination=customerpage">
+                <button type="submit" class="btn btn-secondary">Home</button></a>
         </div>
+
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
             <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
-                <button type="button" style="left:20px" class="btn btn-secondary">FAQ</button></a>
+                <button type="submit" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
+
+        <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getallcars">
+                <button type="submit" class="btn btn-secondary">Cars</button>
+            </form>
+        </div>
+
+        <c:forEach var="adminrole" items="${sessionScope.adminrole}">
+            <div class="btn-group" role="group" aria-label="adminpage" style="top:6px; left:20px">
+                <a class="two" href="FrontController?target=redirect&destination=adminpage">
+                    <button type="submit" class="btn btn-secondary">Admin Page</button></a>
+            </div>
+        </c:forEach>
+
+        <div class="btn-group" role="group" aria-label="First group" style="top:6px; left:20px">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getbasket">
+                <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                <button type="submit" class="btn btn-secondary">Basket</button>
+            </form>
+        </div>
+
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="logoutuser">
-                <button type="submit" class="btn btn-secondary">Logout</button></a>
+                <button type="submit" class="btn btn-secondary">Logout</button>
             </form>
         </div>
     </div>
 </div>
+<!-- Billed og hovedmenu END -->
 
 <div class="row">
     <div class="col-md-12" style="top:-21px;">
