@@ -7,7 +7,7 @@ public class Connector {
     // JDBC driver name and database URL
     private static Connection singleton;
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost/webapp";
+    private static final String DB_URL = "jdbc:mysql://localhost/webapp?serverTimezone=CET";
 
 
     //  Database credentials
