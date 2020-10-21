@@ -39,8 +39,10 @@
         </div>
 
         <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
-            <a class="two" href="FrontController?target=redirect&destination=RentACar">
-                <button type="submit" style="left:20px" class="btn btn-secondary">Cars</button></a>
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="getallcars">
+                <button type="submit" class="btn btn-secondary">Cars</button>
+            </form>
         </div>
 
         <c:forEach var="adminrole" items="${sessionScope.adminrole}">
@@ -53,7 +55,8 @@
         <div class="btn-group" role="group" aria-label="First group" style="top:6px; left:20px">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="getbasket">
-                <button type="submit" class="btn btn-secondary">Basket - 5</button>
+                <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                <button type="submit" class="btn btn-secondary">Basket</button>
             </form>
         </div>
 

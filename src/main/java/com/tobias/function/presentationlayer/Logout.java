@@ -1,5 +1,6 @@
 package com.tobias.function.presentationlayer;
 
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -16,9 +17,15 @@ public class Logout extends Command {
         Called when user clicks the Logout button
         It is done so that the session instances that might have been set during a login are not there anymore.
          */
+        LogicFacade logicFacade = new LogicFacade();
+        String userid = request.getParameter("userid");
+        String answer = request.getParameter("logoutans");
+
+        if(answer.equals("No")){
+            logicFacade.deletePreOrder(userid);
+        }
 
         HttpSession session = request.getSession();
-
         session.invalidate();
 
         return "index";

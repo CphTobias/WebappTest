@@ -356,5 +356,11 @@ public class LogicFacade {
         }
         return price;
     }
+
+    public void deletePreOrder(String userid) {
+        OrderHandler orderHandler = new OrderHandler();
+        int newUserID = Integer.parseInt(userid);
+        orderHandler.deletePreOrder(newUserID);
+    }
 //---- ORDERS END ----
 }
