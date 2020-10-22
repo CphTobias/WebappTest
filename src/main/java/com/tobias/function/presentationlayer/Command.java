@@ -37,6 +37,8 @@ public abstract class Command {
         commands.put("addtoorder", new AddToOrder());
         commands.put("getbasket", new GetBasket());
         commands.put("removecarid", new RemoveFromOrder());
+        commands.put("formmoney", new ManageMoney());
+        commands.put("payorder", new PayOrder());
     }
 
     /*

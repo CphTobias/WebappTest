@@ -34,10 +34,12 @@ public class User {
     private final byte[] salt;
     private final byte[] secret;
     private String role;
+    private final double bank;
     private boolean banned;
     private int ranked;
 
-    public User(int id, String name, String email, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, boolean banned, int ranked) {
+
+    public User(int id, String name, String email, LocalDateTime createdAt, byte[] salt, byte[] secret, String role, double bank, boolean banned, int ranked) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -45,6 +47,7 @@ public class User {
         this.salt = salt;
         this.secret = secret;
         this.role = role;
+        this.bank = bank;
         this.banned = banned;
         this.ranked = ranked;
     }
@@ -104,6 +107,10 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public double getBank() {
+        return bank;
     }
 
     public void setRole(String role) {

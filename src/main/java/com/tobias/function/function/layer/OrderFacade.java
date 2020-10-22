@@ -98,4 +98,10 @@ public class OrderFacade {
         int newUserID = Integer.parseInt(userid);
         dbOrder.deletePreOrder(newUserID);
     }
+
+    public Order orderPurchased(String userID) {
+        int newUserID = Integer.parseInt(userID);
+        Order tempOrder = dbOrder.orderPurchased(newUserID);
+        return tempOrder;
+    }
 }

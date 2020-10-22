@@ -134,6 +134,7 @@
                     <select class="form-control" name="adminselect" id="useroptionselect">
                         <option>Show Users</option>
                         <option>Change Moderator Access</option>
+                        <option>Manage User Money</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-secondary">Submit</button>
@@ -262,6 +263,31 @@
             </form>
         </c:forEach>
         <!-- Update User ROle END -->
+
+        <!-- Manage Money Of User START -->
+        <c:forEach var="managemoney" items="${requestScope.managemoney}">
+        <br>
+        <h3 class="title">Add Money</h3>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="target" value="formmoney">
+            <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
+            <div class="form-group">
+                <label for="InputName">Username</label>
+                <input type="text" name="name" class="form-control" id="InputName" placeholder="Username">
+            </div>
+
+            <div class="form-group">
+                <label for="InputMoney">Amount - $</label>
+                <input type="text" name="amount" class="form-control" id="InputMoney" placeholder="$">
+            </div>
+
+            <div class="form-group">
+                <button style="margin:5px;" name="moneyans" value="add" type="submit" class="btn btn-secondary">Add Money</button>
+                <button style="margin:5px;" name="moneyans" value="take" type="submit" class="btn btn-secondary">Take Money</button>
+            </div>
+        </form>
+        </c:forEach>
+        <!-- Manage Money Of User START -->
         <!-- USERS END -->
 
         <!-- CARS START -->

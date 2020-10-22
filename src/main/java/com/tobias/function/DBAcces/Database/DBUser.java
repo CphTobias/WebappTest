@@ -102,6 +102,7 @@ public class DBUser {
                 rs.getBytes("users.salt"),
                 rs.getBytes("users.secret"),
                 rs.getString("users.role"),
+                rs.getDouble("users.bank"),
                 rs.getBoolean("users.banned"),
                 rs.getInt("users.ranked"));
     }
@@ -189,5 +190,17 @@ public class DBUser {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public User updateUserBank(String username, double newBank) throws SQLException, ClassNotFoundException {
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "UPDATE users SET bank = ? WHERE name = ?;");
+            ps2.setDouble(1, newBank);
+            ps2.setString(2, username);
+            ps2.executeUpdate();
+            ps2.close();
+        }
+        return findUser(username);
     }
 }

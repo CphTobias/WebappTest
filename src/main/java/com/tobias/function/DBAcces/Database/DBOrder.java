@@ -36,7 +36,7 @@ public class DBOrder {
     public void updatePreOrder(String carID, int userID) throws SQLException, ClassNotFoundException {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(
-                    "UPDATE orders SET carid = ? WHERE userid = ?;");
+                    "UPDATE orders SET carid = ? WHERE userid = ? AND paid = 0;");
             ps2.setString(1, carID);
             ps2.setInt(2, userID);
             ps2.executeUpdate();
@@ -101,5 +101,18 @@ public class DBOrder {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Order orderPurchased(int newUserID) {
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement ps2 = conn.prepareStatement(
+                    "UPDATE orders SET paid = 1 WHERE userid = ?;");
+            ps2.setInt(1, newUserID);
+            ps2.executeUpdate();
+            ps2.close();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return findOrder(newUserID);
     }
 }

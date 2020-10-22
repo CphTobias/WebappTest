@@ -93,6 +93,14 @@
 </div>
 <!-- Title END -->
 
+<c:forEach var="nomoney" items="${requestScope.paymentfailed}">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 style="text-align: center">${nomoney}</h4>
+        </div>
+    </div>
+</c:forEach>
+
 <!-- Information START -->
 <div class="row" style="top:-25px">
     <div class="col-md-2">
@@ -132,7 +140,8 @@
         <form action="FrontController" method="post">
             <input type="hidden" name="target" value="payorder">
             <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
-            <input type="hidden" name="order" value="${requestScope.preorder}">
+            <input type="hidden" name="userid" value="${requestScope.preorder.userID}">
+            <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
             <br>
             <h4 style="text-align: right">Price: ${requestScope.orderprice}$ - <button type="submit" class="btn btn-secondary">Purchase Order</button></h4>
             <br>

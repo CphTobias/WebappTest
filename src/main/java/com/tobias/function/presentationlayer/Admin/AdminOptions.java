@@ -54,6 +54,9 @@ public class AdminOptions extends Command {
             case "Change Moderator Access":
                 request.setAttribute("allusers",select);
                 break;
+            case "Manage User Money":
+                request.setAttribute("managemoney", select);
+                break;
             default: break;
         }
 

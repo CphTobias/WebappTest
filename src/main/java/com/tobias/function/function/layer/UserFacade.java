@@ -108,4 +108,23 @@ public class UserFacade {
         User tempUser = dbUser.findUser(newUserID);
         return tempUser;
     }
+
+    public User findUserName(String userName){
+        User tempUser = dbUser.findUser(userName);
+        return tempUser;
+    }
+
+    /*
+    Updates the users bank.
+    Called by ManageMoney, and calls the DBUser.
+     */
+    public User updateUserBank(String username, double newBank) {
+        User retUser = null;
+        try {
+            retUser = dbUser.updateUserBank(username, newBank);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return retUser;
+    }
 }
