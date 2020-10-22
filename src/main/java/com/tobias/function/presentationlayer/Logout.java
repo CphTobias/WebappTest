@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -21,7 +20,7 @@ public class Logout extends Command {
         String answer = request.getParameter("logoutans");
 
         if(answer.equals("No")){
-            logicFacade.deletePreOrder(userid);
+            orderFacade.deletePreOrder(userid);
         }
 
         HttpSession session = request.getSession();

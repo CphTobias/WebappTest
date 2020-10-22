@@ -2,7 +2,6 @@ package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.entities.User;
 import com.tobias.function.function.entities.UserExists;
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ public class Register extends Command {
         if (password1.equals(password2)) {
             User user = null;
             try {
-                user = logicFacade.createUser(username, email, password1);
+                user = userFacade.createUser(username, email, password1);
             } catch (UserExists userExists) {
                 throw new LoginSampleException("User already exists");
             }

@@ -3,7 +3,6 @@ package com.tobias.function.presentationlayer;
 import com.tobias.function.function.entities.Car;
 import com.tobias.function.function.entities.SpecialOffers;
 import com.tobias.function.function.entities.User;
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,7 @@ public class Login extends Command {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = null;
-        user = logicFacade.login(username, password);
+        user = userFacade.login(username, password);
 
         if (user == null){
             String userbanned = "Username or password was incorrect, or your user has been banned";
@@ -67,11 +66,11 @@ public class Login extends Command {
         First we find out specialoffers.
         Create a List of Cars and find every car that has been set to a special offer.
          */
-        List<SpecialOffers> specialOffers = logicFacade.findSpecialOffers();
+        List<SpecialOffers> specialOffers = specialOfferFacade.findSpecialOffers();
         if(specialOffers != null) {
             ArrayList<Car> soImages = new ArrayList<>();
             for (SpecialOffers s : specialOffers) {
-                Car car = logicFacade.findCar(s.getCarID());
+                Car car = carFacade.findCar(s.getCarID());
                 soImages.add(car);
             }
             session.setAttribute("specialoffer", specialOffers);

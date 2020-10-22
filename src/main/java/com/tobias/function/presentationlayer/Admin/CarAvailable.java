@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Admin;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -23,10 +22,10 @@ public class CarAvailable extends Command {
         String newPrice = request.getParameter("changeprice");
 
         if(newPrice.chars().findAny().isPresent()){
-            logicFacade.setCarToClosed(carid, caravailable);
-            logicFacade.updatePrice(carid, newPrice);
+            carFacade.setCarToClosed(carid, caravailable);
+            carFacade.updatePrice(carid, newPrice);
         } else {
-            logicFacade.setCarToClosed(carid, caravailable);
+            carFacade.setCarToClosed(carid, caravailable);
         }
 
         return "admin/admininterface";

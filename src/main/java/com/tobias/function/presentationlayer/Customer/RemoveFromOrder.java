@@ -2,7 +2,6 @@ package com.tobias.function.presentationlayer.Customer;
 
 import com.tobias.function.function.entities.Car;
 import com.tobias.function.function.entities.Order;
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -39,10 +38,10 @@ public class RemoveFromOrder extends com.tobias.function.presentationlayer.Comma
             cars = "";
         }
 
-        logicFacade.updatePreOrder(cars,preOrderUserID);
-        Order getPreOrder = logicFacade.getPreOrder(preOrderUserID);
-        ArrayList<Car> preOrderCars = logicFacade.getPreOrderCars(getPreOrder);
-        double preOrderPrice = logicFacade.getPreOrderPrice(preOrderCars);
+        orderFacade.updatePreOrder(cars,preOrderUserID);
+        Order getPreOrder = orderFacade.getPreOrder(preOrderUserID);
+        ArrayList<Car> preOrderCars = carFacade.getPreOrderCars(getPreOrder);
+        double preOrderPrice = orderFacade.getPreOrderPrice(preOrderCars);
 
         request.setAttribute("orderprice",preOrderPrice);
         request.setAttribute("allpreorders",preOrderCars);

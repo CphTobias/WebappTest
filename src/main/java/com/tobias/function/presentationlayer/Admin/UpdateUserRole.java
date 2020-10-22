@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Admin;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -22,7 +21,7 @@ public class UpdateUserRole extends Command {
         String userRole = request.getParameter("userrole");
         String userRank = request.getParameter("userrank");
 
-        logicFacade.updateRole(userName,userRole,userRank);
+        userFacade.updateRole(userName,userRole,userRank);
 
         return "admin/admininterface";
     }

@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Admin;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -21,7 +20,7 @@ public class MessageAnswered extends Command {
         String messageID = request.getParameter("messages");
         String messageAnswered = request.getParameter("answered");
 
-        logicFacade.setMessageToClosed(messageID, messageAnswered);
+        messageFacade.setMessageToClosed(messageID, messageAnswered);
 
         return "admin/admininterface";
     }

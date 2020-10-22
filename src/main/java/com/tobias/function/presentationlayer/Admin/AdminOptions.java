@@ -3,7 +3,6 @@ package com.tobias.function.presentationlayer.Admin;
 import com.tobias.function.function.entities.Car;
 import com.tobias.function.function.entities.ContactMessage;
 import com.tobias.function.function.entities.SpecialOffers;
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -31,22 +30,22 @@ public class AdminOptions extends Command {
                 request.setAttribute("addcar",select);
                 break;
             case "Manage Car Availability":
-                List<Car> cars = logicFacade.getAllCars();
+                List<Car> cars = carFacade.getAllCars();
                 request.setAttribute("available",cars);
                 break;
             case "Manage Special Offers":
-                List<SpecialOffers> specialOffers = logicFacade.findSpecialOffers();
-                List<Car> allCars = logicFacade.getAllCars();
+                List<SpecialOffers> specialOffers = specialOfferFacade.findSpecialOffers();
+                List<Car> allCars = carFacade.getAllCars();
                 request.setAttribute("allcars",allCars);
                 request.setAttribute("showactiveoffers", specialOffers);
                 request.setAttribute("addspecialoffer", select);
                 break;
             case "Active Messages":
-                List<ContactMessage> cMessageActive = logicFacade.getContactMessages(select);
+                List<ContactMessage> cMessageActive = messageFacade.getContactMessages(select);
                 request.setAttribute("activeCM", cMessageActive);
                 break;
             case "Closed Messages":
-                List<ContactMessage> cMessageClosed = logicFacade.getContactMessages(select);
+                List<ContactMessage> cMessageClosed = messageFacade.getContactMessages(select);
                 request.setAttribute("activeCM", cMessageClosed);
                 break;
             case "Show Users":

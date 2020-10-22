@@ -1,7 +1,6 @@
 package com.tobias.function.presentationlayer.Customer;
 
 import com.tobias.function.function.entities.ContactMessage;
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -25,7 +24,7 @@ public class ContactMessageMade extends Command {
         String email = request.getParameter("email");
         String message = request.getParameter("message");
 
-        ContactMessage cMessage = logicFacade.createContactMessage(LocalDateTime.now(),username, email,topic, message);
+        ContactMessage cMessage = messageFacade.createContactMessage(LocalDateTime.now(),username, email,topic, message);
 
         String formatedTime = " " + cMessage.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_TIME);
         String formatedName = " " + cMessage.getName();

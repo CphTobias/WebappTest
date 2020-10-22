@@ -1,7 +1,6 @@
 package com.tobias.function.presentationlayer.Customer;
 
 import com.tobias.function.function.entities.Order;
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -20,15 +19,15 @@ public class AddToOrder extends com.tobias.function.presentationlayer.Command {
         String userID = request.getParameter("userid");
         String carID = request.getParameter("carid");
         String newCarID = carID + ",";
-        Order order = logicFacade.findPreOrder(userID);
+        Order order = orderFacade.findPreOrder(userID);
         String carIDs;
 
         if(order == null){
-            logicFacade.createOrder(userID);
-            logicFacade.updatePreOrder(newCarID, userID);
+            orderFacade.createOrder(userID);
+            orderFacade.updatePreOrder(newCarID, userID);
         } else {
             carIDs = order.getCarID();
-            logicFacade.updatePreOrder(carIDs, newCarID, userID);
+            orderFacade.updatePreOrder(carIDs, newCarID, userID);
         }
 
         return "customer/RentACar";

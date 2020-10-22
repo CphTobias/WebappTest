@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Admin;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ public class CloseOffer extends com.tobias.function.presentationlayer.Command {
          */
 
         String offerID = request.getParameter("carid");
-        logicFacade.deleteSpecialOffer(offerID);
+        specialOfferFacade.deleteSpecialOffer(offerID);
         return "admin/admininterface";
     }
 }

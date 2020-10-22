@@ -1,7 +1,6 @@
 package com.tobias.function.presentationlayer;
 
-import com.tobias.function.function.layer.LogicFacade;
-import com.tobias.function.function.layer.LoginSampleException;
+import com.tobias.function.function.layer.*;
 import com.tobias.function.presentationlayer.Admin.*;
 import com.tobias.function.presentationlayer.Customer.*;
 
@@ -52,9 +51,17 @@ public abstract class Command {
         return commands.getOrDefault(targetName, new UnknownCommand() );   // unknowncommand er default.
     }
 
-    protected final static LogicFacade logicFacade;
+    protected final static UserFacade userFacade;
+    protected final static CarFacade carFacade;
+    protected final static MessageFacade messageFacade;
+    protected final static OrderFacade orderFacade;
+    protected final static SpecialOfferFacade specialOfferFacade;
     static {
-        logicFacade = LogicFacade.getInstance();
+        userFacade = UserFacade.getInstance();
+        carFacade = CarFacade.getInstance();
+        messageFacade = MessageFacade.getInstance();
+        orderFacade = OrderFacade.getInstance();
+        specialOfferFacade = SpecialOfferFacade.getInstance();
     }
     
     /*

@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Admin;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -20,7 +19,7 @@ public class UpdateUserBan extends Command {
 
         String userID = request.getParameter("userid");
         String userBan = request.getParameter("userban");
-        logicFacade.updateUserBan(userID,userBan);
+        userFacade.updateUserBan(userID,userBan);
         return "admin/admininterface";
     }
 }

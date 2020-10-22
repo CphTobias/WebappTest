@@ -1,7 +1,6 @@
 package com.tobias.function.presentationlayer.Admin;
 
 import com.tobias.function.function.entities.User;
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -22,7 +21,7 @@ public class GetUser extends Command {
          */
 
         String userRole = request.getParameter("usersrole");
-        List<User> userList = logicFacade.findChosenUsers(userRole);
+        List<User> userList = userFacade.findChosenUsers(userRole);
         request.setAttribute("showchosenrole", userList);
         return "admin/admininterface";
     }

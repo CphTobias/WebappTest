@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Admin;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
 import javax.servlet.ServletException;
@@ -14,7 +13,7 @@ public class CreateSpecialOffer extends com.tobias.function.presentationlayer.Co
         String chosenCar = request.getParameter("offercar");
         String offer = request.getParameter("offer");
         String sideMessage = request.getParameter("sideMessage");
-        logicFacade.createSpecialOffer(chosenCar,offer,sideMessage);
+        specialOfferFacade.createSpecialOffer(chosenCar,offer,sideMessage);
         return "admin/admininterface";
     }
 }

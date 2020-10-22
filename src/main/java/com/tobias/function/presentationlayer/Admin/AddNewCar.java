@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Admin;
 
-import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
 
@@ -30,7 +29,7 @@ public class AddNewCar extends Command {
         String image = request.getParameter("image");
 
 
-        logicFacade.createCar(horsepower,brand,price,category,model,weight,buildYear,milage,image);
+        carFacade.createCar(horsepower,brand,price,category,model,weight,buildYear,milage,image);
 
         return "admin/admininterface";
     }
