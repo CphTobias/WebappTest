@@ -28,6 +28,7 @@ public class Login extends Command {
 
         If the log
          */
+        request.getServletContext().setAttribute("notloggedin", null);
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = null;
