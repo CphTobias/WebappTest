@@ -1,10 +1,8 @@
 package com.tobias.function.presentationlayer;
 
 import com.tobias.function.function.entities.Car;
-import com.tobias.function.function.entities.Order;
 import com.tobias.function.function.entities.SpecialOffers;
 import com.tobias.function.function.entities.User;
-import com.tobias.function.function.layer.InvalidPassword;
 import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 
@@ -31,8 +29,6 @@ public class Login extends Command {
 
         If the log
          */
-
-        LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = null;

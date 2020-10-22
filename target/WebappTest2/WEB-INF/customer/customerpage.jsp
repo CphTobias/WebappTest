@@ -62,6 +62,7 @@
 
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
             <button id="myBtn" class="btn btn-secondary">Logout</button>
+
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -78,6 +79,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -90,16 +92,6 @@
     </div>
 </div>
 <!-- Title END -->
-
-<!-- Logout Popup START -->
-<div class="row">
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-    </div>
-</div>
-<!-- Logout Popup END -->
 
 <!-- Special offers START -->
 <div class="row">

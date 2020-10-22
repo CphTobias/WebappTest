@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer.Customer;
 
-import com.tobias.function.DBAcces.Handlers.MessageHandler;
 import com.tobias.function.function.entities.ContactMessage;
 import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
@@ -20,8 +19,6 @@ public class ContactMessageMade extends Command {
         /*
         Called when creating a contact message. It calls the logicfacade to create a contact message.
          */
-
-        LogicFacade logicFacade = new LogicFacade();
 
         String username = request.getParameter("name");
         String topic = request.getParameter("topic");

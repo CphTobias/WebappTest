@@ -15,7 +15,6 @@ import java.util.List;
 public class GetAllCars extends Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, ServletException, IOException {
-        LogicFacade logicFacade = new LogicFacade();
         List<Car> cars = logicFacade.findAvailableCars();
         HttpSession session = request.getSession();
 

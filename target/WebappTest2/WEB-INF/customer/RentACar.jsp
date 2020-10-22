@@ -61,10 +61,25 @@
         </div>
 
         <div class="btn-group" role="group" aria-label="login" style="top:6px; left:20px">
-            <form action="FrontController" method="post">
-                <input type="hidden" name="target" value="logoutuser">
-                <button type="submit" class="btn btn-secondary">Logout</button>
-            </form>
+            <button id="myBtn" class="btn btn-secondary">Logout</button>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h4 class="form-text" style="text-align: center">Would you like to save your current order?</h4>
+                    <form action="FrontController" method="post">
+                        <input type="hidden" name="target" value="logoutuser">
+                        <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                        <br>
+                        <br>
+                        <div style="text-align: center">
+                            <button style="margin:5px;" name="logoutans" value="Yes" type="submit" class="btn btn-secondary">Yes</button>
+                            <button style="margin:5px;" name="logoutans" value="No" type="submit" class="btn btn-secondary">No</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -154,7 +169,7 @@
 
 </footer>
 
-
+<script type="text/javascript" src='<c:url value="/scripts/logout.js"/>'></script>
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

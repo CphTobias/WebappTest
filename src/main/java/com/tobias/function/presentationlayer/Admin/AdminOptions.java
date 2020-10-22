@@ -3,7 +3,6 @@ package com.tobias.function.presentationlayer.Admin;
 import com.tobias.function.function.entities.Car;
 import com.tobias.function.function.entities.ContactMessage;
 import com.tobias.function.function.entities.SpecialOffers;
-import com.tobias.function.function.entities.User;
 import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Command;
@@ -23,7 +22,7 @@ public class AdminOptions extends Command {
         Tager imod strings fra de første dropdowns fra alle admin selectsne
          */
 
-        LogicFacade logicFacade = new LogicFacade();
+
         String select = request.getParameter("adminselect");
 
         switch (select) {

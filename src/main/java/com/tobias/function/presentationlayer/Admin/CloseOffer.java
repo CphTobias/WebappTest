@@ -17,7 +17,6 @@ public class CloseOffer extends com.tobias.function.presentationlayer.Command {
         Calls the LogicFacade with a String given to us by Manage Special Offers
          */
 
-        LogicFacade logicFacade = new LogicFacade();
         String offerID = request.getParameter("carid");
         logicFacade.deleteSpecialOffer(offerID);
         return "admin/admininterface";

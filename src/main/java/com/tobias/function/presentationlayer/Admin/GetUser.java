@@ -21,7 +21,6 @@ public class GetUser extends Command {
         Retunere til Show Users Chosen
          */
 
-        LogicFacade logicFacade = new LogicFacade();
         String userRole = request.getParameter("usersrole");
         List<User> userList = logicFacade.findChosenUsers(userRole);
         request.setAttribute("showchosenrole", userList);

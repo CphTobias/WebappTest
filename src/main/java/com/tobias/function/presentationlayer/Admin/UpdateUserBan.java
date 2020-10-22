@@ -18,7 +18,6 @@ public class UpdateUserBan extends Command {
         Bliver kaldt af Show Users Chosen
          */
 
-        LogicFacade logicFacade = new LogicFacade();
         String userID = request.getParameter("userid");
         String userBan = request.getParameter("userban");
         logicFacade.updateUserBan(userID,userBan);

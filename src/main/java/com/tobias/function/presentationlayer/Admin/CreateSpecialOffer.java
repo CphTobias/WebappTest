@@ -11,7 +11,6 @@ import java.io.IOException;
 public class CreateSpecialOffer extends com.tobias.function.presentationlayer.Command {
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, ServletException, IOException {
-        LogicFacade logicFacade = new LogicFacade();
         String chosenCar = request.getParameter("offercar");
         String offer = request.getParameter("offer");
         String sideMessage = request.getParameter("sideMessage");

@@ -1,6 +1,5 @@
 package com.tobias.function.presentationlayer;
 
-import com.tobias.function.DBAcces.Handlers.UserHandler;
 import com.tobias.function.function.entities.User;
 import com.tobias.function.function.entities.UserExists;
 import com.tobias.function.function.layer.LogicFacade;
@@ -14,7 +13,6 @@ public class Register extends Command {
 
     @Override
     protected String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        LogicFacade logicFacade = new LogicFacade();
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password1 = request.getParameter("password1");

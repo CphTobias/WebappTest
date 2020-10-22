@@ -18,7 +18,6 @@ public class UpdateUserRole extends Command {
         Bliver kaldt fra Update User Role
          */
 
-        LogicFacade logicFacade = new LogicFacade();
         String userName = request.getParameter("username");
         String userRole = request.getParameter("userrole");
         String userRank = request.getParameter("userrank");

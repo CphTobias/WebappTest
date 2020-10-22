@@ -7,10 +7,45 @@ import com.tobias.function.function.entities.*;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LogicFacade {
+
+    private static LogicFacade instance;
+
+    public static LogicFacade getInstance() {
+        if (instance == null) {
+            instance = new LogicFacade(new OrderHandler(), new OrderMapper(),new CarHandler(), new CarMapper(),new MessageHandler(),new MessageMapper(),
+                    new SpecialOffersHandler(),new SpecialOffersMapper(),new UserHandler(),new UserMapper());
+        }
+        return instance;
+    }
+
+    private final OrderHandler orderHandler;
+    private final OrderMapper orderMapper;
+    private final CarHandler carHandler;
+    private final CarMapper carMapper;
+    private final MessageHandler messageHandler;
+    private final MessageMapper messageMapper;
+    private final SpecialOffersHandler specialOffersHandler;
+    private final SpecialOffersMapper specialOffersMapper;
+    private final UserHandler userHandler;
+    private final UserMapper userMapper;
+
+
+    public LogicFacade(OrderHandler orderHandler, OrderMapper orderMapper, CarHandler carHandler, CarMapper carMapper, MessageHandler messageHandler, MessageMapper messageMapper,
+                       SpecialOffersHandler specialOffersHandler, SpecialOffersMapper specialOffersMapper, UserHandler userHandler, UserMapper userMapper) {
+        this.orderHandler = orderHandler;
+        this.orderMapper = orderMapper;
+        this.carHandler = carHandler;
+        this.carMapper = carMapper;
+        this.messageHandler = messageHandler;
+        this.messageMapper = messageMapper;
+        this.specialOffersHandler = specialOffersHandler;
+        this.specialOffersMapper = specialOffersMapper;
+        this.userHandler = userHandler;
+        this.userMapper = userMapper;
+    }
 
 //---- USERS START ----
 
@@ -21,7 +56,6 @@ public class LogicFacade {
     If the password was correct it returns the user, if not correct it throws an InvalidPassword exception.
      */
     public User login(String name, String password) {
-        UserMapper userMapper = new UserMapper();
         User user = userMapper.findUser(name);
         if(user.isBanned()){
             user = null;
@@ -43,7 +77,6 @@ public class LogicFacade {
     if the user did not get made, it will throw a UserExists exception.
      */
     public User createUser(String name, String email, String password) throws UserExists {
-        UserHandler userHandler = new UserHandler();
         byte[] salt = User.generateSalt();
         byte[] secret = User.calculateSecret(salt, password);
         return userHandler.createUser(name, email, salt, secret);
@@ -54,7 +87,6 @@ public class LogicFacade {
     It calls the UserHandler which then updates the users role to given role
      */
     public void updateRole(String userName, String userRole, String userRank) {
-        UserHandler userHandler = new UserHandler();
         int newRank = Integer.parseInt(userRank);
         try {
             userHandler.updateRole(userName, userRole, newRank);
@@ -67,7 +99,6 @@ public class LogicFacade {
     Not called yet
      */
     public List<User> getAllUsers() {
-        UserMapper userMapper = new UserMapper();
         List<User> users = userMapper.getAllUsers();
         return users;
     }
@@ -78,7 +109,6 @@ public class LogicFacade {
     This is put into a List of Users, and returned.
      */
     public List<User> findChosenUsers(String userRole) {
-        UserMapper userMapper = new UserMapper();
         List<User> userList = userMapper.findChosenUsers(userRole);
         return userList;
     }
@@ -88,7 +118,6 @@ public class LogicFacade {
     It calls the UserHandler, with the parsed Strings.
      */
     public void updateUserBan(String userID, String userBan) {
-        UserHandler userHandler = new UserHandler();
         int getUserID = Integer.parseInt(userID);
         boolean getUserBanBoolean = Boolean.parseBoolean(userBan);
 
@@ -100,7 +129,6 @@ public class LogicFacade {
     }
 
     public User findUser(String userID){
-        UserMapper userMapper = new UserMapper();
         int newUserID = Integer.parseInt(userID);
         User tempUser = userMapper.findUser(newUserID);
         return tempUser;
@@ -133,7 +161,6 @@ public class LogicFacade {
     It calls the CarHandler with the parsed objects.
      */
     public void setCarToClosed(String carid, String caravailable) {
-        CarHandler carHandler = new CarHandler();
 
         boolean getCarBoolean = Boolean.parseBoolean(caravailable);
         int getCarID = Integer.parseInt(carid);
@@ -150,7 +177,6 @@ public class LogicFacade {
     It calls the CarHandler with the parsed objects.
      */
     public void updatePrice(String carid, String newPrice) {
-        CarHandler carHandler = new CarHandler();
 
         int getCarID = Integer.parseInt(carid);
         double getNewPrice = Double.parseDouble(newPrice);
@@ -167,7 +193,6 @@ public class LogicFacade {
     It calls the CarMapper and returns a list of cars.
      */
     public List<Car> getAllCars() {
-        CarMapper carMapper = new CarMapper();
         List<Car> cars = carMapper.getAllCars();
         return cars;
     }
@@ -177,13 +202,11 @@ public class LogicFacade {
     It calls the CapMapper and returns a Car
      */
     public Car findCar(int carID) {
-        CarMapper carMapper = new CarMapper();
         Car findcar = carMapper.findCar(carID);
         return findcar;
     }
 
     public List<Car> findAvailableCars() {
-        CarMapper carMapper = new CarMapper();
         List<Car> availableCars = carMapper.findAvailableCars();
         return availableCars;
     }
@@ -197,8 +220,7 @@ public class LogicFacade {
     It calls the SpecialOffersMapper and returns a list of specialoffers
      */
     public List<SpecialOffers> findSpecialOffers() {
-        SpecialOffersMapper SOMapper = new SpecialOffersMapper();
-        List<SpecialOffers> specialOffers = SOMapper.findSpecialOffers();
+        List<SpecialOffers> specialOffers = specialOffersMapper.findSpecialOffers();
         return specialOffers;
     }
 
@@ -207,7 +229,6 @@ public class LogicFacade {
     Then calls the SpecialOfferHandler to delete that offer.
      */
     public void deleteSpecialOffer(String offerID) {
-        SpecialOffersHandler specialOffersHandler = new SpecialOffersHandler();
         int newOfferID = Integer.parseInt(offerID);
         specialOffersHandler.deleteSpecialOffer(newOfferID);
     }
@@ -218,7 +239,6 @@ public class LogicFacade {
     Calls the SpecialOffersHandler to create a special offer
      */
     public void createSpecialOffer(String chosenCar, String offer, String sideMessage) {
-        SpecialOffersHandler specialOffersHandler = new SpecialOffersHandler();
         String[] arrOfStr = chosenCar.split(",", 0);
         ArrayList<String> cardetails = new ArrayList<>();
         for(String a:arrOfStr){
@@ -239,7 +259,6 @@ public class LogicFacade {
     It calls the MessageHandler to create a message and returns that contact message.
      */
     public ContactMessage createContactMessage(LocalDateTime now, String username, String email, String topic, String message) {
-        MessageHandler messageHandler = new MessageHandler();
         ContactMessage cMessage = messageHandler.createContactMessage(LocalDateTime.now(),username, email, topic, message);
         return cMessage;
     }
@@ -249,7 +268,6 @@ public class LogicFacade {
     Calls the MessageMapper and and returns a list of contact messages with either closed or open messages.
      */
     public List<ContactMessage> getContactMessages(String username) {
-        MessageMapper messageMapper = new MessageMapper();
         List<ContactMessage> cMessage = messageMapper.getContactMessages(username.equals("Closed Messages"));
         return cMessage;
     }
@@ -259,7 +277,6 @@ public class LogicFacade {
     It parses the strings and then calls the MessageHandler.
      */
     public void setMessageToClosed(String messageID, String messageAnswered) {
-        MessageHandler messageHandler = new MessageHandler();
         boolean getMessageBoolean = Boolean.parseBoolean(messageAnswered);
         int getMessageID = Integer.parseInt(messageID);
         try {
@@ -273,7 +290,6 @@ public class LogicFacade {
 
 //---- ORDERS START ----
     public Order createOrder(String userID) {
-        OrderHandler orderHandler = new OrderHandler();
         int newUserID = Integer.parseInt(userID);
         Order order = orderHandler.createOrder(newUserID);
         return order;
@@ -284,7 +300,6 @@ public class LogicFacade {
     returns either null or an order.
      */
     public Order findPreOrder(String userID) {
-        OrderMapper orderMapper = new OrderMapper();
         int newUserID = Integer.parseInt(userID);
         Order tempOrder = orderMapper.findPreOrder(newUserID);
         return tempOrder;
@@ -294,7 +309,6 @@ public class LogicFacade {
     Called by AddToOrder. It parses the string userID to and integer then calls the orderhandler to update the carid.
      */
     public void updatePreOrder(String carID, String userID) {
-        OrderHandler orderHandler = new OrderHandler();
         int newUserID = Integer.parseInt(userID);
         try {
             orderHandler.updatePreOrder(carID, newUserID);
@@ -307,7 +321,6 @@ public class LogicFacade {
     Called by AddToOrder. It parses the string userID to and integer then calls the orderhandler to update the carid.
      */
     public void updatePreOrder(String carIDs, String carID, String userID) {
-        OrderHandler orderHandler = new OrderHandler();
         int newUserID = Integer.parseInt(userID);
         String newCarID = carIDs + carID;
         try {
@@ -357,8 +370,11 @@ public class LogicFacade {
         return price;
     }
 
+    /*
+    Called when logging by Logout if the answer was No
+    Calls the orderhandler to delete that preorder with the users id
+     */
     public void deletePreOrder(String userid) {
-        OrderHandler orderHandler = new OrderHandler();
         int newUserID = Integer.parseInt(userid);
         orderHandler.deletePreOrder(newUserID);
     }

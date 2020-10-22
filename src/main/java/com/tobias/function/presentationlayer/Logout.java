@@ -17,7 +17,6 @@ public class Logout extends Command {
         Called when user clicks the Logout button
         It is done so that the session instances that might have been set during a login are not there anymore.
          */
-        LogicFacade logicFacade = new LogicFacade();
         String userid = request.getParameter("userid");
         String answer = request.getParameter("logoutans");
 

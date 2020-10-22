@@ -1,5 +1,6 @@
 package com.tobias.function.presentationlayer;
 
+import com.tobias.function.function.layer.LogicFacade;
 import com.tobias.function.function.layer.LoginSampleException;
 import com.tobias.function.presentationlayer.Admin.*;
 import com.tobias.function.presentationlayer.Customer.*;
@@ -51,7 +52,11 @@ public abstract class Command {
         return commands.getOrDefault(targetName, new UnknownCommand() );   // unknowncommand er default.
     }
 
-
+    protected final static LogicFacade logicFacade;
+    static {
+        logicFacade = LogicFacade.getInstance();
+    }
+    
     /*
     This is the abstract method that is needed in all of our classes created by initCommands();
      */
