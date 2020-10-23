@@ -1,6 +1,6 @@
 package com.tobias.function.web;
 
-import com.tobias.function.domain.user.User;
+import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.UserExists;
 import com.tobias.function.exceptions.LoginSampleException;
 

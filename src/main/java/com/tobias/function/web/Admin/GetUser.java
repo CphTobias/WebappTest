@@ -1,6 +1,6 @@
 package com.tobias.function.web.Admin;
 
-import com.tobias.function.domain.user.User;
+import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.LoginSampleException;
 import com.tobias.function.web.Command;
 

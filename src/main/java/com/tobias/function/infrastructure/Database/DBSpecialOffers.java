@@ -1,7 +1,7 @@
 package com.tobias.function.infrastructure.Database;
 
 import com.tobias.function.infrastructure.DBSetup.Connector;
-import com.tobias.function.domain.specialoffers.SpecialOffers;
+import com.tobias.function.api.facades.SpecialOffers;
 
 import java.sql.*;
 import java.util.ArrayList;

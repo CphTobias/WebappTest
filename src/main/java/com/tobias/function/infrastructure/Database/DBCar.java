@@ -1,7 +1,8 @@
 package com.tobias.function.infrastructure.Database;
 
+import com.tobias.function.api.factories.CarFactory;
 import com.tobias.function.infrastructure.DBSetup.Connector;
-import com.tobias.function.domain.car.Car;
+import com.tobias.function.domain.Car;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,8 +16,7 @@ public class DBCar {
     /*
     Creates a car in the database with the objects given from LogicFacade createCar.
      */
-    public Car createCar(int horsepower, String brand, double price, String category, String model, int weight, int buildyear,
-                         int milage, String image){
+    public Car createCar(CarFactory carFactory){
         int id = 0;
         try (Connection conn = getConnection()) {
             var ps =
@@ -24,15 +24,15 @@ public class DBCar {
                             "INSERT INTO cars (Horsepower, Brand, Price, Category, Model, Weight, BuildYear, Milage, Imagename) " +
                                     "VALUE (?,?,?,?,?,?,?,?,?);",
                             Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, horsepower);
-            ps.setString(2, brand);
-            ps.setDouble(3, price);
-            ps.setString(4, category);
-            ps.setString(5, model);
-            ps.setInt(6, weight);
-            ps.setInt(7, buildyear);
-            ps.setInt(8, milage);
-            ps.setString(9, image);
+            ps.setInt(1, carFactory.getHorsepower());
+            ps.setString(2, carFactory.getBrand());
+            ps.setDouble(3, carFactory.getPrice());
+            ps.setString(4, carFactory.getCategory());
+            ps.setString(5, carFactory.getModel());
+            ps.setInt(6, carFactory.getWeight());
+            ps.setInt(7, carFactory.getBuildyear());
+            ps.setInt(8, carFactory.getMilage());
+            ps.setString(9, carFactory.getImagename());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();

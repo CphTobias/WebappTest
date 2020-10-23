@@ -1,7 +1,7 @@
 package com.tobias.function.infrastructure.Database;
 
 import com.tobias.function.infrastructure.DBSetup.Connector;
-import com.tobias.function.domain.user.User;
+import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.UserExists;
 import com.tobias.function.exceptions.LoginSampleException;
 

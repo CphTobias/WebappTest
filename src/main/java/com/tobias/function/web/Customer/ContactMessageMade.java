@@ -1,6 +1,6 @@
 package com.tobias.function.web.Customer;
 
-import com.tobias.function.domain.contactmessage.ContactMessage;
+import com.tobias.function.domain.ContactMessage;
 import com.tobias.function.exceptions.LoginSampleException;
 import com.tobias.function.web.Command;
 

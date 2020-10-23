@@ -1,7 +1,7 @@
 package com.tobias.function.infrastructure.Database;
 
 import com.tobias.function.infrastructure.DBSetup.Connector;
-import com.tobias.function.domain.order.Order;
+import com.tobias.function.domain.Order;
 
 import java.sql.*;
 import java.util.NoSuchElementException;

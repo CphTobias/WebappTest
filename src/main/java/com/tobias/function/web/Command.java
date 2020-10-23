@@ -1,14 +1,12 @@
 package com.tobias.function.web;
 
 import com.tobias.function.api.webapp;
-import com.tobias.function.domain.car.CarFacade;
-import com.tobias.function.domain.contactmessage.MessageFacade;
-import com.tobias.function.domain.order.Order;
-import com.tobias.function.domain.order.OrderFacade;
-import com.tobias.function.domain.specialoffers.SpecialOfferFacade;
-import com.tobias.function.domain.user.UserFacade;
+import com.tobias.function.api.facades.CarFacade;
+import com.tobias.function.api.facades.MessageFacade;
+import com.tobias.function.api.facades.OrderFacade;
+import com.tobias.function.domain.SpecialOfferFacade;
+import com.tobias.function.api.facades.UserFacade;
 import com.tobias.function.exceptions.LoginSampleException;
-import com.tobias.function.infrastructure.DBSetup.Connector;
 import com.tobias.function.web.Admin.*;
 import com.tobias.function.web.Customer.*;
 

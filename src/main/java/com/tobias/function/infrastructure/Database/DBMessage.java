@@ -1,7 +1,7 @@
 package com.tobias.function.infrastructure.Database;
 
 import com.tobias.function.infrastructure.DBSetup.Connector;
-import com.tobias.function.domain.contactmessage.ContactMessage;
+import com.tobias.function.domain.ContactMessage;
 
 import java.sql.*;
 import java.time.LocalDateTime;

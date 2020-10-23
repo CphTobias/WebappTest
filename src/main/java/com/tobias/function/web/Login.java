@@ -1,8 +1,8 @@
 package com.tobias.function.web;
 
-import com.tobias.function.domain.car.Car;
-import com.tobias.function.domain.specialoffers.SpecialOffers;
-import com.tobias.function.domain.user.User;
+import com.tobias.function.domain.Car;
+import com.tobias.function.api.facades.SpecialOffers;
+import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;

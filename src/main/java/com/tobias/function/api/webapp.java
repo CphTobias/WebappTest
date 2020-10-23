@@ -1,10 +1,10 @@
 package com.tobias.function.api;
 
-import com.tobias.function.domain.car.CarFacade;
-import com.tobias.function.domain.contactmessage.MessageFacade;
-import com.tobias.function.domain.order.OrderFacade;
-import com.tobias.function.domain.specialoffers.SpecialOfferFacade;
-import com.tobias.function.domain.user.UserFacade;
+import com.tobias.function.api.facades.CarFacade;
+import com.tobias.function.api.facades.MessageFacade;
+import com.tobias.function.api.facades.OrderFacade;
+import com.tobias.function.api.facades.UserFacade;
+import com.tobias.function.domain.SpecialOfferFacade;
 
 public class webapp {
     private final CarFacade carFacade;

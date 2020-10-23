@@ -1,8 +1,8 @@
 package com.tobias.function.web.Admin;
 
-import com.tobias.function.domain.car.Car;
-import com.tobias.function.domain.contactmessage.ContactMessage;
-import com.tobias.function.domain.specialoffers.SpecialOffers;
+import com.tobias.function.domain.Car;
+import com.tobias.function.domain.ContactMessage;
+import com.tobias.function.api.facades.SpecialOffers;
 import com.tobias.function.exceptions.LoginSampleException;
 import com.tobias.function.web.Command;
 

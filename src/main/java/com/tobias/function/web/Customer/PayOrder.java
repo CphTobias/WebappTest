@@ -1,8 +1,8 @@
 package com.tobias.function.web.Customer;
 
-import com.tobias.function.domain.car.Car;
-import com.tobias.function.domain.order.Order;
-import com.tobias.function.domain.user.User;
+import com.tobias.function.domain.Car;
+import com.tobias.function.domain.Order;
+import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.LoginSampleException;
 
 import javax.servlet.ServletException;
