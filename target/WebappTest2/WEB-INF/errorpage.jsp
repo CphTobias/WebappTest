@@ -19,6 +19,10 @@
     <jsp:include page="/WEB-INF/importbars/AdminNavbar.jsp" flush="true"/>
 </c:forEach>
 
+<c:forEach var="notloggedin" items="${applicationScope.notloggedin}">
+    <jsp:include page="/WEB-INF/importbars/NoUserNavbar.jsp" flush="true"/>
+</c:forEach>
+
     <p style="font-size: large">${requestScope.error}</p>
 </body>
 </html>
