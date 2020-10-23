@@ -22,10 +22,10 @@ public class CarAvailable extends Command {
         String newPrice = request.getParameter("changeprice");
 
         if(newPrice.chars().findAny().isPresent()){
-            carFacade.setCarToClosed(carid, caravailable);
-            carFacade.updatePrice(carid, newPrice);
+            api.getCarFacade().setCarToClosed(carid, caravailable);
+            api.getCarFacade().updatePrice(carid, newPrice);
         } else {
-            carFacade.setCarToClosed(carid, caravailable);
+            api.getCarFacade().setCarToClosed(carid, caravailable);
         }
 
         return "admin/admininterface";

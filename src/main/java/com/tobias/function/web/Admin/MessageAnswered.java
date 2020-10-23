@@ -20,7 +20,7 @@ public class MessageAnswered extends Command {
         String messageID = request.getParameter("messages");
         String messageAnswered = request.getParameter("answered");
 
-        messageFacade.setMessageToClosed(messageID, messageAnswered);
+        api.getMessageFacade().setMessageToClosed(messageID, messageAnswered);
 
         return "admin/admininterface";
     }

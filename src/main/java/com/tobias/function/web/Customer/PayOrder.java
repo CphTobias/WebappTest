@@ -21,14 +21,14 @@ public class PayOrder extends com.tobias.function.web.Command {
         double newUserBank = Double.parseDouble(userbank);
         double calculateOrder = newUserBank - newOrderPrice;
 
-        Order getPreOrder = orderFacade.getPreOrder(userID);
-        ArrayList<Car> preOrderCars = carFacade.getPreOrderCars(getPreOrder);
-        double preOrderPrice = orderFacade.getPreOrderPrice(preOrderCars);
+        Order getPreOrder = api.getOrderFacade().getPreOrder(userID);
+        ArrayList<Car> preOrderCars = api.getCarFacade().getPreOrderCars(getPreOrder);
+        double preOrderPrice = api.getOrderFacade().getPreOrderPrice(preOrderCars);
 
         if (calculateOrder >= 0){
-            User user = userFacade.findUser(userID);
-            userFacade.updateUserBank(user.getName(),calculateOrder);
-            Order order = orderFacade.orderPurchased(userID);
+            User user = api.getUserFacade().findUser(userID);
+            api.getUserFacade().updateUserBank(user.getName(),calculateOrder);
+            Order order = api.getOrderFacade().orderPurchased(userID);
             request.setAttribute("order", order);
         } else {
             String nomoney = "You do not have enough money to purchase this order";

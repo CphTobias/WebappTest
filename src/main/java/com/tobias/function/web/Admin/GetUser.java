@@ -21,7 +21,7 @@ public class GetUser extends Command {
          */
 
         String userRole = request.getParameter("usersrole");
-        List<User> userList = userFacade.findChosenUsers(userRole);
+        List<User> userList = api.getUserFacade().findChosenUsers(userRole);
         request.setAttribute("showchosenrole", userList);
         return "admin/admininterface";
     }

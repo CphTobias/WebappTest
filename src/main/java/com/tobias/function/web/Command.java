@@ -1,11 +1,14 @@
 package com.tobias.function.web;
 
+import com.tobias.function.api.webapp;
 import com.tobias.function.domain.car.CarFacade;
 import com.tobias.function.domain.contactmessage.MessageFacade;
+import com.tobias.function.domain.order.Order;
 import com.tobias.function.domain.order.OrderFacade;
 import com.tobias.function.domain.specialoffers.SpecialOfferFacade;
 import com.tobias.function.domain.user.UserFacade;
 import com.tobias.function.exceptions.LoginSampleException;
+import com.tobias.function.infrastructure.DBSetup.Connector;
 import com.tobias.function.web.Admin.*;
 import com.tobias.function.web.Customer.*;
 
@@ -58,17 +61,17 @@ public abstract class Command {
         return commands.getOrDefault(targetName, new UnknownCommand() );   // unknowncommand er default.
     }
 
-    protected final static UserFacade userFacade;
-    protected final static CarFacade carFacade;
-    protected final static MessageFacade messageFacade;
-    protected final static OrderFacade orderFacade;
-    protected final static SpecialOfferFacade specialOfferFacade;
+    protected final static webapp api;
     static {
-        userFacade = UserFacade.getInstance();
-        carFacade = CarFacade.getInstance();
-        messageFacade = MessageFacade.getInstance();
-        orderFacade = OrderFacade.getInstance();
-        specialOfferFacade = SpecialOfferFacade.getInstance();
+        api = createWebApp();
+    }
+
+    private static webapp createWebApp() {
+        return new webapp(CarFacade.getInstance(),
+                MessageFacade.getInstance(),
+                OrderFacade.getInstance(),
+                SpecialOfferFacade.getInstance(),
+                UserFacade.getInstance());
     }
     
     /*

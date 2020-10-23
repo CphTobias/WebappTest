@@ -13,7 +13,7 @@ public class CreateSpecialOffer extends com.tobias.function.web.Command {
         String chosenCar = request.getParameter("offercar");
         String offer = request.getParameter("offer");
         String sideMessage = request.getParameter("sideMessage");
-        specialOfferFacade.createSpecialOffer(chosenCar,offer,sideMessage);
+        api.getSpecialOfferFacade().createSpecialOffer(chosenCar,offer,sideMessage);
         return "admin/admininterface";
     }
 }

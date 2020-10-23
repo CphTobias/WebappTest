@@ -24,7 +24,7 @@ public class ContactMessageMade extends Command {
         String email = request.getParameter("email");
         String message = request.getParameter("message");
 
-        ContactMessage cMessage = messageFacade.createContactMessage(LocalDateTime.now(),username, email,topic, message);
+        ContactMessage cMessage = api.getMessageFacade().createContactMessage(LocalDateTime.now(),username, email,topic, message);
 
         String formatedTime = " " + cMessage.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_TIME);
         String formatedName = " " + cMessage.getName();

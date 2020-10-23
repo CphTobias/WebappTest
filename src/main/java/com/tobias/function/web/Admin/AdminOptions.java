@@ -30,22 +30,22 @@ public class AdminOptions extends Command {
                 request.setAttribute("addcar",select);
                 break;
             case "Manage Car Availability":
-                List<Car> cars = carFacade.getAllCars();
+                List<Car> cars = api.getCarFacade().getAllCars();
                 request.setAttribute("available",cars);
                 break;
             case "Manage Special Offers":
-                List<SpecialOffers> specialOffers = specialOfferFacade.findSpecialOffers();
-                List<Car> allCars = carFacade.getAllCars();
+                List<SpecialOffers> specialOffers = api.getSpecialOfferFacade().findSpecialOffers();
+                List<Car> allCars = api.getCarFacade().getAllCars();
                 request.setAttribute("allcars",allCars);
                 request.setAttribute("showactiveoffers", specialOffers);
                 request.setAttribute("addspecialoffer", select);
                 break;
             case "Active Messages":
-                List<ContactMessage> cMessageActive = messageFacade.getContactMessages(select);
+                List<ContactMessage> cMessageActive = api.getMessageFacade().getContactMessages(select);
                 request.setAttribute("activeCM", cMessageActive);
                 break;
             case "Closed Messages":
-                List<ContactMessage> cMessageClosed = messageFacade.getContactMessages(select);
+                List<ContactMessage> cMessageClosed = api.getMessageFacade().getContactMessages(select);
                 request.setAttribute("activeCM", cMessageClosed);
                 break;
             case "Show Users":

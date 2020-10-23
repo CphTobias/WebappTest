@@ -32,7 +32,7 @@ public class Login extends Command {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = null;
-        user = userFacade.login(username, password);
+        user = api.getUserFacade().login(username, password);
 
         if (user == null){
             String userbanned = "Username or password was incorrect, or your user has been banned";
@@ -67,11 +67,11 @@ public class Login extends Command {
         First we find out specialoffers.
         Create a List of Cars and find every car that has been set to a special offer.
          */
-        List<SpecialOffers> specialOffers = specialOfferFacade.findSpecialOffers();
+        List<SpecialOffers> specialOffers = api.getSpecialOfferFacade().findSpecialOffers();
         if(specialOffers != null) {
             ArrayList<Car> soImages = new ArrayList<>();
             for (SpecialOffers s : specialOffers) {
-                Car car = carFacade.findCar(s.getCarID());
+                Car car = api.getCarFacade().findCar(s.getCarID());
                 soImages.add(car);
             }
             session.setAttribute("specialoffer", specialOffers);

@@ -20,9 +20,9 @@ public class GetBasket extends com.tobias.function.web.Command {
         Split the cars up, and then find each one of them, then add them to an array of cars
          */
 
-        Order getPreOrder = orderFacade.getPreOrder(userID);
-        ArrayList<Car> preOrderCars = carFacade.getPreOrderCars(getPreOrder);
-        double preOrderPrice = orderFacade.getPreOrderPrice(preOrderCars);
+        Order getPreOrder = api.getOrderFacade().getPreOrder(userID);
+        ArrayList<Car> preOrderCars = api.getCarFacade().getPreOrderCars(getPreOrder);
+        double preOrderPrice = api.getOrderFacade().getPreOrderPrice(preOrderCars);
 
         request.setAttribute("orderprice",preOrderPrice);
         request.setAttribute("allpreorders",preOrderCars);

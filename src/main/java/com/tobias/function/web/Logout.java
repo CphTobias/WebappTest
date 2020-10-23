@@ -20,7 +20,7 @@ public class Logout extends Command {
         String answer = request.getParameter("logoutans");
 
         if(answer.equals("No")){
-            orderFacade.deletePreOrder(userid);
+            api.getOrderFacade().deletePreOrder(userid);
         }
 
         HttpSession session = request.getSession();

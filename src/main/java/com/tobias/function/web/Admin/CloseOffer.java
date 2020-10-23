@@ -17,7 +17,7 @@ public class CloseOffer extends com.tobias.function.web.Command {
          */
 
         String offerID = request.getParameter("carid");
-        specialOfferFacade.deleteSpecialOffer(offerID);
+        api.getSpecialOfferFacade().deleteSpecialOffer(offerID);
         return "admin/admininterface";
     }
 }

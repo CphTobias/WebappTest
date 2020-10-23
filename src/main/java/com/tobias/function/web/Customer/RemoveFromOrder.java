@@ -38,10 +38,10 @@ public class RemoveFromOrder extends com.tobias.function.web.Command {
             cars = "";
         }
 
-        orderFacade.updatePreOrder(cars,preOrderUserID);
-        Order getPreOrder = orderFacade.getPreOrder(preOrderUserID);
-        ArrayList<Car> preOrderCars = carFacade.getPreOrderCars(getPreOrder);
-        double preOrderPrice = orderFacade.getPreOrderPrice(preOrderCars);
+        api.getOrderFacade().updatePreOrder(cars,preOrderUserID);
+        Order getPreOrder = api.getOrderFacade().getPreOrder(preOrderUserID);
+        ArrayList<Car> preOrderCars = api.getCarFacade().getPreOrderCars(getPreOrder);
+        double preOrderPrice = api.getOrderFacade().getPreOrderPrice(preOrderCars);
 
         request.setAttribute("orderprice",preOrderPrice);
         request.setAttribute("allpreorders",preOrderCars);

@@ -29,7 +29,7 @@ public class AddNewCar extends Command {
         String image = request.getParameter("image");
 
 
-        carFacade.createCar(horsepower,brand,price,category,model,weight,buildYear,milage,image);
+        api.getCarFacade().createCar(horsepower,brand,price,category,model,weight,buildYear,milage,image);
 
         return "admin/admininterface";
     }

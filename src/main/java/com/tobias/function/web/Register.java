@@ -19,7 +19,7 @@ public class Register extends Command {
         if (password1.equals(password2)) {
             User user = null;
             try {
-                user = userFacade.createUser(username, email, password1);
+                user = api.getUserFacade().createUser(username, email, password1);
             } catch (UserExists userExists) {
                 throw new LoginSampleException("User already exists");
             }

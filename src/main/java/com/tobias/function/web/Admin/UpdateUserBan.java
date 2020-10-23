@@ -19,7 +19,7 @@ public class UpdateUserBan extends Command {
 
         String userID = request.getParameter("userid");
         String userBan = request.getParameter("userban");
-        userFacade.updateUserBan(userID,userBan);
+        api.getUserFacade().updateUserBan(userID,userBan);
         return "admin/admininterface";
     }
 }

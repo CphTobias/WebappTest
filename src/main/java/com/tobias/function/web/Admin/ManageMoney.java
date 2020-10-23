@@ -24,13 +24,13 @@ public class ManageMoney extends com.tobias.function.web.Command {
          */
         if (answer.equals("add")){
             double add = newAmount + newUserBank;
-            userFacade.updateUserBank(username,add);
+            api.getUserFacade().updateUserBank(username,add);
         } else {
             double remove = newUserBank - newAmount;
             if (remove < 0) {
                 remove = 0;
             }
-            userFacade.updateUserBank(username,remove);
+            api.getUserFacade().updateUserBank(username,remove);
         }
 
         return "admin/admininterface";

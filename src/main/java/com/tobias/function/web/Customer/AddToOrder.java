@@ -19,15 +19,15 @@ public class AddToOrder extends com.tobias.function.web.Command {
         String userID = request.getParameter("userid");
         String carID = request.getParameter("carid");
         String newCarID = carID + ",";
-        Order order = orderFacade.findPreOrder(userID);
+        Order order = api.getOrderFacade().findPreOrder(userID);
         String carIDs;
 
         if(order == null){
-            orderFacade.createOrder(userID);
-            orderFacade.updatePreOrder(newCarID, userID);
+            api.getOrderFacade().createOrder(userID);
+            api.getOrderFacade().updatePreOrder(newCarID, userID);
         } else {
             carIDs = order.getCarID();
-            orderFacade.updatePreOrder(carIDs, newCarID, userID);
+            api.getOrderFacade().updatePreOrder(carIDs, newCarID, userID);
         }
 
         return "customer/RentACar";

@@ -21,7 +21,7 @@ public class UpdateUserRole extends Command {
         String userRole = request.getParameter("userrole");
         String userRank = request.getParameter("userrank");
 
-        userFacade.updateRole(userName,userRole,userRank);
+        api.getUserFacade().updateRole(userName,userRole,userRank);
 
         return "admin/admininterface";
     }
