@@ -30,7 +30,10 @@ public class UpdateUserRole extends Command {
         if(userFactory.isValid(userFactory)) {
             api.getUserFacade().updateRole(userFactory);
             return "admin/admininterface";
-        } else {                                
+        } else {
+            request.setAttribute("error400", "400");
+            request.setAttribute("error", "Failed to update user");
+            return "errors/errorpage";
         }
     }
 }

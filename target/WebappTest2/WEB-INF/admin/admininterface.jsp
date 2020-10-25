@@ -17,7 +17,7 @@
 <!-- Get Admin Rank START -->
 <div class="row">
     <div class="col-md-12" style="text-align: center;top:5px">
-
+        <br>
         <!-- No Rank Assigned -->
         <c:forEach var="norank" items="${sessionScope.norank}">
             <div class="btn-group" role="group" aria-label="FAQ" id="submitdiv">
