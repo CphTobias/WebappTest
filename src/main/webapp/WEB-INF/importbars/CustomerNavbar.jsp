@@ -1,8 +1,9 @@
-<div class="row" style="background-color: rgba(29,29,29,0.91);">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class =col-md-1>
         <p></p>
     </div>
     <div class =col-md-4>
+        <p></p>
         <h1><a class="one" href="FrontController?target=redirect&destination=customerpage">TobyCars</a></h1>
     </div>
     <div class =col-md-7 style="text-align: right; right: 10px">
@@ -60,5 +61,6 @@
             </div>
 
         </div>
+        <p></p>
     </div>
-</div>
+</nav>

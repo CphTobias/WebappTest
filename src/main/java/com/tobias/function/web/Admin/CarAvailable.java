@@ -1,6 +1,8 @@
 package com.tobias.function.web.Admin;
 
+import com.tobias.function.api.factories.CarFactory;
 import com.tobias.function.exceptions.LoginSampleException;
+import com.tobias.function.exceptions.ValidationError;
 import com.tobias.function.web.Command;
 
 import javax.servlet.ServletException;
@@ -16,18 +18,27 @@ public class CarAvailable extends Command {
         Bliver kaldt af FrontControlleren, som kom fra admininterface.
         Bliver kaldt fra Manage Car Availability
          */
-
-        String carid = request.getParameter("carid");
-        String caravailable = request.getParameter("caravailable");
-        String newPrice = request.getParameter("changeprice");
-
-        if(newPrice.chars().findAny().isPresent()){
-            api.getCarFacade().setCarToClosed(carid, caravailable);
-            api.getCarFacade().updatePrice(carid, newPrice);
-        } else {
-            api.getCarFacade().setCarToClosed(carid, caravailable);
+        CarFactory carFactory = new CarFactory();
+        try {
+            carFactory.setId(request.getParameter("carid"));
+            carFactory.setAvailable(request.getParameter("caravailable"));
+            carFactory.setPrice(request.getParameter("changeprice"));
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
         }
 
+        if(carFactory.isValid(carFactory)) {
+            if (carFactory.getPrice() > 0) {
+                api.getCarFacade().setCarToClosed(carFactory);
+                api.getCarFacade().updatePrice(carFactory);
+            } else {
+                api.getCarFacade().setCarToClosed(carFactory);
+            }
+        } else {
+            request.setAttribute("error400", "400");
+            request.setAttribute("error", "An illigal input was made");
+            return "errors/errorpage";
+        }
         return "admin/admininterface";
     }
 }

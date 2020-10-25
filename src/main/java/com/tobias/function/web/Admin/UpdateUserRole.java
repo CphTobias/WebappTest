@@ -1,6 +1,8 @@
 package com.tobias.function.web.Admin;
 
+import com.tobias.function.api.factories.UserFactory;
 import com.tobias.function.exceptions.LoginSampleException;
+import com.tobias.function.exceptions.ValidationError;
 import com.tobias.function.web.Command;
 
 import javax.servlet.ServletException;
@@ -16,13 +18,19 @@ public class UpdateUserRole extends Command {
         Bliver kaldt af FrontControlleren, som kom fra admininterface.
         Bliver kaldt fra Update User Role
          */
+        UserFactory userFactory = new UserFactory();
+        try {
+            userFactory.setName(request.getParameter("username"));
+            userFactory.setRole(request.getParameter("userrole"));
+            userFactory.setRanked(request.getParameter("userrank"));
+        } catch (ValidationError validationError) {
+            validationError.printStackTrace();
+        }
 
-        String userName = request.getParameter("username");
-        String userRole = request.getParameter("userrole");
-        String userRank = request.getParameter("userrank");
-
-        api.getUserFacade().updateRole(userName,userRole,userRank);
-
-        return "admin/admininterface";
+        if(userFactory.isValid(userFactory)) {
+            api.getUserFacade().updateRole(userFactory);
+            return "admin/admininterface";
+        } else {                                
+        }
     }
 }

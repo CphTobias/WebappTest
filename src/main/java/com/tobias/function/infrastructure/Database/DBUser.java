@@ -17,7 +17,7 @@ public class DBUser {
     /*
         Creates a user in the database with the objects given from LogicFacade createUser.
     */
-    public User createUser(String name, String email, byte[] salt, byte[] secret) throws UserExists {
+    public User createUser(String name, String email, byte[] salt, byte[] secret) {
         int id;
         try (Connection conn = Connector.getConnection()) {
             var ps =
@@ -33,16 +33,16 @@ public class DBUser {
             try {
                 ps.executeUpdate();
             } catch (SQLIntegrityConstraintViolationException e) {
-                throw new UserExists(name);
+                e.printStackTrace();
             }
 
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 id = rs.getInt(1);
             } else {
-                throw new UserExists(name);
+                throw new SQLException();
             }
-        } catch (SQLException | ClassNotFoundException | LoginSampleException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return findUser(id);

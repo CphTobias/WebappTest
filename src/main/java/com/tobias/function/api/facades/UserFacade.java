@@ -1,5 +1,6 @@
 package com.tobias.function.api.facades;
 
+import com.tobias.function.api.factories.UserFactory;
 import com.tobias.function.domain.User;
 import com.tobias.function.infrastructure.Database.DBUser;
 import com.tobias.function.exceptions.UserExists;
@@ -30,13 +31,13 @@ public class UserFacade {
     Checks if the user is banned, if yes then it returns a string. If the user is not banned then it checks if the password was correct.
     If the password was correct it returns the user, if not correct it throws an InvalidPassword exception.
      */
-    public User login(String name, String password) {
-        User user = dbUser.findUser(name);
+    public User login(UserFactory userFactory) {
+        User user = dbUser.findUser(userFactory.getName());
         if(user.isBanned()){
             user = null;
             return user;
         } else {
-            if (user.isPasswordCorrect(password)) {
+            if (user.isPasswordCorrect(userFactory.getPassword())) {
                 return user;
             } else {
                 user = null;
@@ -51,20 +52,19 @@ public class UserFacade {
     It is returned due to the user getting logged in after it is created.
     if the user did not get made, it will throw a UserExists exception.
      */
-    public User createUser(String name, String email, String password) throws UserExists {
+    public User createUser(UserFactory userFactory) {
         byte[] salt = User.generateSalt();
-        byte[] secret = User.calculateSecret(salt, password);
-        return dbUser.createUser(name, email, salt, secret);
+        byte[] secret = User.calculateSecret(salt, userFactory.getPassword());
+        return dbUser.createUser(userFactory.getName(), userFactory.getEmail(), salt, secret);
     }
 
     /*
     Gets objects from UpdateUserRole.
     It calls the UserHandler which then updates the users role to given role
      */
-    public void updateRole(String userName, String userRole, String userRank) {
-        int newRank = Integer.parseInt(userRank);
+    public void updateRole(UserFactory userFactory) {
         try {
-            dbUser.updateRole(userName, userRole, newRank);
+            dbUser.updateRole(userFactory.getName(), userFactory.getRole(), userFactory.getRanked());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

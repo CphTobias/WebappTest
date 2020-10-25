@@ -1,9 +1,11 @@
 package com.tobias.function.web;
 
+import com.tobias.function.api.factories.UserFactory;
 import com.tobias.function.domain.Car;
 import com.tobias.function.api.facades.SpecialOffers;
 import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.LoginSampleException;
+import com.tobias.function.exceptions.ValidationError;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,15 +30,17 @@ public class Login extends Command {
 
         If the log
          */
+        UserFactory userFactory = new UserFactory();
         request.getServletContext().setAttribute("notloggedin", null);
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User user = null;
-        user = api.getUserFacade().login(username, password);
 
-        if (user == null){
-            String userbanned = "Username or password was incorrect, or your user has been banned";
-            request.setAttribute("userbanned", userbanned);
+        userFactory.setName(request.getParameter("username"));
+        userFactory.setPassword(request.getParameter("password"));
+        User user = null;
+
+        if(userFactory.isValid(userFactory)){
+            user = api.getUserFacade().login(userFactory);
+        } else{
+            request.setAttribute("userbanned", "Username or password was incorrect, or your user has been banned");
             return "Login";
         }
 
@@ -81,7 +85,7 @@ public class Login extends Command {
         session.setAttribute("bank", user.getBank());
         session.setAttribute("email",user.getEmail());
         session.setAttribute("user", user);
-        session.setAttribute("username", username);// ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
+        session.setAttribute("username", userFactory.getName());// ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
         // ;
         //request.setAttribute("user", user);
 

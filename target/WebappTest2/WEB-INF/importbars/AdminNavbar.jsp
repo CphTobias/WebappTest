@@ -1,23 +1,24 @@
-<div class="row" style="background-color: rgba(29,29,29,0.91);">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class =col-md-1>
         <p></p>
     </div>
     <div class =col-md-4>
+        <p></p>
         <h1><a class="one" href="FrontController?target=redirect&destination=customerpage">TobyCars</a></h1>
     </div>
     <div class =col-md-7 style="text-align: right; right: 10px">
         <p></p>
-        <div class="btn-group" role="group" aria-label="Main menu" style="top:6px;">
+        <div class="btn-group" role="group" aria-label="Main menu">
             <a class="two" href="FrontController?target=redirect&destination=customerpage">
                 <button type="submit" class="btn btn-secondary">Home</button></a>
         </div>
 
-        <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
+        <div class="btn-group" role="group" aria-label="FAQ">
             <a class="two" target="_blank" href="FrontController?target=redirect&destination=FAQ">
                 <button type="submit" style="left:20px" class="btn btn-secondary">FAQ</button></a>
         </div>
 
-        <div class="btn-group" role="group" aria-label="FAQ" style="top:6px;">
+        <div class="btn-group" role="group" aria-label="FAQ">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="getallcars">
                 <button type="submit" class="btn btn-secondary">Cars</button>
@@ -25,13 +26,13 @@
         </div>
 
         <c:forEach var="adminrole" items="${sessionScope.adminrole}">
-            <div class="btn-group" role="group" aria-label="adminpage" style="top:6px;">
+            <div class="btn-group" role="group" aria-label="adminpage">
                 <a class="two" href="FrontController?target=redirect&destination=adminpage">
                     <button type="submit" class="btn btn-secondary">Admin Page</button></a>
             </div>
         </c:forEach>
 
-        <div class="btn-group" role="group" aria-label="First group" style="top:6px">
+        <div class="btn-group" role="group" aria-label="First group">
             <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="getbasket">
                 <input type="hidden" name="userid" value="${sessionScope.user.id}">
@@ -39,7 +40,7 @@
             </form>
         </div>
 
-        <div class="btn-group" role="group" aria-label="login" style="top:6px;">
+        <div class="btn-group" role="group" aria-label="login">
             <button type="button" class="btn btn-secondary">${sessionScope.user.name}: ${sessionScope.bank}$</button>
             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
             </button>
@@ -67,5 +68,6 @@
             </div>
 
         </div>
+        <p></p>
     </div>
-</div>
+</nav>

@@ -39,14 +39,11 @@ public class CarFacade {
     /*
     Called by CarAvailable with the given objects.
     It calls the CarHandler with the parsed objects.
+    tring carid, String caravailable
      */
-    public void setCarToClosed(String carid, String caravailable) {
-
-        boolean getCarBoolean = Boolean.parseBoolean(caravailable);
-        int getCarID = Integer.parseInt(carid);
-
+    public void setCarToClosed(CarFactory carFactory) {
         try {
-            dbCar.setCarToClosed(getCarID, getCarBoolean);
+            dbCar.setCarToClosed(carFactory.getId(), carFactory.isAvailable());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -56,13 +53,9 @@ public class CarFacade {
     Called by CarAvailable with the given objects.
     It calls the CarHandler with the parsed objects.
      */
-    public void updatePrice(String carid, String newPrice) {
-
-        int getCarID = Integer.parseInt(carid);
-        double getNewPrice = Double.parseDouble(newPrice);
-
+    public void updatePrice(CarFactory carFactory) {
         try {
-            dbCar.updatePrice(getCarID, getNewPrice);
+            dbCar.updatePrice(carFactory.getId(), carFactory.getPrice());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -73,8 +66,7 @@ public class CarFacade {
     It calls the CarMapper and returns a list of cars.
      */
     public List<Car> getAllCars() {
-        List<Car> cars = dbCar.getAllCars();
-        return cars;
+        return dbCar.getAllCars();
     }
 
     /*
@@ -82,13 +74,11 @@ public class CarFacade {
     It calls the CapMapper and returns a Car
      */
     public Car findCar(int carID) {
-        Car findcar = dbCar.findCar(carID);
-        return findcar;
+        return dbCar.findCar(carID);
     }
 
     public List<Car> findAvailableCars() {
-        List<Car> availableCars = dbCar.findAvailableCars();
-        return availableCars;
+        return dbCar.findAvailableCars();
     }
 
     public ArrayList<Car> getPreOrderCars(Order getPreOrder) {

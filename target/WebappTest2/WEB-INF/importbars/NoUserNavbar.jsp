@@ -1,8 +1,9 @@
-<div class="row" style="background-color: rgba(29,29,29,0.91);">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class =col-md-1>
         <p></p>
     </div>
     <div class =col-md-7>
+        <p></p>
         <h1><a class="one" href="index.jsp">TobyCars</a></h1>
     </div>
     <div class =col-md-4>
@@ -19,5 +20,6 @@
             <a class="two" href="FrontController?target=redirect&destination=Login">
                 <button type="button" class="btn btn-secondary">Login / Signup</button></a>
         </div>
+        <p> </p>
     </div>
-</div>
+</nav>

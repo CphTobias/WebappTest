@@ -2,9 +2,11 @@ package com.tobias.function.api.factories;
 
 import com.tobias.function.exceptions.ValidationError;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.ValidationException;
 
 public class CarFactory {
+    private int id;
     private int horsepower;
     private String brand;
     private double price;
@@ -21,6 +23,19 @@ public class CarFactory {
             return false;
         }
         return true;
+    }
+
+    public void setId(int id) throws ValidationError {
+        if(id < 0) throw new ValidationError("An id cannot be less than 0");
+        this.id = id;
+    }
+
+    public void setId(String id) throws ValidationError {
+        try {
+            setId(Integer.parseInt(id));
+        } catch (NumberFormatException e) {
+            throw new ValidationError(e.toString());
+        }
     }
 
     public void setHorsepower(int horsepower) throws ValidationError {
@@ -108,6 +123,17 @@ public class CarFactory {
         this.available = available;
     }
 
+    public void setAvailable(String available) throws ValidationError {
+        try {
+            setAvailable(available.equals("1") || available.equals("true"));
+        } catch (IllegalArgumentException e) {
+            throw new ValidationError(e.getMessage());
+        }
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public int getHorsepower() {
         return horsepower;

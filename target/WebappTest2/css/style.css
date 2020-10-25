@@ -1,7 +1,9 @@
 .hovedtitle {
     text-align: center;
-    background-color: #999999;
+    background-color: #4b4c4f;
     font-weight: bold;
+    color: #ececec;
+
 }
 
 /*
@@ -177,10 +179,14 @@ label.form-check-label:hover {
 }
 
 .container {
-    text-align: center;
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
+    height: 400px;
+    width: 800px;
+}
+
+img {
+    border: 2px solid black;
+    width: 100%;
+    height: auto;
 }
 
 .error-status {

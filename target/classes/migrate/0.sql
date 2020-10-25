@@ -1,4 +1,8 @@
-SET GLOBAL time_zone = '+1:00';
+create database webapp;
+
+create user 'YOURUSER'@'localhost';
+grant all privileges on *.* to 'YOURUSER'@'localhost';
+flush privileges;
 
 DROP TABLE IF EXISTS properties;
 CREATE TABLE properties (
