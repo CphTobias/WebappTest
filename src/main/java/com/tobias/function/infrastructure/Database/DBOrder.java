@@ -1,5 +1,6 @@
 package com.tobias.function.infrastructure.Database;
 
+import com.tobias.function.api.factories.OrderFactory;
 import com.tobias.function.infrastructure.DBSetup.Connector;
 import com.tobias.function.domain.Order;
 
@@ -103,16 +104,16 @@ public class DBOrder {
         }
     }
 
-    public Order orderPurchased(int newUserID) {
+    public Order orderPurchased(OrderFactory orderFactory, int id) {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(
                     "UPDATE orders SET paid = 1 WHERE userid = ?;");
-            ps2.setInt(1, newUserID);
+            ps2.setInt(1, orderFactory.getUserID());
             ps2.executeUpdate();
             ps2.close();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-        return findOrder(newUserID);
+        return findOrder(id);
     }
 }

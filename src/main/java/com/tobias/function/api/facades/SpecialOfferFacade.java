@@ -1,6 +1,7 @@
-package com.tobias.function.domain;
+package com.tobias.function.api.facades;
 
-import com.tobias.function.api.facades.SpecialOffers;
+import com.tobias.function.api.factories.SpecialOfferFactory;
+import com.tobias.function.domain.SpecialOffers;
 import com.tobias.function.infrastructure.Database.DBSpecialOffers;
 
 import java.util.ArrayList;
@@ -28,32 +29,26 @@ public class SpecialOfferFacade {
     It calls the SpecialOffersMapper and returns a list of specialoffers
      */
     public List<SpecialOffers> findSpecialOffers() {
-        List<SpecialOffers> specialOffers = dbSpecialOffers.findSpecialOffers();
-        return specialOffers;
+        return dbSpecialOffers.findSpecialOffers();
     }
 
     /*
     Called from CloseOffer, it takes a string of offerID and parses it to an Integer.
     Then calls the SpecialOfferHandler to delete that offer.
      */
-    public void deleteSpecialOffer(String offerID) {
-        int newOfferID = Integer.parseInt(offerID);
-        dbSpecialOffers.deleteSpecialOffer(newOfferID);
+    public void deleteSpecialOffer(SpecialOfferFactory specialOfferFactory) {
+        dbSpecialOffers.deleteSpecialOffer(specialOfferFactory.getCarID());
     }
 
     /*
     Called from CreateSpecialOffer, it takes 3 strings and converts the first string into a string[], then finds the first value and
     converts it to an Integer.
     Calls the SpecialOffersHandler to create a special offer
+    tring chosenCar, String offer, String sideMessage
      */
-    public void createSpecialOffer(String chosenCar, String offer, String sideMessage) {
-        String[] arrOfStr = chosenCar.split(",", 0);
-        ArrayList<String> cardetails = new ArrayList<>();
-        for(String a:arrOfStr){
-            cardetails.add(a);
-        }
-        String carID = cardetails.get(0);
-        int newCarID = Integer.parseInt(carID);
-        dbSpecialOffers.createSpecialOffer(newCarID,offer,sideMessage);
+    public void createSpecialOffer(SpecialOfferFactory specialOfferFactory) {
+        dbSpecialOffers.createSpecialOffer(specialOfferFactory.getCarID(),
+                specialOfferFactory.getOffer(),
+                specialOfferFactory.getSideMessage());
     }
 }

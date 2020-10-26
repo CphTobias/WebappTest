@@ -24,19 +24,19 @@
             <input type="hidden" name="target" value="register">
             <div class="form-group">
                 <label for="exampleInputUsername">Username</label>
-                <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Enter Username">
+                <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Enter Username" required>
             </div>
             <div class="form-group">
                 <label for="InputEmail">Email</label>
-                <input type="text" class="form-control" id="InputEmail" name="email" aria-describedby="EmailHelp" placeholder="Enter Email">
+                <input type="text" class="form-control" id="InputEmail" name="email" aria-describedby="EmailHelp" placeholder="Enter Email" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="password1" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password1" placeholder="Password" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword2">Repeat Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Repeat Password">
+                <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Repeat Password" required>
             </div>
             <button type="submit" class="btn btn-secondary" value="Submit">Signup</button>
             <br>

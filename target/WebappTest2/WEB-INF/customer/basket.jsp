@@ -68,6 +68,7 @@
             <input type="hidden" name="orderprice" value="${requestScope.orderprice}">
             <input type="hidden" name="userid" value="${requestScope.preorder.userID}">
             <input type="hidden" name="userbank" value="${sessionScope.user.bank}">
+            <input type="hidden" name="allpreorders" value="${requestScope.allpreorders}">
             <br>
             <h4 style="text-align: right">Price: ${requestScope.orderprice}$ - <button type="submit" class="btn btn-secondary">Purchase Order</button></h4>
             <br>

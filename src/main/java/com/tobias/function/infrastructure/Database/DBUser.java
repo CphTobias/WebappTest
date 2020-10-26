@@ -163,8 +163,7 @@ public class DBUser {
             if(rs.next()) {
                 return loadUser(rs);
             } else {
-                System.err.println("No version in properties.");
-                throw new NoSuchElementException(name);
+                return null;
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -184,8 +183,7 @@ public class DBUser {
             if(rs.next()) {
                 return loadUser(rs);
             } else {
-                System.err.println("No version in properties.");
-                throw new NoSuchElementException("No user with id: " + id);
+                return null;
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

@@ -45,7 +45,7 @@
     <div class="col-md-4">
         <c:forEach var="availablecarpictures" items="${sessionScope.allavailablecars}">
             <div class="container" style="position: relative;">
-                <img class="d-block w-100" style="height: 45%; border:2px solid black;" src="${pageContext.request.contextPath}${availablecarpictures.imagename}" alt="${availablecarpictures.id}">
+                <img class="d-block w-100" style="height: 38%; border:2px solid black;" src="${pageContext.request.contextPath}${availablecarpictures.imagename}" alt="${availablecarpictures.id}">
             </div>
             <br>
         </c:forEach>

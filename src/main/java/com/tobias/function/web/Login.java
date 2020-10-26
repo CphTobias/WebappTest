@@ -2,10 +2,9 @@ package com.tobias.function.web;
 
 import com.tobias.function.api.factories.UserFactory;
 import com.tobias.function.domain.Car;
-import com.tobias.function.api.facades.SpecialOffers;
+import com.tobias.function.domain.SpecialOffers;
 import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.LoginSampleException;
-import com.tobias.function.exceptions.ValidationError;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,11 +36,12 @@ public class Login extends Command {
         userFactory.setPassword(request.getParameter("password"));
         User user = null;
 
-        if(userFactory.isValid(userFactory)){
+        if(userFactory.isValid(userFactory)) {
             user = api.getUserFacade().login(userFactory);
-        } else{
-            request.setAttribute("userbanned", "Username or password was incorrect, or your user has been banned");
-            return "Login";
+            if(user == null) {
+                request.setAttribute("userbanned", "Username or password was incorrect, or your user has been banned");
+                return "Login";
+            }
         }
 
         HttpSession session = request.getSession();

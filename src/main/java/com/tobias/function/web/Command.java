@@ -4,7 +4,7 @@ import com.tobias.function.api.webapp;
 import com.tobias.function.api.facades.CarFacade;
 import com.tobias.function.api.facades.MessageFacade;
 import com.tobias.function.api.facades.OrderFacade;
-import com.tobias.function.domain.SpecialOfferFacade;
+import com.tobias.function.api.facades.SpecialOfferFacade;
 import com.tobias.function.api.facades.UserFacade;
 import com.tobias.function.exceptions.LoginSampleException;
 import com.tobias.function.web.Admin.*;

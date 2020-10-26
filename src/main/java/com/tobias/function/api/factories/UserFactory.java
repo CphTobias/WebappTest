@@ -32,6 +32,7 @@ public class UserFactory {
     private double bank;
     private boolean banned;
     private int ranked;
+    private String answer;
 
     public boolean isValid(UserFactory userFactory){
         if(userFactory == null){
@@ -147,6 +148,18 @@ public class UserFactory {
         }
     }
 
+    public void setBank(String amount, String userbank) throws ValidationError {
+        if(getAnswer().equals("add")){
+            setBank(Double.parseDouble(amount) + Double.parseDouble(userbank));
+        } else {
+            double remove = Double.parseDouble(userbank) - Double.parseDouble(amount);
+            if (remove < 0) {
+                remove = 0;
+            }
+            setBank(remove);
+        }
+    }
+
     public boolean isBanned() {
         return banned;
     }
@@ -180,5 +193,11 @@ public class UserFactory {
         }
     }
 
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 
+    public String getAnswer() {
+        return answer;
+    }
 }

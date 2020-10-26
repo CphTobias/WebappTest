@@ -1,5 +1,6 @@
 package com.tobias.function.api.facades;
 
+import com.tobias.function.api.factories.OrderFactory;
 import com.tobias.function.domain.Order;
 import com.tobias.function.infrastructure.Database.DBOrder;
 import com.tobias.function.domain.Car;
@@ -24,29 +25,24 @@ public class OrderFacade {
         return instance;
     }
 
-    public Order createOrder(String userID) {
-        int newUserID = Integer.parseInt(userID);
-        Order order = dbOrder.createOrder(newUserID);
-        return order;
+    public Order createOrder(int userID) {
+        return dbOrder.createOrder(userID);
     }
 
     /*
     Called by AddToOrder. It parses the string to an integer and then calls the ordermapper to find a preorder
     returns either null or an order.
      */
-    public Order findPreOrder(String userID) {
-        int newUserID = Integer.parseInt(userID);
-        Order tempOrder = dbOrder.findPreOrder(newUserID);
-        return tempOrder;
+    public Order findPreOrder(int userID) {
+        return dbOrder.findPreOrder(userID);
     }
 
     /*
     Called by AddToOrder. It parses the string userID to and integer then calls the orderhandler to update the carid.
      */
-    public void updatePreOrder(String carID, String userID) {
-        int newUserID = Integer.parseInt(userID);
+    public void updatePreOrder(String carID, int userID) {
         try {
-            dbOrder.updatePreOrder(carID, newUserID);
+            dbOrder.updatePreOrder(carID, userID);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -55,19 +51,17 @@ public class OrderFacade {
     /*
     Called by AddToOrder. It parses the string userID to and integer then calls the orderhandler to update the carid.
      */
-    public void updatePreOrder(String carIDs, String carID, String userID) {
-        int newUserID = Integer.parseInt(userID);
+    public void updatePreOrder(String carIDs, String carID, int userID) {
         String newCarID = carIDs + carID;
         try {
-            dbOrder.updatePreOrder(newCarID, newUserID);
+            dbOrder.updatePreOrder(newCarID, userID);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public Order getPreOrder(String preOrderUserID) {
-        Order preorder = findPreOrder(preOrderUserID);
-
+    public Order getPreOrder(int userID) {
+        Order preorder = findPreOrder(userID);
         if(preorder == null || preorder.getCarID().equals("")){
             return null;
         } else {
@@ -92,14 +86,12 @@ public class OrderFacade {
     Called when logging by Logout if the answer was No
     Calls the orderhandler to delete that preorder with the users id
      */
-    public void deletePreOrder(String userid) {
-        int newUserID = Integer.parseInt(userid);
-        dbOrder.deletePreOrder(newUserID);
+    public void deletePreOrder(int userid) {
+        dbOrder.deletePreOrder(userid);
     }
 
-    public Order orderPurchased(String userID) {
-        int newUserID = Integer.parseInt(userID);
-        Order tempOrder = dbOrder.orderPurchased(newUserID);
-        return tempOrder;
+    public Order orderPurchased(OrderFactory orderFactory) {
+        Order order = findPreOrder(orderFactory.getUserID());
+        return dbOrder.orderPurchased(orderFactory, order.getId());
     }
 }

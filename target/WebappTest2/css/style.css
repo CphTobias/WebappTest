@@ -158,11 +158,6 @@ label.form-check-label:hover {
     background-color: #ff4c4c;
 }
 
-/* Container holding the image and the text */
-.container {
-    position: relative;
-}
-
 /* Bottom right text */
 .text-block {
     position: absolute;
@@ -187,4 +182,21 @@ img {
 
 .error-status {
     font-size: 8rem;
+}
+
+.inner {
+    border-radius: 25px;
+    background-color: #888888;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
 }

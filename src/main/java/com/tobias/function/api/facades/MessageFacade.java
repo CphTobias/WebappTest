@@ -1,5 +1,6 @@
 package com.tobias.function.api.facades;
 
+import com.tobias.function.api.factories.MessageFactory;
 import com.tobias.function.domain.ContactMessage;
 import com.tobias.function.infrastructure.Database.DBMessage;
 
@@ -27,8 +28,8 @@ public class MessageFacade {
     Called by ContactMessageMade with the given objects.
     It calls the MessageHandler to create a message and returns that contact message.
      */
-    public ContactMessage createContactMessage(LocalDateTime now, String username, String email, String topic, String message) {
-        ContactMessage cMessage = dbMessage.createContactMessage(LocalDateTime.now(),username, email, topic, message);
+    public ContactMessage createContactMessage(LocalDateTime now, MessageFactory messageFactory) {
+        ContactMessage cMessage = dbMessage.createContactMessage(LocalDateTime.now(), messageFactory);
         return cMessage;
     }
 
@@ -37,19 +38,16 @@ public class MessageFacade {
     Calls the MessageMapper and and returns a list of contact messages with either closed or open messages.
      */
     public List<ContactMessage> getContactMessages(String username) {
-        List<ContactMessage> cMessage = dbMessage.getContactMessages(username.equals("Closed Messages"));
-        return cMessage;
+        return dbMessage.getContactMessages(username.equals("Closed Messages"));
     }
 
     /*
     Called by MessageAnswered with the given objects.
     It parses the strings and then calls the MessageHandler.
      */
-    public void setMessageToClosed(String messageID, String messageAnswered) {
-        boolean getMessageBoolean = Boolean.parseBoolean(messageAnswered);
-        int getMessageID = Integer.parseInt(messageID);
+    public void setMessageToClosed(MessageFactory messageFactory) {
         try {
-            dbMessage.setMessageToClosed(getMessageID, getMessageBoolean);
+            dbMessage.setMessageToClosed(messageFactory.getId(), messageFactory.isAnswered());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

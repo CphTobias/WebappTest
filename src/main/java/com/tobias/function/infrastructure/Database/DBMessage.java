@@ -1,5 +1,6 @@
 package com.tobias.function.infrastructure.Database;
 
+import com.tobias.function.api.factories.MessageFactory;
 import com.tobias.function.infrastructure.DBSetup.Connector;
 import com.tobias.function.domain.ContactMessage;
 
@@ -16,7 +17,7 @@ public class DBMessage {
     /*
     Creates a contact message in the database with the objects given from LogicFacade createContactMessage.
      */
-    public ContactMessage createContactMessage(LocalDateTime time , String name, String email, String topic, String message){
+    public ContactMessage createContactMessage(LocalDateTime time , MessageFactory messageFactory){
         int id = 0;
         try (Connection conn = getConnection()) {
             var ps =
@@ -25,10 +26,10 @@ public class DBMessage {
                                     "VALUE (?,?,?,?,?);",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setTimestamp(1, Timestamp.valueOf(time));
-            ps.setString(2, name);
-            ps.setString(3, email);
-            ps.setString(4, topic);
-            ps.setString(5, message);
+            ps.setString(2, messageFactory.getName());
+            ps.setString(3, messageFactory.getEmail());
+            ps.setString(4, messageFactory.getTopic());
+            ps.setString(5, messageFactory.getMessage());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();

@@ -33,15 +33,19 @@ public class UserFacade {
      */
     public User login(UserFactory userFactory) {
         User user = dbUser.findUser(userFactory.getName());
-        if(user.isBanned()){
-            user = null;
-            return user;
+        if (user == null){
+            return null;
         } else {
-            if (user.isPasswordCorrect(userFactory.getPassword())) {
-                return user;
-            } else {
+            if (user.isBanned()) {
                 user = null;
                 return user;
+            } else {
+                if (user.isPasswordCorrect(userFactory.getPassword())) {
+                    return user;
+                } else {
+                    user = null;
+                    return user;
+                }
             }
         }
     }
@@ -99,9 +103,8 @@ public class UserFacade {
         }
     }
 
-    public User findUser(String userID){
-        int newUserID = Integer.parseInt(userID);
-        return dbUser.findUser(newUserID);
+    public User findUser(int userID){
+        return dbUser.findUser(userID);
     }
 
     public User findUserName(String userName){
@@ -113,10 +116,10 @@ public class UserFacade {
     Updates the users bank.
     Called by ManageMoney, and calls the DBUser.
      */
-    public User updateUserBank(String username, double newBank) {
+    public User updateUserBank(UserFactory userFactory) {
         User retUser = null;
         try {
-            retUser = dbUser.updateUserBank(username, newBank);
+            retUser = dbUser.updateUserBank(userFactory.getName(), userFactory.getBank());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

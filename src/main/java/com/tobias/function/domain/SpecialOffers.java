@@ -1,4 +1,4 @@
-package com.tobias.function.api.facades;
+package com.tobias.function.domain;
 
 public class SpecialOffers {
 

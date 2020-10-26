@@ -2,9 +2,6 @@ package com.tobias.function.domain;
 
 public class Order {
 
-    /*
-    NOT IN USE YET
-     */
     private final int id;
     private final int userID;
     private final String carID;

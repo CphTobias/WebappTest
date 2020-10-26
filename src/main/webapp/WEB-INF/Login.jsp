@@ -33,11 +33,11 @@
         <input type="hidden" name="target" value="login">
         <div class="form-group">
             <label for="exampleInputUsername">Username</label>
-            <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Enter Username">
+            <input type="username" class="form-control" id="exampleInputUsername" name="username" aria-describedby="UsernameHelp" placeholder="Enter Username" required>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
         </div>
         <a class="two" target="_blank" href="FrontController?target=redirect&destination=Signup">
             <p>New user? Signup here!</p></a>
