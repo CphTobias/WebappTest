@@ -1,7 +1,9 @@
 package com.tobias.function.web.Admin;
 
+import com.tobias.function.api.factories.UserFactory;
 import com.tobias.function.domain.User;
 import com.tobias.function.exceptions.LoginSampleException;
+import com.tobias.function.exceptions.ValidationError;
 import com.tobias.function.web.Command;
 
 import javax.servlet.ServletException;
@@ -19,10 +21,17 @@ public class GetUser extends Command {
         Bliver kaldt fra Show Users From
         Retunere til Show Users Chosen
          */
+        UserFactory userFactory = new UserFactory();
+        userFactory.setRole(request.getParameter("usersrole"));
 
-        String userRole = request.getParameter("usersrole");
-        List<User> userList = api.getUserFacade().findChosenUsers(userRole);
-        request.setAttribute("showchosenrole", userList);
-        return "admin/admininterface";
+        if(userFactory.isValid(userFactory)) {
+            List<User> userList = api.getUserFacade().findChosenUsers(userFactory.getRole());
+            request.setAttribute("showchosenrole", userList);
+            return "admin/admininterface";
+        } else {
+            request.setAttribute("error400", "400");
+            request.setAttribute("error", "An illigal agrument was made");
+            return "errors/errorpage";
+        }
     }
 }

@@ -84,20 +84,16 @@ public class UserFacade {
     This is put into a List of Users, and returned.
      */
     public List<User> findChosenUsers(String userRole) {
-        List<User> userList = dbUser.findChosenUsers(userRole);
-        return userList;
+        return dbUser.findChosenUsers(userRole);
     }
 
     /*
     Gets the objects from UpdateUserBan.
     It calls the UserHandler, with the parsed Strings.
      */
-    public void updateUserBan(String userID, String userBan) {
-        int getUserID = Integer.parseInt(userID);
-        boolean getUserBanBoolean = Boolean.parseBoolean(userBan);
-
+    public void updateUserBan(UserFactory userFactory) {
         try {
-            dbUser.updateUserBan(getUserID, getUserBanBoolean);
+            dbUser.updateUserBan(userFactory.getId(), userFactory.isBanned());
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -105,8 +101,7 @@ public class UserFacade {
 
     public User findUser(String userID){
         int newUserID = Integer.parseInt(userID);
-        User tempUser = dbUser.findUser(newUserID);
-        return tempUser;
+        return dbUser.findUser(newUserID);
     }
 
     public User findUserName(String userName){

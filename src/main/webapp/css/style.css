@@ -58,6 +58,7 @@ LOGOUT BUTTON END
 
 .footer {
     text-align: center;
+    height: 50px;
 }
 
 .faq {
@@ -178,15 +179,10 @@ label.form-check-label:hover {
     text-align: center;
 }
 
-.container {
-    height: 400px;
-    width: 800px;
-}
-
 img {
     border: 2px solid black;
+    height: 500px;
     width: 100%;
-    height: auto;
 }
 
 .error-status {

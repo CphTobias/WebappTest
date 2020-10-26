@@ -21,10 +21,10 @@
 
 <!-- Special offers START -->
 <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-2">
 
     </div>
-    <div class="col-md-10">
+    <div class="col-md-8">
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -36,14 +36,14 @@
             <div class="carousel-inner">
                 <!-- Insert First picture here -->
                 <div class="carousel-item active">
-                    <div class="container">
+                    <div class="thumbnail">
                         <img src="${pageContext.request.contextPath}/images/Banner.jpg" alt="First slide">
                     </div>
                 </div>
                 <c:forEach var="specialImage" items="${sessionScope.specialcar}">
                     <div class="carousel-item">
-                        <div class="container">
-                            <img src="${pageContext.request.contextPath}${specialImage.imagename}" alt="${specialImage.id}">
+                        <div class="thumbnail">
+                            <img src="${pageContext.request.contextPath}${specialImage.imagename}" alt="${specialImage.id}" style="height: 500px">
                             <div class="text-block"
                                  style="position: absolute;bottom: 20px;right: 20px;background-color: black;
                                  color: white;padding-left: 20px;padding-right: 20px;">
@@ -65,7 +65,7 @@
             <br>
         </div>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
 
     </div>
 </div>
