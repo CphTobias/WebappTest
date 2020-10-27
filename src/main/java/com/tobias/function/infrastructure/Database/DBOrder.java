@@ -5,6 +5,9 @@ import com.tobias.function.infrastructure.DBSetup.Connector;
 import com.tobias.function.domain.Order;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static com.tobias.function.infrastructure.DBSetup.Connector.getConnection;
@@ -68,7 +71,9 @@ public class DBOrder {
                 rs.getInt("orders.id"),
                 rs.getInt("orders.userid"),
                 rs.getString("orders.carid"),
-                rs.getBoolean("orders.paid"));
+                rs.getBoolean("orders.paid"),
+                rs.getInt("orders.price"),
+                rs.getTimestamp("orders.paidat").toLocalDateTime());
     }
 
     public Order findPreOrder(int newUserID) {
@@ -107,13 +112,33 @@ public class DBOrder {
     public Order orderPurchased(OrderFactory orderFactory, int id) {
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement ps2 = conn.prepareStatement(
-                    "UPDATE orders SET paid = 1 WHERE userid = ?;");
-            ps2.setInt(1, orderFactory.getUserID());
+                    "UPDATE orders SET paid = 1, price = ?, paidat = ? WHERE userid = ?;");
+            ps2.setDouble(1, orderFactory.getPrice());
+            ps2.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            ps2.setInt(3, orderFactory.getUserID());
             ps2.executeUpdate();
             ps2.close();
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return findOrder(id);
+    }
+
+    public List<Order> getUserOrders(int newUserID) {
+        try (Connection conn = getConnection()) {
+            PreparedStatement s = conn.prepareStatement("SELECT * FROM orders WHERE userid = ?;");
+            s.setInt(1, newUserID);
+            ResultSet rs = s.executeQuery();
+            ArrayList<Order> orders = new ArrayList<>();
+            while(rs.next()) {
+                orders.add(loadOrder(rs));
+            }
+            return orders;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

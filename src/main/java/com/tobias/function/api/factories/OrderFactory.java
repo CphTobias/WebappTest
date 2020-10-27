@@ -2,6 +2,9 @@ package com.tobias.function.api.factories;
 
 import com.tobias.function.exceptions.ValidationError;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.time.LocalDateTime;
+
 public class OrderFactory {
 
     private int id;
@@ -10,6 +13,8 @@ public class OrderFactory {
     private boolean paid;
     private double calculateOrder;
     private String chosenCar;
+    private double price;
+    private LocalDateTime paidAt;
 
     public boolean isValid(OrderFactory orderFactory) {
         return orderFactory != null;
@@ -74,6 +79,39 @@ public class OrderFactory {
         } catch (IllegalArgumentException e){
             throw new ValidationError(e.getMessage());
         }
+    }
+
+    public void setPrice(double price) throws ValidationError {
+        if(price < 0) throw new ValidationError("The order cannot have a price of less than 0");
+        this.price = price;
+    }
+
+    public void setPrice(String number) throws ValidationError{
+        try {
+            setPrice(Double.parseDouble(number));
+        } catch (NumberFormatException e){
+            throw new ValidationError(e.getMessage());
+        }
+    }
+
+    public void setPaidAt(LocalDateTime paidAt) {
+        this.paidAt = paidAt;
+    }
+
+    public void setPaidAt(String paidAt) throws ValidationError {
+        try {
+            setPaidAt(LocalDateTime.parse(paidAt));
+        } catch (NumberFormatException e){
+            throw new ValidationError(e.toString());
+        }
+    }
+
+    public LocalDateTime getPaidAt() {
+        return paidAt;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public int getId() {

@@ -45,6 +45,7 @@ public abstract class Command {
         commands.put("removecarid", new RemoveFromOrder());
         commands.put("formmoney", new ManageMoney());
         commands.put("payorder", new PayOrder());
+        commands.put("getusersorders", new GetUserOrders());
     }
 
     /*

@@ -26,7 +26,7 @@
             <br>
             <p>Order Paid: ${requestScope.order.paid}</p>
             <p>Order Number: ORD00${requestScope.order.id}</p>
-            <p>Order Date: Not yet implemented</p>
+            <p>Order Date: ${requestScope.order.paidAt}</p>
             <p>Payment Method: Server Dolors</p>
             <p>Total Amount ${requestScope.orderprice}</p>
             <br>
@@ -34,7 +34,7 @@
             <hr>
 
             <br>
-            <h3 class="title">Order Summary:</h3>
+            <h3 class="title">Order Summary</h3>
             <table class="comonfield1" colspan="3%" align="center" width="1000" style="top: -20px">
                 <tr style="font-weight:bold">
                     <td><c:out value="#"/></td>
@@ -61,9 +61,11 @@
                     <td><c:out value="$${requestScope.orderprice}"/></td>
                 </tr>
             </table>
+            <br>
 
             <hr>
 
+            <br>
             <p>You can always see all of your orders at: "youruser" - Dropdown</p>
             <p>If you have any questions, feel free to drop a message to our support</p>
         </div>

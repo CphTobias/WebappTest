@@ -26,7 +26,7 @@
             <br>
             <p>Order Paid: ${requestScope.order.paid}</p>
             <p>Order Number: ORD00${requestScope.order.id}</p>
-            <p>Order Date: Not yet implemented</p>
+            <p>Order Date: ${requestScope.order.paidAt}</p>
             <p>Payment Method: Server Dolors</p>
             <p>Total Amount ${requestScope.orderprice}</p>
             <br>

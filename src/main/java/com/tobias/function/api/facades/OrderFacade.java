@@ -7,6 +7,7 @@ import com.tobias.function.domain.Car;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderFacade {
 
@@ -93,5 +94,9 @@ public class OrderFacade {
     public Order orderPurchased(OrderFactory orderFactory) {
         Order order = findPreOrder(orderFactory.getUserID());
         return dbOrder.orderPurchased(orderFactory, order.getId());
+    }
+
+    public List<Order> getUserOrders(int newUserID) {
+        return dbOrder.getUserOrders(newUserID);
     }
 }

@@ -39,7 +39,11 @@
             </button>
             <div class="dropdown-menu">
                 <button class="dropdown-item" style="text-align: center" href="#">Settings</button>
-                <button class="dropdown-item" style="text-align: center;" href="#">Orders</button>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="getusersorders">
+                    <input type="hidden" name="userid" value="${sessionScope.user.id}">
+                    <button class="dropdown-item" style="text-align: center;" href="#">Orders</button>
+                </form>
                 <button class="dropdown-item" id="myBtn" style="text-align: center">Logout</button>
             </div>
 

@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class PayOrder extends com.tobias.function.web.Command {
@@ -26,6 +30,7 @@ public class PayOrder extends com.tobias.function.web.Command {
         String userbank = request.getParameter("userbank");
 
         try {
+            orderFactory.setPrice(orderprice);
             orderFactory.setCalculateOrder(orderprice, userbank);
             orderFactory.setUserID(request.getParameter("userid"));
             userFactory.setBank(orderFactory.getCalculateOrder());
